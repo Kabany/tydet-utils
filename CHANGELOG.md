@@ -8,3 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add StringUtils module:
     * isEmpty
     * isNotEmpty
+    * isBlank
+    * isNotBlank
+    * reverse
+* Add NullSafe string native methods:
+    * charAt
+    * length
