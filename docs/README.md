@@ -28,9 +28,17 @@ Extended String operators:
 
 Common JS operators:
 
-* `length(text: any)` -> `number`
-    * Returns the length of a `string`.
-    * If the input is `null` or is not a `string`, the result will be `0`.
+* `at(text: any, position: number)` -> `number`
+    * Returns the char at a specified index (position) in a string. 
+    * If the input is not a `string` type, it will return `undefined`.
+    * If the position is an invalid index, it will return `undefined`.
+    * If the position is a float number, it will be fixed with the `Math.floor()` operator.
+    * The index can be a negative number to get the latest char in a string.
+* `charAt(text: any, position: number)` -> `number`
+    * Returns the char at a specified index (position) in a string. 
+    * If the input is not a `string` type, it will return an empty `string`.
+    * If the position is an invalid index, it will return an empty `string`.
+    * If the position is a float number, it will be fixed with the `Math.floor()` operator.
 * `length(text: any)` -> `number`
     * Returns the length of a `string`.
     * If the input is `null` or is not a `string`, the result will be `0`.
@@ -118,6 +126,20 @@ console.log(StringUtils.reverse(0));                     // returns null
 console.log(StringUtils.reverse(1));                     // returns null
 
 // Common JS operators
+
+// charAt()
+console.log(StringUtils.at("example"));             // returns 'e'
+console.log(StringUtils.at("example", 2));          // returns 'a'
+console.log(StringUtils.at("he-llo", 2));           // returns '-'
+console.log(StringUtils.at("he llo"), 2);           // returns ' '
+console.log(StringUtils.at("hello", -1));           // returns 'o'
+console.log(StringUtils.at("hello", -2));           // returns 'l'
+console.log(StringUtils.at("hello", 6));            // returns undefined
+console.log(StringUtils.at("hello", -7));           // returns undefined
+console.log(StringUtils.at(null));                  // returns undefined
+console.log(StringUtils.at(undefined));             // returns undefined
+console.log(StringUtils.at(0));                     // returns undefined
+console.log(StringUtils.at(1));                     // returns undefined
 
 // charAt()
 console.log(StringUtils.charAt("example"));             // returns 'e'

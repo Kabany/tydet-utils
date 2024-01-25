@@ -1,4 +1,4 @@
-import { charAt, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
+import { at, charAt, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -152,6 +152,38 @@ describe("String Utils", () => {
 
 
 
+  describe("at()", () => {
+    it("should return the selected char", () => {
+      expect(at("string")).toBe("s");
+      expect(at("string", 2)).toBe("r");
+      expect(at(" - ", 1)).toBe("-");
+      expect(at(" - ", 2)).toBe(" ");
+      expect(at("string", -1)).toBe("g");
+      expect(at("string", -2)).toBe("n");
+    });
+    it("should use Math.floor() operator for float numbers and return the result position char.", () => {
+      expect(at("string", 1.5)).toBe("t");
+      expect(at("string", 1.9)).toBe("t");
+      expect(at("string", 1.01)).toBe("t");
+    });
+    it("should return undefined if the position is an invalid index.", () => {
+      expect(at("string", 6)).toBe(undefined);
+      expect(at("string", -7)).toBe(undefined);
+    });
+    it("should return undefined for any non string value", () => {
+      expect(at(0 as any)).toBe(undefined);
+      expect(at(1 as any)).toBe(undefined);
+      expect(at(null as any)).toBe(undefined);
+      expect(at(undefined as any)).toBe(undefined);
+      expect(at(false as any)).toBe(undefined);
+      expect(at(true as any)).toBe(undefined);
+      expect(at([] as any)).toBe(undefined);
+      expect(at([""] as any)).toBe(undefined);
+      expect(at(new Date() as any)).toBe(undefined);
+      expect(at({} as any)).toBe(undefined);
+    });
+  });
+
   describe("charAt()", () => {
     it("should return the selected char", () => {
       expect(charAt("string")).toBe("s");
@@ -159,10 +191,14 @@ describe("String Utils", () => {
       expect(charAt(" - ", 1)).toBe("-");
       expect(charAt(" - ", 2)).toBe(" ");
     });
-    it("should return an empty string if the position is an invalid index. If the position is a float number, then the index will be fixed with the Math.floor() operator.", () => {
+    it("should return an empty string if the position is an invalid index.", () => {
       expect(charAt("string", 6)).toBe("");
       expect(charAt("string", -1)).toBe("");
+    });
+    it("should use Math.floor() operator for float numbers and return the result position char.", () => {
       expect(charAt("string", 1.5)).toBe("t");
+      expect(charAt("string", 1.9)).toBe("t");
+      expect(charAt("string", 1.01)).toBe("t");
     });
     it("should return an empty string for any non string value", () => {
       expect(charAt(0 as any)).toBe("");
