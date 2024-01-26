@@ -3,6 +3,14 @@
 TyDeT Utils is composed of submodules made up of reusable methods to validate variables depending on their type, such as:
 
 * [String Utils](#string-utils)
+    * isEmpty()
+    * isNotEmpty()
+    * isBlank()
+    * isNotBlank()
+    * reverse()
+    * at()
+    * charAt()
+    * length()
 
 ## String Utils
 
@@ -10,7 +18,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
 
 ##### Extended String operators:
 
-`isEmpty(text: any)` -> `boolean`
+###### `isEmpty(text: any)` -> `boolean`
 * Evaluates if the parameter is `null`, `undefined` or an empty `string`.
 * It returns `true` for `null`, `undefined` or any `string` that only contains spaces; otherwise it returns `false`.
 
