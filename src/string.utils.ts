@@ -8,40 +8,40 @@
 /** 
  * Evaluates if the parameter is `null`, `undefined` or an empty `string`.
  * It returns `true` for `null`, `undefined` or any `string` that only contains spaces; otherwise it returns `false`.
- * @param {any} text - Text to evaluate
+ * @param {string} text - Text to evaluate
  * @returns {boolean} Result of the evaluation
  */
-export function isEmpty(text: any) {
+export function isEmpty(text: string) {
   return text === null || text === undefined || (typeof text == 'string' && text.trim() == '');
 }
 
 /** 
  * Evaluates if the parameter is a `string`.
  * It returns `true` for any string; otherwise it returns `false`.
- * @param {any} text - Text to evaluate
+ * @param {string} text - Text to evaluate
  * @returns {boolean} Result of the evaluation
  */
-export function isNotEmpty(text: any) {
+export function isNotEmpty(text: string) {
   return text != null && typeof text == 'string';
 }
 
 /** 
  * Evaluates if the parameter is an empty `string`.
  * It returns `true` for any `string` that only contains spaces; otherwise it returns `false`.
- * @param {any} text - Text to evaluate
+ * @param {string} text - Text to evaluate
  * @returns {boolean} Result of the evaluation
  */
-export function isBlank(text: any) {
+export function isBlank(text: string) {
   return typeof text == "string" && text.trim() == "";
 }
 
 /** 
  * Evaluates if the parameter is `string` that not only contains spaces.
  * It returns `true` for any `string` that not only contains spaces; otherwise it returns `false`.
- * @param {any} text - Text to evaluate
+ * @param {string} text - Text to evaluate
  * @returns {boolean} Result of the evaluation
  */
-export function isNotBlank(text: any) {
+export function isNotBlank(text: string) {
   return typeof text == "string" && text.trim() != "";
 }
 
@@ -98,9 +98,9 @@ export function charAt(text: string, position: number = 0) {
 /** 
  * Returns the length of a `string`. 
  * If the parameter is `null` or is not a `string`, the result will be `0`.
- * @param {any} text - Text to evaluate
+ * @param {string} text - Text to evaluate
  * @returns {number} The length of the string
  */
-export function length(text: any) {
+export function length(text: string) {
   return text != null && typeof text == 'string' ? text.length : 0
 }

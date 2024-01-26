@@ -14,21 +14,21 @@ describe("String Utils", () => {
       expect(isEmpty(" -   ")).toBeFalsy();
     });
     it("should return true for null, undefined or for any string that only contains spaces", () => {
-      expect(isEmpty(null)).toBeTruthy();
-      expect(isEmpty(undefined)).toBeTruthy();
+      expect(isEmpty(null as any)).toBeTruthy();
+      expect(isEmpty(undefined as any)).toBeTruthy();
       expect(isEmpty("")).toBeTruthy();
       expect(isEmpty(" ")).toBeTruthy();
       expect(isEmpty("   ")).toBeTruthy();
     });
     it("should return false for any non string value", () => {
-      expect(isEmpty(0)).toBeFalsy();
-      expect(isEmpty(1)).toBeFalsy();
-      expect(isEmpty(false)).toBeFalsy();
-      expect(isEmpty(true)).toBeFalsy();
-      expect(isEmpty([])).toBeFalsy();
-      expect(isEmpty([""])).toBeFalsy();
-      expect(isEmpty(new Date())).toBeFalsy();
-      expect(isEmpty({})).toBeFalsy();
+      expect(isEmpty(0 as any)).toBeFalsy();
+      expect(isEmpty(1 as any)).toBeFalsy();
+      expect(isEmpty(false as any)).toBeFalsy();
+      expect(isEmpty(true as any)).toBeFalsy();
+      expect(isEmpty([] as any)).toBeFalsy();
+      expect(isEmpty([""] as any)).toBeFalsy();
+      expect(isEmpty(new Date() as any)).toBeFalsy();
+      expect(isEmpty({} as any)).toBeFalsy();
     });
   });
 
@@ -49,16 +49,16 @@ describe("String Utils", () => {
       expect(isNotEmpty("   ")).toBeTruthy();
     });
     it("should return false for any non string value", () => {
-      expect(isNotEmpty(0)).toBeFalsy();
-      expect(isNotEmpty(1)).toBeFalsy();
-      expect(isNotEmpty(null)).toBeFalsy();
-      expect(isNotEmpty(undefined)).toBeFalsy();
-      expect(isNotEmpty(false)).toBeFalsy();
-      expect(isNotEmpty(true)).toBeFalsy();
-      expect(isNotEmpty([])).toBeFalsy();
-      expect(isNotEmpty([""])).toBeFalsy();
-      expect(isNotEmpty(new Date())).toBeFalsy();
-      expect(isNotEmpty({})).toBeFalsy();
+      expect(isNotEmpty(0 as any)).toBeFalsy();
+      expect(isNotEmpty(1 as any)).toBeFalsy();
+      expect(isNotEmpty(null as any)).toBeFalsy();
+      expect(isNotEmpty(undefined as any)).toBeFalsy();
+      expect(isNotEmpty(false as any)).toBeFalsy();
+      expect(isNotEmpty(true as any)).toBeFalsy();
+      expect(isNotEmpty([] as any)).toBeFalsy();
+      expect(isNotEmpty([""] as any)).toBeFalsy();
+      expect(isNotEmpty(new Date() as any)).toBeFalsy();
+      expect(isNotEmpty({} as any)).toBeFalsy();
     });
   });
 
@@ -79,16 +79,16 @@ describe("String Utils", () => {
       expect(isBlank("   ")).toBeTruthy();
     });
     it("should return false for any non string value", () => {
-      expect(isBlank(null)).toBeFalsy();
-      expect(isBlank(undefined)).toBeFalsy();
-      expect(isBlank(0)).toBeFalsy();
-      expect(isBlank(1)).toBeFalsy();
-      expect(isBlank(false)).toBeFalsy();
-      expect(isBlank(true)).toBeFalsy();
-      expect(isBlank([])).toBeFalsy();
-      expect(isBlank([""])).toBeFalsy();
-      expect(isBlank(new Date())).toBeFalsy();
-      expect(isBlank({})).toBeFalsy();
+      expect(isBlank(null as any)).toBeFalsy();
+      expect(isBlank(undefined as any)).toBeFalsy();
+      expect(isBlank(0 as any)).toBeFalsy();
+      expect(isBlank(1 as any)).toBeFalsy();
+      expect(isBlank(false as any)).toBeFalsy();
+      expect(isBlank(true as any)).toBeFalsy();
+      expect(isBlank([] as any)).toBeFalsy();
+      expect(isBlank([""] as any)).toBeFalsy();
+      expect(isBlank(new Date() as any)).toBeFalsy();
+      expect(isBlank({} as any)).toBeFalsy();
     });
   });
 
@@ -109,16 +109,16 @@ describe("String Utils", () => {
       expect(isNotBlank("   ")).toBeFalsy();
     });
     it("should return false for any non string value", () => {
-      expect(isNotBlank(null)).toBeFalsy();
-      expect(isNotBlank(undefined)).toBeFalsy();
-      expect(isNotBlank(0)).toBeFalsy();
-      expect(isNotBlank(1)).toBeFalsy();
-      expect(isNotBlank(false)).toBeFalsy();
-      expect(isNotBlank(true)).toBeFalsy();
-      expect(isNotBlank([])).toBeFalsy();
-      expect(isNotBlank([""])).toBeFalsy();
-      expect(isNotBlank(new Date())).toBeFalsy();
-      expect(isNotBlank({})).toBeFalsy();
+      expect(isNotBlank(null as any)).toBeFalsy();
+      expect(isNotBlank(undefined as any)).toBeFalsy();
+      expect(isNotBlank(0 as any)).toBeFalsy();
+      expect(isNotBlank(1 as any)).toBeFalsy();
+      expect(isNotBlank(false as any)).toBeFalsy();
+      expect(isNotBlank(true as any)).toBeFalsy();
+      expect(isNotBlank([] as any)).toBeFalsy();
+      expect(isNotBlank([""] as any)).toBeFalsy();
+      expect(isNotBlank(new Date() as any)).toBeFalsy();
+      expect(isNotBlank({} as any)).toBeFalsy();
     });
   });
 
@@ -229,16 +229,16 @@ describe("String Utils", () => {
       expect(length("   ")).toBe(3);
     });
     it("should return 0 for any non string value", () => {
-      expect(length(0)).toBe(0);
-      expect(length(1)).toBe(0);
-      expect(length(null)).toBe(0);
-      expect(length(undefined)).toBe(0);
-      expect(length(false)).toBe(0);
-      expect(length(true)).toBe(0);
-      expect(length([])).toBe(0);
-      expect(length([""])).toBe(0);
-      expect(length(new Date())).toBe(0);
-      expect(length({})).toBe(0);
+      expect(length(0 as any)).toBe(0);
+      expect(length(1 as any)).toBe(0);
+      expect(length(null as any)).toBe(0);
+      expect(length(undefined as any)).toBe(0);
+      expect(length(false as any)).toBe(0);
+      expect(length(true as any)).toBe(0);
+      expect(length([] as any)).toBe(0);
+      expect(length([""] as any)).toBe(0);
+      expect(length(new Date() as any)).toBe(0);
+      expect(length({} as any)).toBe(0);
     });
   });
 

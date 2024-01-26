@@ -3,14 +3,14 @@
 TyDeT Utils is composed of submodules made up of reusable methods to validate variables depending on their type, such as:
 
 * [String Utils](#string-utils)
-    * [isEmpty()](#isemptytext-any---boolean)
-    * [isNotEmpty()](#isnotemptytext-any---boolean)
-    * [isBlank()](#isblanktext-any---boolean)
-    * [isNotBlank()](#isnotblanktext-any---boolean)
-    * [reverse()](#reversetext-any---string--null)
-    * [at()](#attext-any-position-number---number)
-    * [charAt()](#charattext-any-position-number---number)
-    * [length()](#lengthtext-any---number)
+    * [isEmpty()](#isemptytext-string---boolean)
+    * [isNotEmpty()](#isnotemptytext-string---boolean)
+    * [isBlank()](#isblanktext-string---boolean)
+    * [isNotBlank()](#isnotblanktext-string---boolean)
+    * [reverse()](#reversetext-string---string--null)
+    * [at()](#attext-string-position-number---number)
+    * [charAt()](#charattext-string-position-number---number)
+    * [length()](#lengthtext-string---number)
 
 ## String Utils
 
@@ -18,7 +18,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
 
 ##### Extended String operators:
 
-###### `isEmpty(text: any)` -> `boolean`
+###### `isEmpty(text: string)` -> `boolean`
 * Evaluates if the parameter is `null`, `undefined` or an empty `string`.
 * It returns `true` for `null`, `undefined` or any `string` that only contains spaces; otherwise it returns `false`.
 
@@ -41,7 +41,7 @@ console.log(StringUtils.isEmpty(false));                    // returns false
 console.log(StringUtils.isEmpty([]));                       // returns false
 ```
 
-###### `isNotEmpty(text: any)` -> `boolean`
+###### `isNotEmpty(text: string)` -> `boolean`
 * Evaluates if the parameter is a `string`.
 * It returns `true` for any string; otherwise it returns `false`.
 
@@ -64,7 +64,7 @@ console.log(StringUtils.isNotEmpty(false));                 // returns false
 console.log(StringUtils.isNotEmpty([]));                    // returns false
 ```
 
-###### `isBlank(text: any)` -> `boolean`
+###### `isBlank(text: string)` -> `boolean`
 * Evaluates if the parameter is an empty `string`.
 * It returns `true` for any `string` that only contains spaces; otherwise it returns `false`.
 
@@ -87,7 +87,7 @@ console.log(StringUtils.isBlank(false));                    // returns false
 console.log(StringUtils.isBlank([]));                       // returns false
 ```
 
-###### `isNotBlank(text: any)` -> `boolean`
+###### `isNotBlank(text: string)` -> `boolean`
 * Evaluates if the parameter is `string` that not only contains spaces.
 * It returns `true` for any `string` that not only contains spaces; otherwise it returns `false`.
 
@@ -110,7 +110,7 @@ console.log(StringUtils.isBlank(false));                    // returns false
 console.log(StringUtils.isBlank([]));                       // returns false
 ```
 
-###### `reverse(text: any)` -> `string` | `null`
+###### `reverse(text: string)` -> `string` | `null`
 * Returns a `string` with its characters reversed. 
 * Returns `null` if the input is not a `string`.
 
@@ -130,7 +130,7 @@ console.log(StringUtils.reverse(1));                        // returns null
 
 ##### Common JS operators:
 
-###### `at(text: any, position: number)` -> `number`
+###### `at(text: string, position: number)` -> `number`
 * Returns the char at a specified index (position) in a string. 
 * If the input is not a `string` type, it will return `undefined`.
 * If the position is an invalid index, it will return `undefined`.
@@ -154,7 +154,7 @@ console.log(StringUtils.at(0));                             // returns undefined
 console.log(StringUtils.at(1));                             // returns undefined
 ```
 
-###### `charAt(text: any, position: number)` -> `number`
+###### `charAt(text: string, position: number)` -> `number`
 * Returns the char at a specified index (position) in a string. 
 * If the input is not a `string` type, it will return an empty `string`.
 * If the position is an invalid index, it will return an empty `string`.
@@ -175,7 +175,7 @@ console.log(StringUtils.charAt(0));                         // returns ''
 console.log(StringUtils.charAt(1));                         // returns ''
 ```
 
-###### `length(text: any)` -> `number`
+###### `length(text: string)` -> `number`
 * Returns the length of a `string`.
 * If the input is `null` or is not a `string`, the result will be `0`.
 
