@@ -7,9 +7,9 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [isNotEmpty()](#isnotemptytext-any---boolean)
     * [isBlank()](#isblanktext-any---boolean)
     * [isNotBlank()](#isnotblanktext-any---boolean)
-    * [reverse()](#reversetext-any---string)
-    * [at()](#attext-any-position-number---string)
-    * [charAt()](#charattext-any-position-number---string)
+    * [reverse()](#reversetext-any---string--null)
+    * [at()](#attext-any-position-number---number)
+    * [charAt()](#charattext-any-position-number---number)
     * [length()](#lengthtext-any---number)
 
 ## String Utils
