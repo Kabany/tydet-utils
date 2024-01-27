@@ -9,7 +9,9 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [isNotBlank()](#isnotblanktext-string---boolean)
     * [reverse()](#reversetext-string---string--null)
     * [at()](#attext-string-position-number---number)
-    * [charAt()](#charattext-string-position-number---number)
+    * [charAt()](#charattext-string-position-number---string)
+    * [charCodeAt()](#charcodeattext-string-position-number---number)
+    * [codePointAt()](#codepointattext-string-position-number---number)
     * [length()](#lengthtext-string---number)
 
 ## String Utils
@@ -154,7 +156,7 @@ console.log(StringUtils.at(0));                             // returns undefined
 console.log(StringUtils.at(1));                             // returns undefined
 ```
 
-###### `charAt(text: string, position: number)` -> `number`
+###### `charAt(text: string, position: number)` -> `string`
 * Returns the char at a specified index (position) in a string. 
 * If the input is not a `string` type, it will return an empty `string`.
 * If the position is an invalid index, it will return an empty `string`.
@@ -173,6 +175,49 @@ console.log(StringUtils.charAt(null));                      // returns ''
 console.log(StringUtils.charAt(undefined));                 // returns ''
 console.log(StringUtils.charAt(0));                         // returns ''
 console.log(StringUtils.charAt(1));                         // returns ''
+```
+
+###### `charCodeAt(text: string, position: number)` -> `number`
+* Returns the char at a specified index (position) in a string. 
+* If the input is not a `string` type, it will return `undefined`.
+* If the position is an invalid index, it will return `undefined`.
+* If the position is a float number, it will be fixed with the `Math.floor()` operator.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+console.log(StringUtils.charCodeAt("example"));             // returns 101
+console.log(StringUtils.charCodeAt("example", 2));          // returns 97
+console.log(StringUtils.charCodeAt("he-llo", 2));           // returns 45
+console.log(StringUtils.charCodeAt("he llo"), 2);           // returns 32
+console.log(StringUtils.charCodeAt("hello", -1));           // returns undefined
+console.log(StringUtils.charCodeAt("hello", 6));            // returns undefined
+console.log(StringUtils.charCodeAt(null));                  // returns undefined
+console.log(StringUtils.charCodeAt(undefined));             // returns undefined
+console.log(StringUtils.charCodeAt(0));                     // returns undefined
+console.log(StringUtils.charCodeAt(1));                     // returns undefined
+```
+
+###### `codePointAt(text: string, position: number)` -> `number`
+* Returns the char at a specified index (position) in a string.
+* `charCodeAt()` is UTF-16, `codePointAt()` is Unicode. Both methods return an integer representing the UTF-16 code of a character, but only `codePointAt()` can return the full value of a Unicode value greather 0xFFFF (65535).
+* If the input is not a `string` type, it will return `undefined`.
+* If the position is an invalid index, it will return `undefined`.
+* If the position is a float number, it will be fixed with the `Math.floor()` operator.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+console.log(StringUtils.codePointAt("example"));            // returns 101
+console.log(StringUtils.codePointAt("example", 2));         // returns 97
+console.log(StringUtils.codePointAt("he-llo", 2));          // returns 45
+console.log(StringUtils.codePointAt("he llo"), 2);          // returns 32
+console.log(StringUtils.codePointAt("hello", -1));          // returns undefined
+console.log(StringUtils.codePointAt("hello", 6));           // returns undefined
+console.log(StringUtils.codePointAt(null));                 // returns undefined
+console.log(StringUtils.codePointAt(undefined));            // returns undefined
+console.log(StringUtils.codePointAt(0));                    // returns undefined
+console.log(StringUtils.codePointAt(1));                    // returns undefined
 ```
 
 ###### `length(text: string)` -> `number`

@@ -1,4 +1,4 @@
-import { at, charAt, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -211,6 +211,66 @@ describe("String Utils", () => {
       expect(charAt([""] as any)).toBe("");
       expect(charAt(new Date() as any)).toBe("");
       expect(charAt({} as any)).toBe("");
+    });
+  });
+
+  describe("charCodeAt()", () => {
+    it("should return the char code from the selected char", () => {
+      expect(charCodeAt("string")).toBe(115);
+      expect(charCodeAt("string", 2)).toBe(114);
+      expect(charCodeAt(" - ", 1)).toBe(45);
+      expect(charCodeAt(" - ", 2)).toBe(32);
+    });
+    it("should return undefined if the position is an invalid index.", () => {
+      expect(charCodeAt("string", 6)).toBe(undefined);
+      expect(charCodeAt("string", -1)).toBe(undefined);
+    });
+    it("should use Math.floor() operator for float numbers and return the result position char.", () => {
+      expect(charCodeAt("string", 1.5)).toBe(116);
+      expect(charCodeAt("string", 1.9)).toBe(116);
+      expect(charCodeAt("string", 1.01)).toBe(116);
+    });
+    it("should return an empty string for any non string value", () => {
+      expect(charCodeAt(0 as any)).toBe(undefined);
+      expect(charCodeAt(1 as any)).toBe(undefined);
+      expect(charCodeAt(null as any)).toBe(undefined);
+      expect(charCodeAt(undefined as any)).toBe(undefined);
+      expect(charCodeAt(false as any)).toBe(undefined);
+      expect(charCodeAt(true as any)).toBe(undefined);
+      expect(charCodeAt([] as any)).toBe(undefined);
+      expect(charCodeAt([""] as any)).toBe(undefined);
+      expect(charCodeAt(new Date() as any)).toBe(undefined);
+      expect(charCodeAt({} as any)).toBe(undefined);
+    });
+  });
+
+  describe("codePointAt()", () => {
+    it("should return the char code from the selected char", () => {
+      expect(codePointAt("string")).toBe(115);
+      expect(codePointAt("string", 2)).toBe(114);
+      expect(codePointAt(" - ", 1)).toBe(45);
+      expect(codePointAt(" - ", 2)).toBe(32);
+    });
+    it("should return undefined if the position is an invalid index.", () => {
+      expect(codePointAt("string", 6)).toBe(undefined);
+      expect(codePointAt("string", -1)).toBe(undefined);
+    });
+    it("should use Math.floor() operator for float numbers and return the result position char.", () => {
+      expect(codePointAt("string", 1.5)).toBe(116);
+      expect(codePointAt("string", 1.9)).toBe(116);
+      expect(codePointAt("string", 1.01)).toBe(116);
+    });
+    it("should return an empty string for any non string value", () => {
+      expect(codePointAt(0 as any)).toBe(undefined);
+      expect(codePointAt(1 as any)).toBe(undefined);
+      expect(codePointAt(null as any)).toBe(undefined);
+      expect(codePointAt(undefined as any)).toBe(undefined);
+      expect(codePointAt(false as any)).toBe(undefined);
+      expect(codePointAt(true as any)).toBe(undefined);
+      expect(codePointAt([] as any)).toBe(undefined);
+      expect(codePointAt([""] as any)).toBe(undefined);
+      expect(codePointAt(new Date() as any)).toBe(undefined);
+      expect(codePointAt({} as any)).toBe(undefined);
     });
   });
 

@@ -95,6 +95,43 @@ export function charAt(text: string, position: number = 0) {
   return isNotEmpty(text) ? text.charAt(position) : ""
 }
 
+/**
+ * Returns the Unicode of the char at a specified index (position) in a string.
+ * If the input is not a `string` type, it will return `undefined`.
+ * If the position is an invalid index, it will return `undefined`.
+ * If the position is a float number, it will be fixed with the `Math.floor()` operator.
+ * @param {string} text - Text to evaluate
+ * @param {number} position - Char position
+ * @returns {number} Requested char code
+ */
+export function charCodeAt(text: string, position: number = 0) {
+  if (isNotEmpty(text)) {
+    let result = text.charCodeAt(position)
+    return Number.isNaN(result) ? undefined : result
+  } else {
+    return undefined
+  }
+}
+
+/**
+ * Returns the Unicode of the char at a specified index (position) in a string.
+ * `charCodeAt()` is UTF-16, `codePointAt()` is Unicode. Both methods return an integer representing the UTF-16 code of a character, but only `codePointAt()` can return the full value of a Unicode value greather 0xFFFF (65535).
+ * If the input is not a `string` type, it will return `undefined`.
+ * If the position is an invalid index, it will return `undefined`.
+ * If the position is a float number, it will be fixed with the `Math.floor()` operator.
+ * @param {string} text - Text to evaluate
+ * @param {number} position - Char position
+ * @returns {number} Requested char code
+ */
+export function codePointAt(text: string, position: number = 0) {
+  if (isNotEmpty(text)) {
+    let result = text.codePointAt(position)
+    return Number.isNaN(result) ? undefined : result
+  } else {
+    return undefined
+  }
+}
+
 /** 
  * Returns the length of a `string`. 
  * If the parameter is `null` or is not a `string`, the result will be `0`.
