@@ -164,6 +164,22 @@ export function endsWith(str: string, search: string, length?: number) {
   }
 }
 
+/**
+ * Converts Unicode values to characters.
+ * If the code is not a `number`, it will be converted to an empty string.
+ * @param {number} code - Unicode value to be converted.
+ * @returns {string} String representation of the unicode values
+ */
+export function fromCharCode(...code: number[]) {
+  let str = ""
+  for (let item of code) {
+    if (typeof item == "number") {
+      str = str.concat(String.fromCharCode(item))
+    }
+  }
+  return str
+}
+
 /** 
  * Returns the length of a `string`. 
  * If the parameter is `null` or is not a `string`, the result will be `0`.

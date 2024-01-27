@@ -14,6 +14,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [codePointAt()](#codepointatstr-string-position-number---number)
     * [concat()](#concatstr-string---string)
     * [endsWith()](#endswithstr-string-search-string-length-number---boolean)
+    * [fromCharCode()](#fromcharcodecode-number---string)
     * [length()](#lengthstr-string---number)
 
 ## String Utils
@@ -254,6 +255,19 @@ console.log(StringUtils.endsWith("Hello World!", null));            // returns f
 console.log(StringUtils.endsWith("Hello World!", undefined));       // returns false
 console.log(StringUtils.endsWith("Hello World!", 0));               // returns false
 console.log(StringUtils.endsWith("Hello World!", 1));               // returns false
+```
+
+###### `fromCharCode(...code: number[])` -> `boolean`
+* Converts Unicode values to characters.
+* If the code is not a `number`, it will be converted to an empty string.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+console.log(StringUtils.fromCharCode(65));                          // returns 'A'
+console.log(StringUtils.fromCharCode(72, 69, 76, 76, 79));          // returns 'HELLO'
+console.log(StringUtils.fromCharCode(null));                        // returns ''
+console.log(StringUtils.fromCharCode(undefined));                   // returns ''
 ```
 
 ###### `length(str: string)` -> `number`

@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -321,6 +321,23 @@ describe("String Utils", () => {
       expect(endsWith("Hello World!", "!", -1)).toBeFalsy();
       expect(endsWith("Hello World!", "H", -1)).toBeFalsy();
       expect(endsWith("Hello World!", "H", 0)).toBeFalsy();
+    });
+  });
+
+  describe("fromCharCode()", () => {
+    it("should return a string based on the unicode codes", () => {
+      expect(fromCharCode(65)).toBe("A");
+      expect(fromCharCode(72, 69, 76, 76, 79)).toBe("HELLO");
+    });
+    it("should return an empty string if the code is not a number.", () => {
+      expect(fromCharCode(null as any)).toBe("");
+      expect(fromCharCode(undefined as any)).toBe("");
+      expect(fromCharCode(false as any)).toBe("");
+      expect(fromCharCode(true as any)).toBe("");
+      expect(fromCharCode([] as any)).toBe("");
+      expect(fromCharCode([""] as any)).toBe("");
+      expect(fromCharCode(new Date() as any)).toBe("");
+      expect(fromCharCode({} as any)).toBe("");
     });
   });
 
