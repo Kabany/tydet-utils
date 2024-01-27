@@ -8,58 +8,58 @@
 /** 
  * Evaluates if the parameter is `null`, `undefined` or an empty `string`.
  * It returns `true` for `null`, `undefined` or any `string` that only contains spaces; otherwise it returns `false`.
- * @param {string} text - Text to evaluate
+ * @param {string} str - String to evaluate
  * @returns {boolean} Result of the evaluation
  */
-export function isEmpty(text: string) {
-  return text === null || text === undefined || (typeof text == 'string' && text.trim() == '')
+export function isEmpty(str: string) {
+  return str === null || str === undefined || (typeof str == 'string' && str.trim() == '')
 }
 
 /** 
  * Evaluates if the parameter is a `string`.
  * It returns `true` for any string; otherwise it returns `false`.
- * @param {string} text - Text to evaluate
+ * @param {string} str - String to evaluate
  * @returns {boolean} Result of the evaluation
  */
-export function isNotEmpty(text: string) {
-  return text != null && typeof text == 'string'
+export function isNotEmpty(str: string) {
+  return str != null && typeof str == 'string'
 }
 
 /** 
  * Evaluates if the parameter is an empty `string`.
  * It returns `true` for any `string` that only contains spaces; otherwise it returns `false`.
- * @param {string} text - Text to evaluate
+ * @param {string} str - String to evaluate
  * @returns {boolean} Result of the evaluation
  */
-export function isBlank(text: string) {
-  return typeof text == "string" && text.trim() == ""
+export function isBlank(str: string) {
+  return typeof str == "string" && str.trim() == ""
 }
 
 /** 
  * Evaluates if the parameter is `string` that not only contains spaces.
  * It returns `true` for any `string` that not only contains spaces; otherwise it returns `false`.
- * @param {string} text - Text to evaluate
+ * @param {string} str - String to evaluate
  * @returns {boolean} Result of the evaluation
  */
-export function isNotBlank(text: string) {
-  return typeof text == "string" && text.trim() != ""
+export function isNotBlank(str: string) {
+  return typeof str == "string" && str.trim() != ""
 }
 
 /**
- * Returns a text with its characters reversed. 
+ * Returns a `string` with its characters reversed. 
  * Returns `null` if the input is not a `string`.
- * @param {string} text - Text to evaluate
+ * @param {string} str - String to evaluate
  * @returns {string | null} String with its characters reversed.
  */
-export function reverse(text: string) {
-  if (isNotBlank(text)) {
+export function reverse(str: string) {
+  if (isNotBlank(str)) {
     var newText = ""
-    for (var x = 0; x < text.length; x++) {
-      newText = text.charAt(x) + newText
+    for (var x = 0; x < str.length; x++) {
+      newText = str.charAt(x) + newText
     }
     return newText
-  } else if (isBlank(text)) {
-    return text;
+  } else if (isBlank(str)) {
+    return str;
   } else {
     return null
   }
@@ -74,12 +74,12 @@ export function reverse(text: string) {
  * If the position is an invalid index, it will return `undefined`.
  * If the position is a float number, it will be fixed with the `Math.floor()` operator.
  * The index can be a negative number to get the latest char in a string.
- * @param {string} text - Text to evaluate
+ * @param {string} str - String to evaluate
  * @param {number} position - Char position
  * @returns {string} Requested char
  */
-export function at(text: string, position: number = 0) {
-  return isNotEmpty(text) ? text.at(position) : undefined
+export function at(str: string, position: number = 0) {
+  return isNotEmpty(str) ? str.at(position) : undefined
 }
 
 /**
@@ -87,12 +87,12 @@ export function at(text: string, position: number = 0) {
  * If the input is not a `string` type, it will return an empty `string`.
  * If the position is an invalid index, it will return an empty `string`.
  * If the position is a float number, it will be fixed with the `Math.floor()` operator.
- * @param {string} text - Text to evaluate
+ * @param {string} str - String to evaluate
  * @param {number} position - Char position
  * @returns {string} Requested char
  */
-export function charAt(text: string, position: number = 0) {
-  return isNotEmpty(text) ? text.charAt(position) : ""
+export function charAt(str: string, position: number = 0) {
+  return isNotEmpty(str) ? str.charAt(position) : ""
 }
 
 /**
@@ -100,13 +100,13 @@ export function charAt(text: string, position: number = 0) {
  * If the input is not a `string` type, it will return `undefined`.
  * If the position is an invalid index, it will return `undefined`.
  * If the position is a float number, it will be fixed with the `Math.floor()` operator.
- * @param {string} text - Text to evaluate
+ * @param {string} str - String to evaluate
  * @param {number} position - Char position
  * @returns {number} Requested char code
  */
-export function charCodeAt(text: string, position: number = 0) {
-  if (isNotEmpty(text)) {
-    let result = text.charCodeAt(position)
+export function charCodeAt(str: string, position: number = 0) {
+  if (isNotEmpty(str)) {
+    let result = str.charCodeAt(position)
     return Number.isNaN(result) ? undefined : result
   } else {
     return undefined
@@ -119,13 +119,13 @@ export function charCodeAt(text: string, position: number = 0) {
  * If the input is not a `string` type, it will return `undefined`.
  * If the position is an invalid index, it will return `undefined`.
  * If the position is a float number, it will be fixed with the `Math.floor()` operator.
- * @param {string} text - Text to evaluate
+ * @param {string} str - String to evaluate
  * @param {number} position - Char position
  * @returns {number} Requested char code
  */
-export function codePointAt(text: string, position: number = 0) {
-  if (isNotEmpty(text)) {
-    let result = text.codePointAt(position)
+export function codePointAt(str: string, position: number = 0) {
+  if (isNotEmpty(str)) {
+    let result = str.codePointAt(position)
     return Number.isNaN(result) ? undefined : result
   } else {
     return undefined
@@ -150,9 +150,9 @@ export function concat(...str: string[]) {
 /** 
  * Returns the length of a `string`. 
  * If the parameter is `null` or is not a `string`, the result will be `0`.
- * @param {string} text - Text to evaluate
+ * @param {string} str - String to evaluate
  * @returns {number} The length of the string
  */
-export function length(text: string) {
-  return text != null && typeof text == 'string' ? text.length : 0
+export function length(str: string) {
+  return str != null && typeof str == 'string' ? str.length : 0
 }

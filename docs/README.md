@@ -3,17 +3,17 @@
 TyDeT Utils is composed of submodules made up of reusable methods to validate variables depending on their type, such as:
 
 * [String Utils](#string-utils)
-    * [isEmpty()](#isemptytext-string---boolean)
-    * [isNotEmpty()](#isnotemptytext-string---boolean)
-    * [isBlank()](#isblanktext-string---boolean)
-    * [isNotBlank()](#isnotblanktext-string---boolean)
-    * [reverse()](#reversetext-string---string--null)
-    * [at()](#attext-string-position-number---number)
-    * [charAt()](#charattext-string-position-number---string)
-    * [charCodeAt()](#charcodeattext-string-position-number---number)
-    * [codePointAt()](#codepointattext-string-position-number---number)
+    * [isEmpty()](#isemptystr-string---boolean)
+    * [isNotEmpty()](#isnotemptystr-string---boolean)
+    * [isBlank()](#isblankstr-string---boolean)
+    * [isNotBlank()](#isnotblankstr-string---boolean)
+    * [reverse()](#reversestr-string---string--null)
+    * [at()](#atstr-string-position-number---number)
+    * [charAt()](#charatstr-string-position-number---string)
+    * [charCodeAt()](#charcodeatstr-string-position-number---number)
+    * [codePointAt()](#codepointatstr-string-position-number---number)
     * [concat()](#concatstr-string---string)
-    * [length()](#lengthtext-string---number)
+    * [length()](#lengthstr-string---number)
 
 ## String Utils
 
@@ -21,7 +21,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
 
 ##### Extended String operators:
 
-###### `isEmpty(text: string)` -> `boolean`
+###### `isEmpty(str: string)` -> `boolean`
 * Evaluates if the parameter is `null`, `undefined` or an empty `string`.
 * It returns `true` for `null`, `undefined` or any `string` that only contains spaces; otherwise it returns `false`.
 
@@ -44,7 +44,7 @@ console.log(StringUtils.isEmpty(false));                    // returns false
 console.log(StringUtils.isEmpty([]));                       // returns false
 ```
 
-###### `isNotEmpty(text: string)` -> `boolean`
+###### `isNotEmpty(str: string)` -> `boolean`
 * Evaluates if the parameter is a `string`.
 * It returns `true` for any string; otherwise it returns `false`.
 
@@ -67,7 +67,7 @@ console.log(StringUtils.isNotEmpty(false));                 // returns false
 console.log(StringUtils.isNotEmpty([]));                    // returns false
 ```
 
-###### `isBlank(text: string)` -> `boolean`
+###### `isBlank(str: string)` -> `boolean`
 * Evaluates if the parameter is an empty `string`.
 * It returns `true` for any `string` that only contains spaces; otherwise it returns `false`.
 
@@ -90,7 +90,7 @@ console.log(StringUtils.isBlank(false));                    // returns false
 console.log(StringUtils.isBlank([]));                       // returns false
 ```
 
-###### `isNotBlank(text: string)` -> `boolean`
+###### `isNotBlank(str: string)` -> `boolean`
 * Evaluates if the parameter is `string` that not only contains spaces.
 * It returns `true` for any `string` that not only contains spaces; otherwise it returns `false`.
 
@@ -113,7 +113,7 @@ console.log(StringUtils.isBlank(false));                    // returns false
 console.log(StringUtils.isBlank([]));                       // returns false
 ```
 
-###### `reverse(text: string)` -> `string` | `null`
+###### `reverse(str: string)` -> `string` | `null`
 * Returns a `string` with its characters reversed. 
 * Returns `null` if the input is not a `string`.
 
@@ -133,7 +133,7 @@ console.log(StringUtils.reverse(1));                        // returns null
 
 ##### Common JS operators:
 
-###### `at(text: string, position: number)` -> `number`
+###### `at(str: string, position: number)` -> `number`
 * Returns the char at a specified index (position) in a string. 
 * If the input is not a `string` type, it will return `undefined`.
 * If the position is an invalid index, it will return `undefined`.
@@ -157,7 +157,7 @@ console.log(StringUtils.at(0));                             // returns undefined
 console.log(StringUtils.at(1));                             // returns undefined
 ```
 
-###### `charAt(text: string, position: number)` -> `string`
+###### `charAt(str: string, position: number)` -> `string`
 * Returns the char at a specified index (position) in a string. 
 * If the input is not a `string` type, it will return an empty `string`.
 * If the position is an invalid index, it will return an empty `string`.
@@ -178,7 +178,7 @@ console.log(StringUtils.charAt(0));                         // returns ''
 console.log(StringUtils.charAt(1));                         // returns ''
 ```
 
-###### `charCodeAt(text: string, position: number)` -> `number`
+###### `charCodeAt(str: string, position: number)` -> `number`
 * Returns the char at a specified index (position) in a string. 
 * If the input is not a `string` type, it will return `undefined`.
 * If the position is an invalid index, it will return `undefined`.
@@ -199,7 +199,7 @@ console.log(StringUtils.charCodeAt(0));                     // returns undefined
 console.log(StringUtils.charCodeAt(1));                     // returns undefined
 ```
 
-###### `codePointAt(text: string, position: number)` -> `number`
+###### `codePointAt(str: string, position: number)` -> `number`
 * Returns the char at a specified index (position) in a string.
 * `charCodeAt()` is UTF-16, `codePointAt()` is Unicode. Both methods return an integer representing the UTF-16 code of a character, but only `codePointAt()` can return the full value of a Unicode value greather 0xFFFF (65535).
 * If the input is not a `string` type, it will return `undefined`.
@@ -235,7 +235,7 @@ console.log(StringUtils.concat(0));                         // returns ''
 console.log(StringUtils.concat(1));                         // returns ''
 ```
 
-###### `length(text: string)` -> `number`
+###### `length(str: string)` -> `number`
 * Returns the length of a `string`.
 * If the input is `null` or is not a `string`, the result will be `0`.
 
