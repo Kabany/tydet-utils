@@ -12,6 +12,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [charAt()](#charattext-string-position-number---string)
     * [charCodeAt()](#charcodeattext-string-position-number---number)
     * [codePointAt()](#codepointattext-string-position-number---number)
+    * [concat()](#concatstr-string---string)
     * [length()](#lengthtext-string---number)
 
 ## String Utils
@@ -218,6 +219,20 @@ console.log(StringUtils.codePointAt(null));                 // returns undefined
 console.log(StringUtils.codePointAt(undefined));            // returns undefined
 console.log(StringUtils.codePointAt(0));                    // returns undefined
 console.log(StringUtils.codePointAt(1));                    // returns undefined
+```
+
+###### `concat(...str: string[])` -> `string`
+* Joins two or more strings with a safe null.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+console.log(StringUtils.concat("str1", " ", "str2"));       // returns 'str1 str2'
+console.log(StringUtils.concat("str1", null, "str2"));      // returns 'str1str2'
+console.log(StringUtils.concat(null));                      // returns ''
+console.log(StringUtils.concat(undefined));                 // returns ''
+console.log(StringUtils.concat(0));                         // returns ''
+console.log(StringUtils.concat(1));                         // returns ''
 ```
 
 ###### `length(text: string)` -> `number`

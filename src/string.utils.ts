@@ -12,7 +12,7 @@
  * @returns {boolean} Result of the evaluation
  */
 export function isEmpty(text: string) {
-  return text === null || text === undefined || (typeof text == 'string' && text.trim() == '');
+  return text === null || text === undefined || (typeof text == 'string' && text.trim() == '')
 }
 
 /** 
@@ -22,7 +22,7 @@ export function isEmpty(text: string) {
  * @returns {boolean} Result of the evaluation
  */
 export function isNotEmpty(text: string) {
-  return text != null && typeof text == 'string';
+  return text != null && typeof text == 'string'
 }
 
 /** 
@@ -32,7 +32,7 @@ export function isNotEmpty(text: string) {
  * @returns {boolean} Result of the evaluation
  */
 export function isBlank(text: string) {
-  return typeof text == "string" && text.trim() == "";
+  return typeof text == "string" && text.trim() == ""
 }
 
 /** 
@@ -42,7 +42,7 @@ export function isBlank(text: string) {
  * @returns {boolean} Result of the evaluation
  */
 export function isNotBlank(text: string) {
-  return typeof text == "string" && text.trim() != "";
+  return typeof text == "string" && text.trim() != ""
 }
 
 /**
@@ -130,6 +130,21 @@ export function codePointAt(text: string, position: number = 0) {
   } else {
     return undefined
   }
+}
+
+/**
+ * Joins two or more strings with a safe null.
+ * @param {string} str - String to concatenate
+ * @returns {string} Concatenated string
+ */
+export function concat(...str: string[]) {
+  let result = ""
+  for (let item of str) {
+    if (isNotEmpty(item)) {
+      result = result.concat(item)
+    }
+  }
+  return result
 }
 
 /** 

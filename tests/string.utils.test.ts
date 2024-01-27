@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -271,6 +271,25 @@ describe("String Utils", () => {
       expect(codePointAt([""] as any)).toBe(undefined);
       expect(codePointAt(new Date() as any)).toBe(undefined);
       expect(codePointAt({} as any)).toBe(undefined);
+    });
+  });
+
+  describe("concat()", () => {
+    it("should return concatenated strings", () => {
+      expect(concat("str1", " ", "str2")).toBe("str1 str2");
+    });
+    it("should return an empty string if the input is not a string", () => {
+      expect(concat("str1", null as any, "str2")).toBe("str1str2");
+      expect(concat(0 as any)).toBe("");
+      expect(concat(1 as any)).toBe("");
+      expect(concat(null as any)).toBe("");
+      expect(concat(undefined as any)).toBe("");
+      expect(concat(false as any)).toBe("");
+      expect(concat(true as any)).toBe("");
+      expect(concat([] as any)).toBe("");
+      expect(concat([""] as any)).toBe("");
+      expect(concat(new Date() as any)).toBe("");
+      expect(concat({} as any)).toBe("");
     });
   });
 
