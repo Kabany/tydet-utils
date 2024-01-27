@@ -13,6 +13,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [charCodeAt()](#charcodeatstr-string-position-number---number)
     * [codePointAt()](#codepointatstr-string-position-number---number)
     * [concat()](#concatstr-string---string)
+    * [endsWith()](#endswithstr-string-search-string-length-number---boolean)
     * [length()](#lengthstr-string---number)
 
 ## String Utils
@@ -233,6 +234,26 @@ console.log(StringUtils.concat(null));                      // returns ''
 console.log(StringUtils.concat(undefined));                 // returns ''
 console.log(StringUtils.concat(0));                         // returns ''
 console.log(StringUtils.concat(1));                         // returns ''
+```
+
+###### `endsWith(str: string, search: string, length?: number)` -> `boolean`
+* Returns `true` if a string ends with a specified string with a safe null.
+* If the input or string is not a string type, then it will return `false`.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+console.log(StringUtils.endsWith("Hello World!", "World!"));        // returns true
+console.log(StringUtils.endsWith("Hello World!", "Hello", 5));      // returns true
+console.log(StringUtils.endsWith("Hello World!", "World!", 20));    // returns true
+console.log(StringUtils.endsWith("Hello World!", "H", 0));          // returns false
+console.log(StringUtils.endsWith("Hello World!", "H", 1));          // returns true
+console.log(StringUtils.endsWith("Hello World!", "H", -1));         // returns false
+console.log(StringUtils.endsWith("Hello World!", "!", -1));         // returns false
+console.log(StringUtils.endsWith("Hello World!", null));            // returns false
+console.log(StringUtils.endsWith("Hello World!", undefined));       // returns false
+console.log(StringUtils.endsWith("Hello World!", 0));               // returns false
+console.log(StringUtils.endsWith("Hello World!", 1));               // returns false
 ```
 
 ###### `length(str: string)` -> `number`

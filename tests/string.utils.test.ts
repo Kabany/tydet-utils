@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -290,6 +290,37 @@ describe("String Utils", () => {
       expect(concat([""] as any)).toBe("");
       expect(concat(new Date() as any)).toBe("");
       expect(concat({} as any)).toBe("");
+    });
+  });
+
+  describe("endsWith()", () => {
+    it("should return true if the search string is included at the end in the input string.", () => {
+      expect(endsWith("Hello World!", "World!")).toBeTruthy();
+      expect(endsWith("Hello World!", "Hello", 5)).toBeTruthy();
+      expect(endsWith("Hello World!", "World!", 20)).toBeTruthy();
+    });
+    it("should return false if the search string is not included at the end in the input string.", () => {
+      expect(endsWith("Hello World!", "Hello")).toBeFalsy();
+      expect(endsWith("Hello World!", "Hello", 3)).toBeFalsy();
+    });
+    it("should return false if the input or search string is not a string.", () => {
+      expect(endsWith("Hello World!", null as any)).toBeFalsy();
+      expect(endsWith(null as any, "Hello World!")).toBeFalsy();
+      expect(endsWith(null as any, null as any)).toBeFalsy();
+      expect(endsWith("Hello World!", 0 as any)).toBeFalsy();
+      expect(endsWith("Hello World!", 1 as any)).toBeFalsy();
+      expect(endsWith("Hello World!", undefined as any)).toBeFalsy();
+      expect(endsWith("Hello World!", false as any)).toBeFalsy();
+      expect(endsWith("Hello World!", true as any)).toBeFalsy();
+      expect(endsWith("Hello World!", [] as any)).toBeFalsy();
+      expect(endsWith("Hello World!", [""] as any)).toBeFalsy();
+      expect(endsWith("Hello World!", new Date() as any)).toBeFalsy();
+      expect(endsWith("Hello World!", {} as any)).toBeFalsy();
+    });
+    it("should return false if the length is not positive", () => {
+      expect(endsWith("Hello World!", "!", -1)).toBeFalsy();
+      expect(endsWith("Hello World!", "H", -1)).toBeFalsy();
+      expect(endsWith("Hello World!", "H", 0)).toBeFalsy();
     });
   });
 

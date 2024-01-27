@@ -147,6 +147,23 @@ export function concat(...str: string[]) {
   return result
 }
 
+/**
+ * Returns `true` if a string ends with a specified string with a safe null.
+ * If the input string or search string is not a string type, then it will return `false`.
+ * @param {string} str - String to search.
+ * @param {string} search - String to search for.
+ * @param {number} length - The length of the string to search.
+ * @returns {boolean} Result of the evaluation
+ */
+export function endsWith(str: string, search: string, length?: number) {
+  if (isNotEmpty(str) && isNotEmpty(search)) {
+    let l = length == null ? str.length : length
+    return str.endsWith(search, l)
+  } else {
+    false;
+  }
+}
+
 /** 
  * Returns the length of a `string`. 
  * If the parameter is `null` or is not a `string`, the result will be `0`.
