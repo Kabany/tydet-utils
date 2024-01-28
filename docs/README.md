@@ -15,8 +15,9 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [concat()](#concatstr-string---string)
     * [endsWith()](#endswithstr-string-search-string-length-number---boolean)
     * [fromCharCode()](#fromcharcodecode-number---string)
-    * [includes()](#includesstr-string-search-string-position-number---boolean)
+    * [includes()](#includesstr-string-search-string-start-number---boolean)
     * [indexOf()](#indexofstr-string-search-string-start-number---number)
+    * [lastIndexOf()](#lastindexofstr-string-search-string-start-number---number)
     * [length()](#lengthstr-string---number)
 
 ## String Utils
@@ -272,7 +273,7 @@ console.log(StringUtils.fromCharCode(null));                        // returns '
 console.log(StringUtils.fromCharCode(undefined));                   // returns ''
 ```
 
-###### `includes(str: string, search: string, position?: number)` -> `boolean`
+###### `includes(str: string, search: string, start?: number)` -> `boolean`
 * Returns `true` if a string contains a specified string with a null safe.
 * If the input or search string are not a string type, then it will return `false`.
 
@@ -308,6 +309,26 @@ console.log(StringUtils.indexOf("Hello World!", null));             // returns -
 console.log(StringUtils.indexOf("Hello World!", undefined));        // returns -1
 console.log(StringUtils.indexOf("Hello World!", 0));                // returns -1
 console.log(StringUtils.indexOf("Hello World!", 1));                // returns -1
+```
+
+###### `lastIndexOf(str: string, search: string, start?: number)` -> `number`
+* Returns the position of the last occurrence of a value in a string, otherwise the position will be `-1`.
+* If the input or search string are not a string type, then it will return `-1`.
+* The method searches the string from the end to the begining.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+console.log(StringUtils.lastIndexOf("Hello World!", "World!"));         // returns 6
+console.log(StringUtils.lastIndexOf("Hello World!", "Hello"));          // returns 0
+console.log(StringUtils.lastIndexOf("Hello World!", "World!", 5));      // returns -1
+console.log(StringUtils.lastIndexOf("Hello World!", "Hello", 5));       // returns 0
+console.log(StringUtils.lastIndexOf("Hello World!", "Hello", 1));       // returns 0
+console.log(StringUtils.lastIndexOf("Hello World!", "Hello", -1));      // returns -1
+console.log(StringUtils.lastIndexOf("Hello World!", null));             // returns -1
+console.log(StringUtils.lastIndexOf("Hello World!", undefined));        // returns -1
+console.log(StringUtils.lastIndexOf("Hello World!", 0));                // returns -1
+console.log(StringUtils.lastIndexOf("Hello World!", 1));                // returns -1
 ```
 
 ###### `length(str: string)` -> `number`

@@ -157,7 +157,7 @@ export function concat(...str: string[]) {
  */
 export function endsWith(str: string, search: string, length?: number) {
   if (isNotEmpty(str) && isNotEmpty(search)) {
-    let l = length == null ? str.length : length
+    let l = length === undefined ? str.length : length
     return str.endsWith(search, l)
   } else {
     return false;
@@ -185,12 +185,12 @@ export function fromCharCode(...code: number[]) {
  * If the input or search string are not a string type, then it will return `false`.
  * @param {string} str - String to search.
  * @param {string} search - String to search for.
- * @param {number} position - The position to start from.
+ * @param {number} start - The position to start from. It's default value is `0`.
  * @returns {boolean} Result of the evaluation.
  */
-export function includes(str: string, search: string, position: number = 0) {
+export function includes(str: string, search: string, start: number = 0) {
   if (isNotEmpty(str) && isNotEmpty(search)) {
-    return str.includes(search, position)
+    return str.includes(search, start)
   } else {
     return false;
   }
@@ -201,12 +201,30 @@ export function includes(str: string, search: string, position: number = 0) {
  * If the input or search string are not a string type, then it will return `-1`.
  * @param {string} str - String to search.
  * @param {string} search - String to search for.
- * @param {number} start - The position to start from.
+ * @param {number} start - The position to start from. It's default value is `0`.
  * @returns {string} The first position where the search-value occurs.
  */
 export function indexOf(str: string, search: string, start: number = 0) {
   if (isNotEmpty(str) && isNotEmpty(search)) {
     return str.indexOf(search, start)
+  } else {
+    return -1;
+  }
+}
+
+/**
+ * Returns the position of the last occurrence of a value in a string, otherwise the position will be `-1`.
+ * If the input or search string are not a string type, then it will return `-1`.
+ * The method searches the string from the end to the begining.
+ * @param {string} str - String to search.
+ * @param {string} search - String to search for.
+ * @param {number} start - The position to start from. It's default value is the string's length.
+ * @returns {string} The first position where the search-value occurs.
+ */
+export function lastIndexOf(str: string, search: string, start?: number) {
+  if (isNotEmpty(str) && isNotEmpty(search)) {
+    let l = start === undefined ? str.length : start
+    return str.lastIndexOf(search, l)
   } else {
     return -1;
   }

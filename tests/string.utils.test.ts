@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -372,6 +372,7 @@ describe("String Utils", () => {
   describe("indexOf()", () => {
     it("should return a positive number if the search string is included in the input string.", () => {
       expect(indexOf("Hello World!", "World!")).toBe(6);
+      expect(indexOf("Hello World! Hello Everyone!", "Hello")).toBe(0);
       expect(indexOf("Hello World!", "Hello")).toBe(0);
       expect(indexOf("Hello World!", "World!", 5)).toBe(6);
       expect(indexOf("Hello World!", "Hello", -1)).toBe(0);
@@ -381,7 +382,7 @@ describe("String Utils", () => {
       expect(indexOf("Hello World!", "Hi")).toBe(-1);
       expect(indexOf("Hello World!", "Hello", 5)).toBe(-1);
     });
-    it("should return false if the input or search string are not a string.", () => {
+    it("should return -1 if the input or search string are not a string.", () => {
       expect(indexOf("Hello World!", null as any)).toBe(-1);
       expect(indexOf(null as any, "Hello World!")).toBe(-1);
       expect(indexOf(null as any, null as any)).toBe(-1);
@@ -394,6 +395,33 @@ describe("String Utils", () => {
       expect(indexOf("Hello World!", [""] as any)).toBe(-1);
       expect(indexOf("Hello World!", new Date() as any)).toBe(-1);
       expect(indexOf("Hello World!", {} as any)).toBe(-1);
+    });
+  });
+
+  describe("lastIndexOf()", () => {
+    it("should return a positive number if the search string is included in the input string.", () => {
+      expect(lastIndexOf("Hello World!", "World!")).toBe(6);
+      expect(lastIndexOf("Hello World! Hello Everyone!", "Hello")).toBe(13);
+      expect(lastIndexOf("Hello World!", "Hello")).toBe(0);
+      expect(lastIndexOf("Hello World!", "Hello", 5)).toBe(0);
+    });
+    it("should return -1 if the search string is not included input string considering the start position.", () => {
+      expect(lastIndexOf("Hello World!", "Hi")).toBe(-1);
+      expect(lastIndexOf("Hello World!", "World!", 5)).toBe(-1);
+    });
+    it("should return -1 if the input or search string are not a string.", () => {
+      expect(lastIndexOf("Hello World!", null as any)).toBe(-1);
+      expect(lastIndexOf(null as any, "Hello World!")).toBe(-1);
+      expect(lastIndexOf(null as any, null as any)).toBe(-1);
+      expect(lastIndexOf("Hello World!", 0 as any)).toBe(-1);
+      expect(lastIndexOf("Hello World!", 1 as any)).toBe(-1);
+      expect(lastIndexOf("Hello World!", undefined as any)).toBe(-1);
+      expect(lastIndexOf("Hello World!", false as any)).toBe(-1);
+      expect(lastIndexOf("Hello World!", true as any)).toBe(-1);
+      expect(lastIndexOf("Hello World!", [] as any)).toBe(-1);
+      expect(lastIndexOf("Hello World!", [""] as any)).toBe(-1);
+      expect(lastIndexOf("Hello World!", new Date() as any)).toBe(-1);
+      expect(lastIndexOf("Hello World!", {} as any)).toBe(-1);
     });
   });
 
