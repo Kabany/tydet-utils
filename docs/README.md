@@ -16,6 +16,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [endsWith()](#endswithstr-string-search-string-length-number---boolean)
     * [fromCharCode()](#fromcharcodecode-number---string)
     * [includes()](#includesstr-string-search-string-position-number---boolean)
+    * [indexOf()](#indexofstr-string-search-string-start-number---number)
     * [length()](#lengthstr-string---number)
 
 ## String Utils
@@ -288,6 +289,25 @@ console.log(StringUtils.includes("Hello World!", null));            // returns f
 console.log(StringUtils.includes("Hello World!", undefined));       // returns false
 console.log(StringUtils.includes("Hello World!", 0));               // returns false
 console.log(StringUtils.includes("Hello World!", 1));               // returns false
+```
+
+###### `indexOf(str: string, search: string, start?: number)` -> `number`
+* Returns the position of the first occurrence of a value in a string, otherwise the position will be `-1`.
+* If the input or search string are not a string type, then it will return `-1`.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+console.log(StringUtils.indexOf("Hello World!", "World!"));         // returns 6
+console.log(StringUtils.indexOf("Hello World!", "Hello", 5));       // returns -1
+console.log(StringUtils.indexOf("Hello World!", "World!", 5));      // returns 6
+console.log(StringUtils.indexOf("Hello World!", "Hello", 0));       // returns 0
+console.log(StringUtils.indexOf("Hello World!", "Hello", 1));       // returns -1
+console.log(StringUtils.indexOf("Hello World!", "Hello", -1));      // returns 0
+console.log(StringUtils.indexOf("Hello World!", null));             // returns -1
+console.log(StringUtils.indexOf("Hello World!", undefined));        // returns -1
+console.log(StringUtils.indexOf("Hello World!", 0));                // returns -1
+console.log(StringUtils.indexOf("Hello World!", 1));                // returns -1
 ```
 
 ###### `length(str: string)` -> `number`

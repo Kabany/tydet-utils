@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     * isBlank
     * isNotBlank
     * reverse
-* Add NullSafe string native methods:
+* Add NullSafe to native methods:
     * at
     * charAt
     * charCodeAt
@@ -20,4 +20,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     * endsWith
     * fromCharCode
     * includes
+    * indexOf
     * length
