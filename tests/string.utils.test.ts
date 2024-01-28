@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, isBlank, isEmpty, isNotBlank, isNotEmpty, length, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -303,7 +303,7 @@ describe("String Utils", () => {
       expect(endsWith("Hello World!", "Hello")).toBeFalsy();
       expect(endsWith("Hello World!", "Hello", 3)).toBeFalsy();
     });
-    it("should return false if the input or search string is not a string.", () => {
+    it("should return false if the input or search string are not a string.", () => {
       expect(endsWith("Hello World!", null as any)).toBeFalsy();
       expect(endsWith(null as any, "Hello World!")).toBeFalsy();
       expect(endsWith(null as any, null as any)).toBeFalsy();
@@ -338,6 +338,32 @@ describe("String Utils", () => {
       expect(fromCharCode([""] as any)).toBe("");
       expect(fromCharCode(new Date() as any)).toBe("");
       expect(fromCharCode({} as any)).toBe("");
+    });
+  });
+
+  describe("includes()", () => {
+    it("should return true if the search string is included in the input string.", () => {
+      expect(includes("Hello World!", "World!")).toBeTruthy();
+      expect(includes("Hello World!", "Hello")).toBeTruthy();
+      expect(includes("Hello World!", "World!", 5)).toBeTruthy();
+    });
+    it("should return false if the search string is not included input string considering the start position.", () => {
+      expect(includes("Hello World!", "Hi")).toBeFalsy();
+      expect(includes("Hello World!", "Hello", 5)).toBeFalsy();
+    });
+    it("should return false if the input or search string are not a string.", () => {
+      expect(includes("Hello World!", null as any)).toBeFalsy();
+      expect(includes(null as any, "Hello World!")).toBeFalsy();
+      expect(includes(null as any, null as any)).toBeFalsy();
+      expect(includes("Hello World!", 0 as any)).toBeFalsy();
+      expect(includes("Hello World!", 1 as any)).toBeFalsy();
+      expect(includes("Hello World!", undefined as any)).toBeFalsy();
+      expect(includes("Hello World!", false as any)).toBeFalsy();
+      expect(includes("Hello World!", true as any)).toBeFalsy();
+      expect(includes("Hello World!", [] as any)).toBeFalsy();
+      expect(includes("Hello World!", [""] as any)).toBeFalsy();
+      expect(includes("Hello World!", new Date() as any)).toBeFalsy();
+      expect(includes("Hello World!", {} as any)).toBeFalsy();
     });
   });
 

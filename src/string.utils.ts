@@ -149,7 +149,7 @@ export function concat(...str: string[]) {
 
 /**
  * Returns `true` if a string ends with a specified string with a safe null.
- * If the input string or search string is not a string type, then it will return `false`.
+ * If the input or search string are not a string type, then it will return `false`.
  * @param {string} str - String to search.
  * @param {string} search - String to search for.
  * @param {number} length - The length of the string to search.
@@ -160,7 +160,7 @@ export function endsWith(str: string, search: string, length?: number) {
     let l = length == null ? str.length : length
     return str.endsWith(search, l)
   } else {
-    false;
+    return false;
   }
 }
 
@@ -178,6 +178,22 @@ export function fromCharCode(...code: number[]) {
     }
   }
   return str
+}
+
+/**
+ * Returns `true` if a string contains a specified string with a null safe.
+ * If the input or search string are not a string type, then it will return `false`.
+ * @param {string} str - String to search.
+ * @param {string} search - String to search for.
+ * @param {number} position - The position to start from.
+ * @returns {string} String representation of the unicode values
+ */
+export function includes(str: string, search: string, position: number = 0) {
+  if (isNotEmpty(str) && isNotEmpty(search)) {
+    return str.includes(search, position)
+  } else {
+    return false;
+  }
 }
 
 /** 
