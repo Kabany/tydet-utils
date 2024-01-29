@@ -35,20 +35,20 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.isEmpty("example"));                // false
-console.log(StringUtils.isEmpty("   example   "));          // false
-console.log(StringUtils.isEmpty(""));                       // true
-console.log(StringUtils.isEmpty("  "));                     // true
-console.log(StringUtils.isEmpty("             "));          // true
-console.log(StringUtils.isEmpty(null));                     // true
-console.log(StringUtils.isEmpty(undefined));                // true
-console.log(StringUtils.isEmpty(0));                        // false
-console.log(StringUtils.isEmpty(1));                        // false
-console.log(StringUtils.isEmpty({}));                       // false
-console.log(StringUtils.isEmpty(new Date()));               // false
-console.log(StringUtils.isEmpty(true));                     // false
-console.log(StringUtils.isEmpty(false));                    // false
-console.log(StringUtils.isEmpty([]));                       // false
+StringUtils.isEmpty("example")               // false
+StringUtils.isEmpty("   example   ")         // false
+StringUtils.isEmpty("")                      // true
+StringUtils.isEmpty("  ")                    // true
+StringUtils.isEmpty("             ")         // true
+StringUtils.isEmpty(null)                    // true
+StringUtils.isEmpty(undefined)               // true
+StringUtils.isEmpty(0)                       // false
+StringUtils.isEmpty(1)                       // false
+StringUtils.isEmpty({})                      // false
+StringUtils.isEmpty(new Date())              // false
+StringUtils.isEmpty(true)                    // false
+StringUtils.isEmpty(false)                   // false
+StringUtils.isEmpty([])                      // false
 ```
 
 ###### `isNotEmpty(str: string)` -> `boolean`
@@ -58,20 +58,20 @@ console.log(StringUtils.isEmpty([]));                       // false
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.isNotEmpty("example"));             // true
-console.log(StringUtils.isNotEmpty("   example   "));       // true
-console.log(StringUtils.isNotEmpty(""));                    // true
-console.log(StringUtils.isNotEmpty("  "));                  // true
-console.log(StringUtils.isNotEmpty("             "));       // true
-console.log(StringUtils.isNotEmpty(null));                  // false
-console.log(StringUtils.isNotEmpty(undefined));             // false
-console.log(StringUtils.isNotEmpty(0));                     // false
-console.log(StringUtils.isNotEmpty(1));                     // false
-console.log(StringUtils.isNotEmpty({}));                    // false
-console.log(StringUtils.isNotEmpty(new Date()));            // false
-console.log(StringUtils.isNotEmpty(true));                  // false
-console.log(StringUtils.isNotEmpty(false));                 // false
-console.log(StringUtils.isNotEmpty([]));                    // false
+StringUtils.isNotEmpty("example")            // true
+StringUtils.isNotEmpty("   example   ")      // true
+StringUtils.isNotEmpty("")                   // true
+StringUtils.isNotEmpty("  ")                 // true
+StringUtils.isNotEmpty("             ")      // true
+StringUtils.isNotEmpty(null)                 // false
+StringUtils.isNotEmpty(undefined)            // false
+StringUtils.isNotEmpty(0)                    // false
+StringUtils.isNotEmpty(1)                    // false
+StringUtils.isNotEmpty({})                   // false
+StringUtils.isNotEmpty(new Date())           // false
+StringUtils.isNotEmpty(true)                 // false
+StringUtils.isNotEmpty(false)                // false
+StringUtils.isNotEmpty([])                   // false
 ```
 
 ###### `isBlank(str: string)` -> `boolean`
@@ -81,20 +81,20 @@ console.log(StringUtils.isNotEmpty([]));                    // false
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.isBlank("example"));                // false
-console.log(StringUtils.isBlank("   example   "));          // false
-console.log(StringUtils.isBlank(""));                       // true
-console.log(StringUtils.isBlank("  "));                     // true
-console.log(StringUtils.isBlank("             "));          // true
-console.log(StringUtils.isBlank(null));                     // false
-console.log(StringUtils.isBlank(undefined));                // false
-console.log(StringUtils.isBlank(0));                        // false
-console.log(StringUtils.isBlank(1));                        // false
-console.log(StringUtils.isBlank({}));                       // false
-console.log(StringUtils.isBlank(new Date()));               // false
-console.log(StringUtils.isBlank(true));                     // false
-console.log(StringUtils.isBlank(false));                    // false
-console.log(StringUtils.isBlank([]));                       // false
+StringUtils.isBlank("example")               // false
+StringUtils.isBlank("   example   ")         // false
+StringUtils.isBlank("")                      // true
+StringUtils.isBlank("  ")                    // true
+StringUtils.isBlank("             ")         // true
+StringUtils.isBlank(null)                    // false
+StringUtils.isBlank(undefined)               // false
+StringUtils.isBlank(0)                       // false
+StringUtils.isBlank(1)                       // false
+StringUtils.isBlank({})                      // false
+StringUtils.isBlank(new Date())              // false
+StringUtils.isBlank(true)                    // false
+StringUtils.isBlank(false)                   // false
+StringUtils.isBlank([])                      // false
 ```
 
 ###### `isNotBlank(str: string)` -> `boolean`
@@ -104,20 +104,20 @@ console.log(StringUtils.isBlank([]));                       // false
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.isBlank("example"));                // true
-console.log(StringUtils.isBlank("   example   "));          // true
-console.log(StringUtils.isBlank(""));                       // false
-console.log(StringUtils.isBlank("  "));                     // false
-console.log(StringUtils.isBlank("             "));          // false
-console.log(StringUtils.isBlank(null));                     // false
-console.log(StringUtils.isBlank(undefined));                // false
-console.log(StringUtils.isBlank(0));                        // false
-console.log(StringUtils.isBlank(1));                        // false
-console.log(StringUtils.isBlank({}));                       // false
-console.log(StringUtils.isBlank(new Date()));               // false
-console.log(StringUtils.isBlank(true));                     // false
-console.log(StringUtils.isBlank(false));                    // false
-console.log(StringUtils.isBlank([]));                       // false
+StringUtils.isBlank("example")               // true
+StringUtils.isBlank("   example   ")         // true
+StringUtils.isBlank("")                      // false
+StringUtils.isBlank("  ")                    // false
+StringUtils.isBlank("             ")         // false
+StringUtils.isBlank(null)                    // false
+StringUtils.isBlank(undefined)               // false
+StringUtils.isBlank(0)                       // false
+StringUtils.isBlank(1)                       // false
+StringUtils.isBlank({})                      // false
+StringUtils.isBlank(new Date())              // false
+StringUtils.isBlank(true)                    // false
+StringUtils.isBlank(false)                   // false
+StringUtils.isBlank([])                      // false
 ```
 
 ###### `reverse(str: string)` -> `string` | `null`
@@ -127,15 +127,15 @@ console.log(StringUtils.isBlank([]));                       // false
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.reverse("example"));                // 'elpmaxe'
-console.log(StringUtils.reverse("   example   "));          // '   elpmaxe   '
-console.log(StringUtils.reverse(""));                       // ''
-console.log(StringUtils.reverse("  "));                     // '  '
-console.log(StringUtils.reverse("             "));          // '             '
-console.log(StringUtils.reverse(null));                     // null
-console.log(StringUtils.reverse(undefined));                // null
-console.log(StringUtils.reverse(0));                        // null
-console.log(StringUtils.reverse(1));                        // null
+StringUtils.reverse("example")               // 'elpmaxe'
+StringUtils.reverse("   example   ")         // '   elpmaxe   '
+StringUtils.reverse("")                      // ''
+StringUtils.reverse("  ")                    // '  '
+StringUtils.reverse("             ")         // '             '
+StringUtils.reverse(null)                    // null
+StringUtils.reverse(undefined)               // null
+StringUtils.reverse(0)                       // null
+StringUtils.reverse(1)                       // null
 ```
 
 ##### Common JS operators:
@@ -150,18 +150,18 @@ console.log(StringUtils.reverse(1));                        // null
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.at("example"));                     // 'e'
-console.log(StringUtils.at("example", 2));                  // 'a'
-console.log(StringUtils.at("he-llo", 2));                   // '-'
-console.log(StringUtils.at("he llo"), 2);                   // ' '
-console.log(StringUtils.at("hello", -1));                   // 'o'
-console.log(StringUtils.at("hello", -2));                   // 'l'
-console.log(StringUtils.at("hello", 6));                    // undefined
-console.log(StringUtils.at("hello", -7));                   // undefined
-console.log(StringUtils.at(null));                          // undefined
-console.log(StringUtils.at(undefined));                     // undefined
-console.log(StringUtils.at(0));                             // undefined
-console.log(StringUtils.at(1));                             // undefined
+StringUtils.at("example")                    // 'e'
+StringUtils.at("example", 2)                 // 'a'
+StringUtils.at("he-llo", 2)                  // '-'
+StringUtils.at("he llo"), 2                  // ' '
+StringUtils.at("hello", -1)                  // 'o'
+StringUtils.at("hello", -2)                  // 'l'
+StringUtils.at("hello", 6)                   // undefined
+StringUtils.at("hello", -7)                  // undefined
+StringUtils.at(null)                         // undefined
+StringUtils.at(undefined)                    // undefined
+StringUtils.at(0)                            // undefined
+StringUtils.at(1)                            // undefined
 ```
 
 ###### `charAt(str: string, position: number)` -> `string`
@@ -173,16 +173,16 @@ console.log(StringUtils.at(1));                             // undefined
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.charAt("example"));                 // 'e'
-console.log(StringUtils.charAt("example", 2));              // 'a'
-console.log(StringUtils.charAt("he-llo", 2));               // '-'
-console.log(StringUtils.charAt("he llo"), 2);               // ' '
-console.log(StringUtils.charAt("hello", -1));               // ''
-console.log(StringUtils.charAt("hello", 6));                // ''
-console.log(StringUtils.charAt(null));                      // ''
-console.log(StringUtils.charAt(undefined));                 // ''
-console.log(StringUtils.charAt(0));                         // ''
-console.log(StringUtils.charAt(1));                         // ''
+StringUtils.charAt("example")                // 'e'
+StringUtils.charAt("example", 2)             // 'a'
+StringUtils.charAt("he-llo", 2)              // '-'
+StringUtils.charAt("he llo"), 2              // ' '
+StringUtils.charAt("hello", -1)              // ''
+StringUtils.charAt("hello", 6)               // ''
+StringUtils.charAt(null)                     // ''
+StringUtils.charAt(undefined)                // ''
+StringUtils.charAt(0)                        // ''
+StringUtils.charAt(1)                        // ''
 ```
 
 ###### `charCodeAt(str: string, position: number)` -> `number`
@@ -194,16 +194,16 @@ console.log(StringUtils.charAt(1));                         // ''
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.charCodeAt("example"));             // 101
-console.log(StringUtils.charCodeAt("example", 2));          // 97
-console.log(StringUtils.charCodeAt("he-llo", 2));           // 45
-console.log(StringUtils.charCodeAt("he llo"), 2);           // 32
-console.log(StringUtils.charCodeAt("hello", -1));           // undefined
-console.log(StringUtils.charCodeAt("hello", 6));            // undefined
-console.log(StringUtils.charCodeAt(null));                  // undefined
-console.log(StringUtils.charCodeAt(undefined));             // undefined
-console.log(StringUtils.charCodeAt(0));                     // undefined
-console.log(StringUtils.charCodeAt(1));                     // undefined
+StringUtils.charCodeAt("example")            // 101
+StringUtils.charCodeAt("example", 2)         // 97
+StringUtils.charCodeAt("he-llo", 2)          // 45
+StringUtils.charCodeAt("he llo"), 2          // 32
+StringUtils.charCodeAt("hello", -1)          // undefined
+StringUtils.charCodeAt("hello", 6)           // undefined
+StringUtils.charCodeAt(null)                 // undefined
+StringUtils.charCodeAt(undefined)            // undefined
+StringUtils.charCodeAt(0)                    // undefined
+StringUtils.charCodeAt(1)                    // undefined
 ```
 
 ###### `codePointAt(str: string, position: number)` -> `number`
@@ -216,16 +216,16 @@ console.log(StringUtils.charCodeAt(1));                     // undefined
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.codePointAt("example"));            // 101
-console.log(StringUtils.codePointAt("example", 2));         // 97
-console.log(StringUtils.codePointAt("he-llo", 2));          // 45
-console.log(StringUtils.codePointAt("he llo"), 2);          // 32
-console.log(StringUtils.codePointAt("hello", -1));          // undefined
-console.log(StringUtils.codePointAt("hello", 6));           // undefined
-console.log(StringUtils.codePointAt(null));                 // undefined
-console.log(StringUtils.codePointAt(undefined));            // undefined
-console.log(StringUtils.codePointAt(0));                    // undefined
-console.log(StringUtils.codePointAt(1));                    // undefined
+StringUtils.codePointAt("example")           // 101
+StringUtils.codePointAt("example", 2)        // 97
+StringUtils.codePointAt("he-llo", 2)         // 45
+StringUtils.codePointAt("he llo"), 2         // 32
+StringUtils.codePointAt("hello", -1)         // undefined
+StringUtils.codePointAt("hello", 6)          // undefined
+StringUtils.codePointAt(null)                // undefined
+StringUtils.codePointAt(undefined)           // undefined
+StringUtils.codePointAt(0)                   // undefined
+StringUtils.codePointAt(1)                   // undefined
 ```
 
 ###### `concat(...str: string[])` -> `string`
@@ -234,12 +234,12 @@ console.log(StringUtils.codePointAt(1));                    // undefined
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.concat("str1", " ", "str2"));       // 'str1 str2'
-console.log(StringUtils.concat("str1", null, "str2"));      // 'str1str2'
-console.log(StringUtils.concat(null));                      // ''
-console.log(StringUtils.concat(undefined));                 // ''
-console.log(StringUtils.concat(0));                         // ''
-console.log(StringUtils.concat(1));                         // ''
+StringUtils.concat("str1", " ", "str2")      // 'str1 str2'
+StringUtils.concat("str1", null, "str2")     // 'str1str2'
+StringUtils.concat(null)                     // ''
+StringUtils.concat(undefined)                // ''
+StringUtils.concat(0)                        // ''
+StringUtils.concat(1)                        // ''
 ```
 
 ###### `endsWith(str: string, search: string, length?: number)` -> `boolean`
@@ -249,17 +249,17 @@ console.log(StringUtils.concat(1));                         // ''
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.endsWith("Hello World!", "World!"));        // true
-console.log(StringUtils.endsWith("Hello World!", "Hello", 5));      // true
-console.log(StringUtils.endsWith("Hello World!", "World!", 20));    // true
-console.log(StringUtils.endsWith("Hello World!", "H", 0));          // false
-console.log(StringUtils.endsWith("Hello World!", "H", 1));          // true
-console.log(StringUtils.endsWith("Hello World!", "H", -1));         // false
-console.log(StringUtils.endsWith("Hello World!", "!", -1));         // false
-console.log(StringUtils.endsWith("Hello World!", null));            // false
-console.log(StringUtils.endsWith("Hello World!", undefined));       // false
-console.log(StringUtils.endsWith("Hello World!", 0));               // false
-console.log(StringUtils.endsWith("Hello World!", 1));               // false
+StringUtils.endsWith("Hello World!", "World!")       // true
+StringUtils.endsWith("Hello World!", "Hello", 5)     // true
+StringUtils.endsWith("Hello World!", "World!", 20)   // true
+StringUtils.endsWith("Hello World!", "H", 0)         // false
+StringUtils.endsWith("Hello World!", "H", 1)         // true
+StringUtils.endsWith("Hello World!", "H", -1)        // false
+StringUtils.endsWith("Hello World!", "!", -1)        // false
+StringUtils.endsWith("Hello World!", null)           // false
+StringUtils.endsWith("Hello World!", undefined)      // false
+StringUtils.endsWith("Hello World!", 0)              // false
+StringUtils.endsWith("Hello World!", 1)              // false
 ```
 
 ###### `fromCharCode(...code: number[])` -> `boolean`
@@ -269,10 +269,10 @@ console.log(StringUtils.endsWith("Hello World!", 1));               // false
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.fromCharCode(65));                          // 'A'
-console.log(StringUtils.fromCharCode(72, 69, 76, 76, 79));          // 'HELLO'
-console.log(StringUtils.fromCharCode(null));                        // ''
-console.log(StringUtils.fromCharCode(undefined));                   // ''
+StringUtils.fromCharCode(65)                         // 'A'
+StringUtils.fromCharCode(72, 69, 76, 76, 79)         // 'HELLO'
+StringUtils.fromCharCode(null)                       // ''
+StringUtils.fromCharCode(undefined)                  // ''
 ```
 
 ###### `includes(str: string, search: string, start?: number)` -> `boolean`
@@ -282,16 +282,16 @@ console.log(StringUtils.fromCharCode(undefined));                   // ''
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.includes("Hello World!", "World!"));        // true
-console.log(StringUtils.includes("Hello World!", "Hello", 5));      // false
-console.log(StringUtils.includes("Hello World!", "World!", 5));     // true
-console.log(StringUtils.includes("Hello World!", "Hello", 0));      // true
-console.log(StringUtils.includes("Hello World!", "Hello", 1));      // false
-console.log(StringUtils.includes("Hello World!", "Hello", -1));     // true
-console.log(StringUtils.includes("Hello World!", null));            // false
-console.log(StringUtils.includes("Hello World!", undefined));       // false
-console.log(StringUtils.includes("Hello World!", 0));               // false
-console.log(StringUtils.includes("Hello World!", 1));               // false
+StringUtils.includes("Hello World!", "World!")       // true
+StringUtils.includes("Hello World!", "Hello", 5)     // false
+StringUtils.includes("Hello World!", "World!", 5)    // true
+StringUtils.includes("Hello World!", "Hello", 0)     // true
+StringUtils.includes("Hello World!", "Hello", 1)     // false
+StringUtils.includes("Hello World!", "Hello", -1)    // true
+StringUtils.includes("Hello World!", null)           // false
+StringUtils.includes("Hello World!", undefined)      // false
+StringUtils.includes("Hello World!", 0)              // false
+StringUtils.includes("Hello World!", 1)              // false
 ```
 
 ###### `indexOf(str: string, search: string, start?: number)` -> `number`
@@ -301,16 +301,16 @@ console.log(StringUtils.includes("Hello World!", 1));               // false
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.indexOf("Hello World!", "World!"));         // 6
-console.log(StringUtils.indexOf("Hello World!", "Hello", 5));       // -1
-console.log(StringUtils.indexOf("Hello World!", "World!", 5));      // 6
-console.log(StringUtils.indexOf("Hello World!", "Hello", 0));       // 0
-console.log(StringUtils.indexOf("Hello World!", "Hello", 1));       // -1
-console.log(StringUtils.indexOf("Hello World!", "Hello", -1));      // 0
-console.log(StringUtils.indexOf("Hello World!", null));             // -1
-console.log(StringUtils.indexOf("Hello World!", undefined));        // -1
-console.log(StringUtils.indexOf("Hello World!", 0));                // -1
-console.log(StringUtils.indexOf("Hello World!", 1));                // -1
+StringUtils.indexOf("Hello World!", "World!")        // 6
+StringUtils.indexOf("Hello World!", "Hello", 5)      // -1
+StringUtils.indexOf("Hello World!", "World!", 5)     // 6
+StringUtils.indexOf("Hello World!", "Hello", 0)      // 0
+StringUtils.indexOf("Hello World!", "Hello", 1)      // -1
+StringUtils.indexOf("Hello World!", "Hello", -1)     // 0
+StringUtils.indexOf("Hello World!", null)            // -1
+StringUtils.indexOf("Hello World!", undefined)       // -1
+StringUtils.indexOf("Hello World!", 0)               // -1
+StringUtils.indexOf("Hello World!", 1)               // -1
 ```
 
 ###### `lastIndexOf(str: string, search: string, start?: number)` -> `number`
@@ -321,16 +321,16 @@ console.log(StringUtils.indexOf("Hello World!", 1));                // -1
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.lastIndexOf("Hello World!", "World!"));         // 6
-console.log(StringUtils.lastIndexOf("Hello World!", "Hello"));          // 0
-console.log(StringUtils.lastIndexOf("Hello World!", "World!", 5));      // -1
-console.log(StringUtils.lastIndexOf("Hello World!", "Hello", 5));       // 0
-console.log(StringUtils.lastIndexOf("Hello World!", "Hello", 1));       // 0
-console.log(StringUtils.lastIndexOf("Hello World!", "Hello", -1));      // -1
-console.log(StringUtils.lastIndexOf("Hello World!", null));             // -1
-console.log(StringUtils.lastIndexOf("Hello World!", undefined));        // -1
-console.log(StringUtils.lastIndexOf("Hello World!", 0));                // -1
-console.log(StringUtils.lastIndexOf("Hello World!", 1));                // -1
+StringUtils.lastIndexOf("Hello World!", "World!")        // 6
+StringUtils.lastIndexOf("Hello World!", "Hello")         // 0
+StringUtils.lastIndexOf("Hello World!", "World!", 5)     // -1
+StringUtils.lastIndexOf("Hello World!", "Hello", 5)      // 0
+StringUtils.lastIndexOf("Hello World!", "Hello", 1)      // 0
+StringUtils.lastIndexOf("Hello World!", "Hello", -1)     // -1
+StringUtils.lastIndexOf("Hello World!", null)            // -1
+StringUtils.lastIndexOf("Hello World!", undefined)       // -1
+StringUtils.lastIndexOf("Hello World!", 0)               // -1
+StringUtils.lastIndexOf("Hello World!", 1)               // -1
 ```
 
 ###### `length(str: string)` -> `number`
@@ -340,15 +340,15 @@ console.log(StringUtils.lastIndexOf("Hello World!", 1));                // -1
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.length("example"));                 // 7
-console.log(StringUtils.length("   example   "));           // 13
-console.log(StringUtils.length(""));                        // 0
-console.log(StringUtils.length("  "));                      // 2
-console.log(StringUtils.length("             "));           // 13
-console.log(StringUtils.length(null));                      // 0
-console.log(StringUtils.length(undefined));                 // 0
-console.log(StringUtils.length(0));                         // 0
-console.log(StringUtils.length(1));                         // 0
+StringUtils.length("example")                // 7
+StringUtils.length("   example   ")          // 13
+StringUtils.length("")                       // 0
+StringUtils.length("  ")                     // 2
+StringUtils.length("             ")          // 13
+StringUtils.length(null)                     // 0
+StringUtils.length(undefined)                // 0
+StringUtils.length(0)                        // 0
+StringUtils.length(1)                        // 0
 ```
 
 ###### `localeCompare(str: string, compare: string)` -> `number`
@@ -358,14 +358,14 @@ console.log(StringUtils.length(1));                         // 0
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.localeCompare("ab", "ab"));             // 0
-console.log(StringUtils.localeCompare("ab", "cd"));             // -1
-console.log(StringUtils.localeCompare("cd", "ab"));             // 1
-console.log(StringUtils.localeCompare("A", "a"));               // 1
-console.log(StringUtils.localeCompare("hello", null));          // undefined
-console.log(StringUtils.localeCompare("hello", undefined));     // undefined
-console.log(StringUtils.localeCompare("hello", 0));             // undefined
-console.log(StringUtils.localeCompare("hello", 1));             // undefined
+StringUtils.localeCompare("ab", "ab")            // 0
+StringUtils.localeCompare("ab", "cd")            // -1
+StringUtils.localeCompare("cd", "ab")            // 1
+StringUtils.localeCompare("A", "a")              // 1
+StringUtils.localeCompare("hello", null)         // undefined
+StringUtils.localeCompare("hello", undefined)    // undefined
+StringUtils.localeCompare("hello", 0)            // undefined
+StringUtils.localeCompare("hello", 1)            // undefined
 ```
 
 ###### `match(str: string, match: string | RegExp)` -> `string[]`
@@ -375,10 +375,10 @@ console.log(StringUtils.localeCompare("hello", 1));             // undefined
 ```js
 import { StringUtils } from 'tydet-utils';
 
-console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", "ain"));       // ["ain"]
-console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", /ain/));       // ["ain"]
-console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", /ain/g));      // ["ain", "ain", "ain"]
-console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", "ein"));       // []
-console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", null));        // []
-console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", 1));           // []
+StringUtils.match("The rain in SPAIN stays mainly in the plain", "ain")      // ["ain"]
+StringUtils.match("The rain in SPAIN stays mainly in the plain", /ain/)      // ["ain"]
+StringUtils.match("The rain in SPAIN stays mainly in the plain", /ain/g)     // ["ain", "ain", "ain"]
+StringUtils.match("The rain in SPAIN stays mainly in the plain", "ein")      // []
+StringUtils.match("The rain in SPAIN stays mainly in the plain", null)       // []
+StringUtils.match("The rain in SPAIN stays mainly in the plain", 1)          // []
 ```
