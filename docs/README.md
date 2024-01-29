@@ -20,7 +20,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [lastIndexOf()](#lastindexofstr-string-search-string-start-number---number)
     * [length()](#lengthstr-string---number)
     * [localeCompare()](#localcomparestr-string-compare-string---number)
-    * [match()](#matchstr-string-match-string--regex---string)
+    * [match()](#matchstr-string-match-string--regexp---string)
 
 ## String Utils
 
