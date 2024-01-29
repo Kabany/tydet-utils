@@ -239,3 +239,18 @@ export function lastIndexOf(str: string, search: string, start?: number) {
 export function length(str: string) {
   return str != null && typeof str == 'string' ? str.length : 0
 }
+
+/** 
+ * Compares two strings in the current locale.
+ * Returns `undefined` if one of the strings are not a string type.
+ * @param {string} str - String to compare
+ * @param {string} compare - String to compare for
+ * @returns {number} Returns sort order -1, 1, or 0 (for before, after, or equal).
+ */
+export function localeCompare(str: string, compare: string) {
+  if (isNotEmpty(str) && isNotEmpty(compare)) {
+    return str.localeCompare(compare)
+  } else {
+    return undefined
+  }
+}

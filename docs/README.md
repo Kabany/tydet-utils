@@ -19,6 +19,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [indexOf()](#indexofstr-string-search-string-start-number---number)
     * [lastIndexOf()](#lastindexofstr-string-search-string-start-number---number)
     * [length()](#lengthstr-string---number)
+    * [localeCompare()](#localcomparestr-string-compare-string---number)
 
 ## String Utils
 
@@ -347,4 +348,21 @@ console.log(StringUtils.length(null));                      // returns 0
 console.log(StringUtils.length(undefined));                 // returns 0
 console.log(StringUtils.length(0));                         // returns 0
 console.log(StringUtils.length(1));                         // returns 0
+```
+
+###### `localeCompare(str: string, compare: string)` -> `number`
+* Compares two strings in the current locale.
+* Returns `undefined` if one of the strings are not a string type.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+console.log(StringUtils.localeCompare("ab", "ab"));             // returns 0
+console.log(StringUtils.localeCompare("ab", "cd"));             // returns -1
+console.log(StringUtils.localeCompare("cd", "ab"));             // returns 1
+console.log(StringUtils.localeCompare("A", "a"));               // returns 1
+console.log(StringUtils.localeCompare("hello", null));          // returns undefined
+console.log(StringUtils.localeCompare("hello", undefined));     // returns undefined
+console.log(StringUtils.localeCompare("hello", 0));             // returns undefined
+console.log(StringUtils.localeCompare("hello", 1));             // returns undefined
 ```

@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -450,6 +450,31 @@ describe("String Utils", () => {
       expect(length([""] as any)).toBe(0);
       expect(length(new Date() as any)).toBe(0);
       expect(length({} as any)).toBe(0);
+    });
+  });
+
+  describe("localeCompare()", () => {
+    it("should return a number depending of the result of the comparision", () => {
+      expect(localeCompare("ab", "ab")).toBe(0);
+      expect(localeCompare("cd", "ab")).toBe(1);
+      expect(localeCompare("ab", "cd")).toBe(-1);
+      expect(localeCompare("b", "a")).toBe(1);
+      expect(localeCompare("a", "b")).toBe(-1);
+      expect(localeCompare("A", "a")).toBe(1);
+    });
+    it("should return undefined for any non string value", () => {
+      expect(localeCompare("Hello World!", null as any)).toBe(undefined);
+      expect(localeCompare(null as any, "Hello World!")).toBe(undefined);
+      expect(localeCompare(null as any, null as any)).toBe(undefined);
+      expect(localeCompare("Hello World!", 0 as any)).toBe(undefined);
+      expect(localeCompare("Hello World!", 1 as any)).toBe(undefined);
+      expect(localeCompare("Hello World!", undefined as any)).toBe(undefined);
+      expect(localeCompare("Hello World!", false as any)).toBe(undefined);
+      expect(localeCompare("Hello World!", true as any)).toBe(undefined);
+      expect(localeCompare("Hello World!", [] as any)).toBe(undefined);
+      expect(localeCompare("Hello World!", [""] as any)).toBe(undefined);
+      expect(localeCompare("Hello World!", new Date() as any)).toBe(undefined);
+      expect(localeCompare("Hello World!", {} as any)).toBe(undefined);
     });
   });
 
