@@ -254,3 +254,19 @@ export function localeCompare(str: string, compare: string) {
     return undefined
   }
 }
+
+/** 
+ * Returns an array of matches with a simple string match or regular expression.
+ * Returns an empty array if there are no matches, if the input is not a valid string or if the match variable is not a string or RegExp type.
+ * @param {string} str - String to compare
+ * @param {string} match - String to compare for, or regex
+ * @returns {number} Returns sort order -1, 1, or 0 (for before, after, or equal).
+ */
+export function match(str: string, match: string | RegExp) {
+  if (isNotEmpty(str) && (isNotEmpty(match as any) || match instanceof RegExp)) {
+    let result = str.match(match)
+    return result === null ? [] : result
+  } else {
+    return []
+  }
+}

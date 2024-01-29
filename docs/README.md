@@ -20,6 +20,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [lastIndexOf()](#lastindexofstr-string-search-string-start-number---number)
     * [length()](#lengthstr-string---number)
     * [localeCompare()](#localcomparestr-string-compare-string---number)
+    * [match()](#matchstr-string-match-string--regex---string)
 
 ## String Utils
 
@@ -365,4 +366,19 @@ console.log(StringUtils.localeCompare("hello", null));          // returns undef
 console.log(StringUtils.localeCompare("hello", undefined));     // returns undefined
 console.log(StringUtils.localeCompare("hello", 0));             // returns undefined
 console.log(StringUtils.localeCompare("hello", 1));             // returns undefined
+```
+
+###### `match(str: string, match: string | RegExp)` -> `string[]`
+* Returns an array of matches with a simple string match or regular expression.
+* Returns an empty array if there are no matches, if the input is not a valid string or if the match variable is not a string or RegExp type.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", "ain"));       // returns ["ain"]
+console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", /ain/));       // returns ["ain"]
+console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", /ain/g));      // returns ["ain", "ain", "ain"]
+console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", "ein"));       // returns []
+console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", null));        // returns []
+console.log(StringUtils.match("The rain in SPAIN stays mainly in the plain", 1));           // returns []
 ```

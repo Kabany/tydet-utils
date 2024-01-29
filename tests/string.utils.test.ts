@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -475,6 +475,44 @@ describe("String Utils", () => {
       expect(localeCompare("Hello World!", [""] as any)).toBe(undefined);
       expect(localeCompare("Hello World!", new Date() as any)).toBe(undefined);
       expect(localeCompare("Hello World!", {} as any)).toBe(undefined);
+    });
+  });
+
+  describe("match()", () => {
+    it("should return an array with the string match", () => {
+      let r1 = match("The rain in SPAIN stays mainly in the plain", "ain")
+      expect(Array.isArray(r1)).toBeTruthy()
+      expect(r1.length).toBe(1)
+      expect(r1[0]).toBe("ain")
+      let r2 = match("The rain in SPAIN stays mainly in the plain", /ain/)
+      expect(Array.isArray(r2)).toBeTruthy()
+      expect(r2.length).toBe(1)
+      expect(r2[0]).toBe("ain")
+      let r3 = match("The rain in SPAIN stays mainly in the plain", /ain/g)
+      expect(Array.isArray(r3)).toBeTruthy()
+      expect(r3.length).toBe(3)
+      expect(r3[0]).toBe("ain")
+      expect(r3[1]).toBe("ain")
+      expect(r3[2]).toBe("ain")
+    });
+    it("should return an empty array when there is no match", () => {
+      let r1 = match("The rain in SPAIN stays mainly in the plain", "ei")
+      expect(Array.isArray(r1)).toBeTruthy()
+      expect(r1.length).toBe(0)
+    });
+    it("should return an empty array for any non string value", () => {
+      expect(match("Hello World!", null as any)).toEqual([])
+      expect(match(null as any, "Hello World!")).toEqual([])
+      expect(match(null as any, null as any)).toEqual([])
+      expect(match("Hello World!", 0 as any)).toEqual([])
+      expect(match("Hello World!", 1 as any)).toEqual([])
+      expect(match("Hello World!", undefined as any)).toEqual([])
+      expect(match("Hello World!", false as any)).toEqual([])
+      expect(match("Hello World!", true as any)).toEqual([])
+      expect(match("Hello World!", [] as any)).toEqual([])
+      expect(match("Hello World!", [""] as any)).toEqual([])
+      expect(match("Hello World!", new Date() as any)).toEqual([])
+      expect(match("Hello World!", {} as any)).toEqual([])
     });
   });
 
