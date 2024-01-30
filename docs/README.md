@@ -382,3 +382,19 @@ StringUtils.match("The rain in SPAIN stays mainly in the plain", "ein")      // 
 StringUtils.match("The rain in SPAIN stays mainly in the plain", null)       // []
 StringUtils.match("The rain in SPAIN stays mainly in the plain", 1)          // []
 ```
+
+###### `padEnd(str: string, match: string | RegExp)` -> `string[]`
+* Pads a string with another string (multiple times) until it reaches a given length.
+* It considers an empty string if the input or the pad are not a string.
+* If the length is a float number, it will be fixed with the `Math.floor()` operator.
+* If the length is not a number, it will be fixed with the input string length.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.padEnd("Hello", 10)              // 'Hello     '
+StringUtils.padEnd("Hello", 10, "o")         // 'Helloooooo'
+StringUtils.padEnd("Hello", 1)               // 'Hello'
+StringUtils.padEnd("Hello", 5.5)             // 'Hello'
+StringUtils.padEnd(null, 5)                  // '     '
+```

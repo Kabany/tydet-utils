@@ -258,8 +258,8 @@ export function localeCompare(str: string, compare: string) {
 /** 
  * Returns an array of matches with a simple string match or regular expression.
  * Returns an empty array if there are no matches, if the input is not a valid string or if the match variable is not a string or RegExp type.
- * @param {string} str - String to compare
- * @param {string} match - String to compare for, or regex
+ * @param {string} str - String to compare.
+ * @param {string} match - String to compare for, or regex.
  * @returns {number} Returns sort order -1, 1, or 0 (for before, after, or equal).
  */
 export function match(str: string, match: string | RegExp) {
@@ -269,4 +269,21 @@ export function match(str: string, match: string | RegExp) {
   } else {
     return []
   }
+}
+
+/** 
+ * Pads a string with another string (multiple times) until it reaches a given length.
+ * It considers an empty string if the input or the pad are not a string.
+ * If the length is a float number, it will be fixed with the `Math.floor()` operator.
+ * If the length is not a number, it will be fixed with the input string length.
+ * @param {string} str - String to pad.
+ * @param {number} length - Length of the resulting string.
+ * @param {string} pad - The string to pad with. It's default value is a space in a string.
+ * @returns {string} Returns a string of the specified length, with the padding applied at the end.
+ */
+export function padEnd(str: string, length: number, pad?: string) {
+  let s = isNotEmpty(str) ? str : ""
+  let l = Number.isInteger(length) ? length : str.length
+  let p = isNotEmpty(pad) ? pad : " "
+  return s.padEnd(l, p)
 }
