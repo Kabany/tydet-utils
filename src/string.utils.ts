@@ -190,7 +190,8 @@ export function fromCharCode(...code: number[]) {
  */
 export function includes(str: string, search: string, start: number = 0) {
   if (isNotEmpty(str) && isNotEmpty(search)) {
-    return str.includes(search, start)
+    let s = typeof start == "number" ? start : 0
+    return str.includes(search, s)
   } else {
     return false;
   }
@@ -206,6 +207,7 @@ export function includes(str: string, search: string, start: number = 0) {
  */
 export function indexOf(str: string, search: string, start: number = 0) {
   if (isNotEmpty(str) && isNotEmpty(search)) {
+    let s = typeof start == "number" ? start : 0
     return str.indexOf(search, start)
   } else {
     return -1;
@@ -223,8 +225,8 @@ export function indexOf(str: string, search: string, start: number = 0) {
  */
 export function lastIndexOf(str: string, search: string, start?: number) {
   if (isNotEmpty(str) && isNotEmpty(search)) {
-    let l = start === undefined ? str.length : start
-    return str.lastIndexOf(search, l)
+    let s = typeof start == "number" ? start : str.length
+    return str.lastIndexOf(search, s)
   } else {
     return -1;
   }
@@ -283,7 +285,7 @@ export function match(str: string, match: string | RegExp) {
  */
 export function padEnd(str: string, length: number, pad?: string) {
   let s = isNotEmpty(str) ? str : ""
-  let l = Number.isInteger(length) ? length : str.length
+  let l = typeof length == "number" ? length : str.length
   let p = isNotEmpty(pad) ? pad : " "
   return s.padEnd(l, p)
 }
@@ -300,7 +302,24 @@ export function padEnd(str: string, length: number, pad?: string) {
  */
 export function padStart(str: string, length: number, pad?: string) {
   let s = isNotEmpty(str) ? str : ""
-  let l = Number.isInteger(length) ? length : str.length
+  let l = typeof length == "number" ? length : str.length
   let p = isNotEmpty(pad) ? pad : " "
   return s.padStart(l, p)
+}
+
+/** 
+ * Returns a string with a number of copies of a string.
+ * It considers an empty string if the input is not a string.
+ * If the count input is a float number, it will be fixed with the `Math.floor()` operator.
+ * If the count input is a negative number, then it will be converted to 0.
+ * @param {string} str - String to pad.
+ * @param {number} count - Numbers of copies
+ * @param {string} pad - The string to pad with. It's default value is a space in a string.
+ * @returns {string} Returns the copies of the original string.
+ */
+export function repeat(str: string, count: number) {
+  let s = isNotEmpty(str) ? str : ""
+  let c = typeof count == "number" ? count : 1
+  c = c < 1 ? 0 : c
+  return s.repeat(c)
 }

@@ -23,6 +23,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [match()](#matchstr-string-match-string--regexp---string)
     * [padEnd()](#padendstr-string-length-number-pad-string---string)
     * [padStart()](#padstartstr-string-length-number-pad-string---string)
+    * [repeat()](#repeatstr-string-count-number---string)
 
 ## String Utils
 
@@ -398,7 +399,7 @@ StringUtils.padEnd("Hello", 10)              // 'Hello     '
 StringUtils.padEnd("Hello", 10, "o")         // 'Helloooooo'
 StringUtils.padEnd("Hello", 1)               // 'Hello'
 StringUtils.padEnd("Hello", 5.5)             // 'Hello'
-StringUtils.padEnd(null, 5)                  // '     '
+StringUtils.padEnd(null, 5)                  // ''
 ```
 
 ###### `padStart(str: string, length: number, pad?: string)` -> `string`
@@ -414,5 +415,22 @@ StringUtils.padStart("Hello", 10)            // '     Hello'
 StringUtils.padStart("Hello", 10, "H")       // 'HHHHHHello'
 StringUtils.padStart("Hello", 1)             // 'Hello'
 StringUtils.padStart("Hello", 5.5)           // 'Hello'
-StringUtils.padStart(null, 5)                // '     '
+StringUtils.padStart(null, 5)                // ''
+```
+
+###### `repeat(str: string, count: number)` -> `string`
+* Returns a string with a number of copies of a string.
+* It considers an empty string if the input is not a string.
+* If the count input is a float number, it will be fixed with the `Math.floor()` operator.
+* If the count input is a negative number, then it will be converted to 0.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.repeat("Hello", 1)               // 'Hello'
+StringUtils.repeat("Hello", 3)               // 'HelloHelloHello'
+StringUtils.repeat("Hello", 1.5)             // 'Hello'
+StringUtils.repeat("Hello", 0)               // ''
+StringUtils.repeat("Hello", -1)              // ''
+StringUtils.repeat(null, 5)                  // ''
 ```

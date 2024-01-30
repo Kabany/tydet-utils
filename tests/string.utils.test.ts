@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -565,6 +565,33 @@ describe("String Utils", () => {
       expect(padStart([""] as any, 1)).toBe(" ")
       expect(padStart(new Date() as any, 1)).toBe(" ")
       expect(padStart({} as any, 1)).toBe(" ")
+    });
+  });
+
+  describe("repeat()", () => {
+    it("should return a string repeated", () => {
+      expect(repeat("Hello", 1)).toBe("Hello")
+      expect(repeat("Hello", 3)).toBe("HelloHelloHello")
+    });
+    it("should use Math.floor() operator for float numbers.", () => {
+      expect(repeat("Hello", 1.5)).toBe("Hello")
+    });
+    it("should retrun an empty string for numbers < 1", () => {
+      expect(repeat("Hello", 0)).toBe("")
+      expect(repeat("Hello", -1)).toBe("")
+    });
+    it("should return an empty string for any non string value", () => {
+      expect(repeat(null as any, 1)).toBe("")
+      expect(repeat(null as any, 1)).toBe("")
+      expect(repeat(undefined as any, 1)).toBe("")
+      expect(repeat(0 as any, 1)).toBe("")
+      expect(repeat(1 as any, 1)).toBe("")
+      expect(repeat(false as any, 1)).toBe("")
+      expect(repeat(true as any, 1)).toBe("")
+      expect(repeat([] as any, 1)).toBe("")
+      expect(repeat([""] as any, 1)).toBe("")
+      expect(repeat(new Date() as any, 1)).toBe("")
+      expect(repeat({} as any, 1)).toBe("")
     });
   });
 
