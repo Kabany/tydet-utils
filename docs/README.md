@@ -21,6 +21,8 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [length()](#lengthstr-string---number)
     * [localeCompare()](#localcomparestr-string-compare-string---number)
     * [match()](#matchstr-string-match-string--regexp---string)
+    * [padEnd()](#padendstr-string-length-number-pad-string---string)
+    * [padStart()](#padstartstr-string-length-number-pad-string---string)
 
 ## String Utils
 
@@ -383,7 +385,7 @@ StringUtils.match("The rain in SPAIN stays mainly in the plain", null)       // 
 StringUtils.match("The rain in SPAIN stays mainly in the plain", 1)          // []
 ```
 
-###### `padEnd(str: string, match: string | RegExp)` -> `string[]`
+###### `padEnd(str: string, length: number, pad?: string)` -> `string`
 * Pads a string with another string (multiple times) until it reaches a given length.
 * It considers an empty string if the input or the pad are not a string.
 * If the length is a float number, it will be fixed with the `Math.floor()` operator.
@@ -397,4 +399,20 @@ StringUtils.padEnd("Hello", 10, "o")         // 'Helloooooo'
 StringUtils.padEnd("Hello", 1)               // 'Hello'
 StringUtils.padEnd("Hello", 5.5)             // 'Hello'
 StringUtils.padEnd(null, 5)                  // '     '
+```
+
+###### `padStart(str: string, length: number, pad?: string)` -> `string`
+* Pads a string with another string (multiple times) until it reaches a given length.
+* It considers an empty string if the input or the pad are not a string.
+* If the length is a float number, it will be fixed with the `Math.floor()` operator.
+* If the length is not a number, it will be fixed with the input string length.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.padStart("Hello", 10)            // '     Hello'
+StringUtils.padStart("Hello", 10, "H")       // 'HHHHHHello'
+StringUtils.padStart("Hello", 1)             // 'Hello'
+StringUtils.padStart("Hello", 5.5)           // 'Hello'
+StringUtils.padStart(null, 5)                // '     '
 ```

@@ -287,3 +287,20 @@ export function padEnd(str: string, length: number, pad?: string) {
   let p = isNotEmpty(pad) ? pad : " "
   return s.padEnd(l, p)
 }
+
+/** 
+ * Pads a string with another string (multiple times) until it reaches a given length.
+ * It considers an empty string if the input or the pad are not a string.
+ * If the length is a float number, it will be fixed with the `Math.floor()` operator.
+ * If the length is not a number, it will be fixed with the input string length.
+ * @param {string} str - String to pad.
+ * @param {number} length - Length of the resulting string.
+ * @param {string} pad - The string to pad with. It's default value is a space in a string.
+ * @returns {string} Returns a string of the specified length, with the padding applied at the end.
+ */
+export function padStart(str: string, length: number, pad?: string) {
+  let s = isNotEmpty(str) ? str : ""
+  let l = Number.isInteger(length) ? length : str.length
+  let p = isNotEmpty(pad) ? pad : " "
+  return s.padStart(l, p)
+}

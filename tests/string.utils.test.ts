@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -539,6 +539,32 @@ describe("String Utils", () => {
       expect(padEnd([""] as any, 1)).toBe(" ")
       expect(padEnd(new Date() as any, 1)).toBe(" ")
       expect(padEnd({} as any, 1)).toBe(" ")
+    });
+  });
+
+  describe("padStart()", () => {
+    it("should return a string padded", () => {
+      expect(padStart("Hello", 10)).toBe("     Hello")
+      expect(padStart("Hello", 10, "H")).toBe("HHHHHHello")
+      expect(padStart("Hello", 10, null as any)).toBe("     Hello")
+    });
+    it("should return the same string if the length is lower than the input string ot if the length is not a number", () => {
+      expect(padStart("Hello", 1)).toBe("Hello")
+      expect(padStart("Hello", null as any)).toBe("Hello")
+      expect(padStart("Hello", 5.5)).toBe("Hello")
+    });
+    it("should return an empty string for any non string value", () => {
+      expect(padStart(null as any, 5)).toBe("     ")
+      expect(padStart(null as any, 1)).toBe(" ")
+      expect(padStart(undefined as any, 1)).toBe(" ")
+      expect(padStart(0 as any, 1)).toBe(" ")
+      expect(padStart(1 as any, 1)).toBe(" ")
+      expect(padStart(false as any, 1)).toBe(" ")
+      expect(padStart(true as any, 1)).toBe(" ")
+      expect(padStart([] as any, 1)).toBe(" ")
+      expect(padStart([""] as any, 1)).toBe(" ")
+      expect(padStart(new Date() as any, 1)).toBe(" ")
+      expect(padStart({} as any, 1)).toBe(" ")
     });
   });
 
