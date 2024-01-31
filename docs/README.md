@@ -27,6 +27,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [replace()](#replacestr-string-search-string--regexp-newValue-string--x-string--string---string)
     * [replaceAll()](#replaceallstr-string-search-string--regexp-newValue-string--x-string--string---string)
     * [search()](#searchstr-string-search-string--regexp---number)
+    * [slice()](#slicestr-string-start-number-end-number---string)
 
 ## String Utils
 
@@ -488,4 +489,23 @@ StringUtils.search("Mr Blue has a blue house.", /blue/)     // 14
 StringUtils.search("Mr Blue has a blue house.", /Blue/)     // 3
 StringUtils.search("Mr Blue has a blue house.", /blue/i)    // 3
 StringUtils.search("Mr Blue has a blue house.", null)       // 0
+```
+
+###### `slice(str: string, start?: number, end?: number)` -> `string`
+* Extracts a part of a string.
+* It considers an empty string if the input is not a string.
+* If the start value is not a number, then it will be 0.
+* If the end value is not a number, then it will be the last position of the input string.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.slice("Hello World!", 0, 5)                     // 'Hello'
+StringUtils.slice("Hello World!", 3)                        // 'lo World!'
+StringUtils.slice("Hello World!", -6, -1)                   // 'World'
+StringUtils.slice("Hello World!", 5, 1)                     // ''
+StringUtils.slice("Hello World!")                           // 'Hello World!'
+StringUtils.slice("Hello World!", 0, 25)                    // 'Hello World!'
+StringUtils.slice("Hello World!", -1, 25)                   // '!'
+StringUtils.slice(null, 0, 2)                               // ''
 ```

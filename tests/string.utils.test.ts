@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -662,6 +662,32 @@ describe("String Utils", () => {
       expect(search([""] as any, "Hello")).toBe(-1)
       expect(search(new Date() as any, "Hello")).toBe(-1)
       expect(search({} as any, "Hello")).toBe(-1)
+    });
+  });
+
+  describe("slice()", () => {
+    it("should return part of a string", () => {
+      expect(slice("Hello World!", 0, 5)).toBe("Hello")
+      expect(slice("Hello World!", 3)).toBe("lo World!")
+      expect(slice("Hello World!", -6, -1)).toBe("World")
+      expect(slice("Hello World!", 5, 0)).toBe("")
+      expect(slice("Hello World!", 0, 25)).toBe("Hello World!")
+      expect(slice("Hello World!")).toBe("Hello World!")
+      expect(slice("Hello World!", 0, 25)).toBe("Hello World!")
+      expect(slice("Hello World!", -1, 25)).toBe("!")
+    });
+    it("should use an empty string for any non string value", () => {
+      expect(slice("Hello World!", null as any, null as any)).toBe("Hello World!")
+      expect(slice(null as any)).toBe("")
+      expect(slice(undefined as any)).toBe("")
+      expect(slice(0 as any)).toBe("")
+      expect(slice(1 as any)).toBe("")
+      expect(slice(false as any)).toBe("")
+      expect(slice(true as any)).toBe("")
+      expect(slice([] as any)).toBe("")
+      expect(slice([""] as any)).toBe("")
+      expect(slice(new Date() as any)).toBe("")
+      expect(slice({} as any)).toBe("")
     });
   });
 

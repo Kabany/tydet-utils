@@ -381,3 +381,20 @@ export function search(str: string, search: string | RegExp) {
   let f = isNotEmpty(search as any) || search instanceof RegExp ? search : ""
   return s.search(f)
 }
+
+/** 
+ * Extracts a part of a string.
+ * It considers an empty string if the input is not a string.
+ * If the start value is not a number, then it will be 0.
+ * If the end value is not a number, then it will be the last position of the input string.
+ * @param {string} str - String to modify.
+ * @param {number} start - The start position.
+ * @param {number} end - The end position, but not included
+ * @returns {string} Returns the extracted part of the string.
+ */
+export function slice(str: string, start?: number, end?: number) {
+  let s = isNotEmpty(str) ?  str : ""
+  let l = typeof start == "number" ? start : 0
+  let e = typeof end == "number" ? end : s.length
+  return s.slice(l, e)
+}
