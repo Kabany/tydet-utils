@@ -261,7 +261,7 @@ export function localeCompare(str: string, compare: string) {
  * Returns an array of matches with a simple string match or regular expression.
  * Returns an empty array if there are no matches, if the input is not a valid string or if the match variable is not a string or RegExp type.
  * @param {string} str - String to compare.
- * @param {string} match - String to compare for, or regex.
+ * @param {string | RegExp} match - String to compare for, or regex.
  * @returns {number} Returns sort order -1, 1, or 0 (for before, after, or equal).
  */
 export function match(str: string, match: string | RegExp) {
@@ -312,7 +312,7 @@ export function padStart(str: string, length: number, pad?: string) {
  * It considers an empty string if the input is not a string.
  * If the count input is a float number, it will be fixed with the `Math.floor()` operator.
  * If the count input is a negative number, then it will be converted to 0.
- * @param {string} str - String to pad.
+ * @param {string} str - String to repeat.
  * @param {number} count - Numbers of copies
  * @param {string} pad - The string to pad with. It's default value is a space in a string.
  * @returns {string} Returns the copies of the original string.
@@ -322,4 +322,26 @@ export function repeat(str: string, count: number) {
   let c = typeof count == "number" ? count : 1
   c = c < 1 ? 0 : c
   return s.repeat(c)
+}
+
+/** 
+ * Searches a string for a value or a regular expression, then returns a new string with the value(s) replaced.
+ * It considers an empty string if the input is not a string
+ * It considers an empty string if the search value is not a string or a RegExp value
+ * It considers an empty string if the newValue is not a string or a function that returns a string.
+ * @param {string} str - String to modify.
+ * @param {string | RegExp} search - The value, or regular expression, to search for.
+ * @param {string | ((x: string)=>string)} newValue - The new value (to replace with).
+ * @returns {string} Returns a new string where the specified value(s) has been replaced.
+ */
+export function replace(str: string, search: string | RegExp, newValue: string | ((x: string) => string)) {
+  let s = isNotEmpty(str) ?  str : ""
+  let f = isNotEmpty(search as any) || search instanceof RegExp ? search : ""
+  if (isNotEmpty(newValue as any) && typeof newValue == "string") {
+    return s.replace(f, newValue)
+  } else if (typeof newValue == "function") {
+    return s.replace(f, newValue)
+  } else {
+    return s.replace(f, "")
+  }
 }

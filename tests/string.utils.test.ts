@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, reverse } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -582,7 +582,6 @@ describe("String Utils", () => {
     });
     it("should return an empty string for any non string value", () => {
       expect(repeat(null as any, 1)).toBe("")
-      expect(repeat(null as any, 1)).toBe("")
       expect(repeat(undefined as any, 1)).toBe("")
       expect(repeat(0 as any, 1)).toBe("")
       expect(repeat(1 as any, 1)).toBe("")
@@ -592,6 +591,29 @@ describe("String Utils", () => {
       expect(repeat([""] as any, 1)).toBe("")
       expect(repeat(new Date() as any, 1)).toBe("")
       expect(repeat({} as any, 1)).toBe("")
+    });
+  });
+
+  describe("replace()", () => {
+    it("should return a string with some of its characters modified", () => {
+      expect(replace("Hello Everyone!", "Everyone", "World")).toBe("Hello World!")
+      expect(replace("Mr Blue has a blue house and a blue car.", "blue", "red")).toBe("Mr Blue has a red house and a blue car.")
+      expect(replace("Mr Blue has a blue house and a blue car.", /blue/g, "red")).toBe("Mr Blue has a red house and a red car.")
+      expect(replace("Mr Blue has a blue house and a blue car.", /blue|house|car/gi, (x) => {return x.toUpperCase()})).toBe("Mr BLUE has a BLUE HOUSE and a BLUE CAR.")
+    });
+    it("should return an empty string for any non string value", () => {
+      expect(replace("Hello World!", null as any, "-")).toBe("-Hello World!")
+      expect(replace("Hello World!", "World", null as any)).toBe("Hello !")
+      expect(replace(null as any, "Hello", "")).toBe("")
+      expect(replace(undefined as any, "Hello", "")).toBe("")
+      expect(replace(0 as any, "Hello", "")).toBe("")
+      expect(replace(1 as any, "Hello", "")).toBe("")
+      expect(replace(false as any, "Hello", "")).toBe("")
+      expect(replace(true as any, "Hello", "")).toBe("")
+      expect(replace([] as any, "Hello", "")).toBe("")
+      expect(replace([""] as any, "Hello", "")).toBe("")
+      expect(replace(new Date() as any, "Hello", "")).toBe("")
+      expect(replace({} as any, "Hello", "")).toBe("")
     });
   });
 
