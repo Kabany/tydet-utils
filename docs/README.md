@@ -26,6 +26,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [repeat()](#repeatstr-string-count-number---string)
     * [replace()](#replacestr-string-search-string--regexp-newValue-string--x-string--string---string)
     * [replaceAll()](#replaceallstr-string-search-string--regexp-newValue-string--x-string--string---string)
+    * [search()](#searchstr-string-search-string--regexp---number)
 
 ## String Utils
 
@@ -471,4 +472,20 @@ StringUtils.replaceAll("Mr Blue has a blue house and a blue car.", /blue|house|c
     return x.toUpperCase()
     })                                                                                             // 'Mr BLUE has a BLUE HOUSE and a BLUE CAR.'
 StringUtils.replaceAll("Hello World!", " ", null)                                                  // 'HelloWorld!'
+```
+
+###### `search(str: string, search: string | RegExp)` -> `number`
+* Matches a string against a regular expression and returns the index (position) of the first match.
+* It considers an empty string if the input is not a string.
+* It considers an empty string if the search value is not a string or a RegExp value.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.search("Hello World!", "World")                 // 6
+StringUtils.search("Mr Blue has a blue house.", "blue")     // 14
+StringUtils.search("Mr Blue has a blue house.", /blue/)     // 14
+StringUtils.search("Mr Blue has a blue house.", /Blue/)     // 3
+StringUtils.search("Mr Blue has a blue house.", /blue/i)    // 3
+StringUtils.search("Mr Blue has a blue house.", null)       // 0
 ```

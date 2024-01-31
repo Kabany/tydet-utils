@@ -348,8 +348,8 @@ export function replace(str: string, search: string | RegExp, newValue: string |
 
 /** 
  * Searches a string for a value or a regular expression, then returns a new string with the value(s) replaced.
- * It considers an empty string if the input is not a string
- * It considers an empty string if the search value is not a string or a RegExp value
+ * It considers an empty string if the input is not a string.
+ * It considers an empty string if the search value is not a string or a RegExp value.
  * It considers an empty string if the newValue is not a string or a function that returns a string.
  * @param {string} str - String to modify.
  * @param {string | RegExp} search - The value, or regular expression, to search for.
@@ -366,4 +366,18 @@ export function replaceAll(str: string, search: string | RegExp, newValue: strin
   } else {
     return s.replaceAll(f, "")
   }
+}
+
+/** 
+ * Matches a string against a regular expression and returns the index (position) of the first match.
+ * It considers an empty string if the input is not a string.
+ * It considers an empty string if the search value is not a string or a RegExp value.
+ * @param {string} str - String to modify.
+ * @param {string | RegExp} search - The value, or regular expression, to search for.
+ * @returns {number} Returns the position of the first match or -1 if no match is found.
+ */
+export function search(str: string, search: string | RegExp) {
+  let s = isNotEmpty(str) ?  str : ""
+  let f = isNotEmpty(search as any) || search instanceof RegExp ? search : ""
+  return s.search(f)
 }

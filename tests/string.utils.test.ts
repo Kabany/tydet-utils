@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -637,6 +637,31 @@ describe("String Utils", () => {
       expect(replaceAll([""] as any, "Hello", "")).toBe("")
       expect(replaceAll(new Date() as any, "Hello", "")).toBe("")
       expect(replaceAll({} as any, "Hello", "")).toBe("")
+    });
+  });
+
+  describe("search()", () => {
+    it("should return the index of the seached text", () => {
+      expect(search("Hello World!", "World")).toBe(6)
+      expect(search("Mr. Blue has a blue house", "blue")).toBe(15)
+      expect(search("Mr. Blue has a blue house", "Blue")).toBe(4)
+      expect(search("Mr. Blue has a blue house", /Blue/)).toBe(4)
+      expect(search("Mr. Blue has a blue house", /blue/)).toBe(15)
+      expect(search("Mr. Blue has a blue house", /blue/i)).toBe(4)
+      expect(search("Mr. Blue has a blue house", /red/i)).toBe(-1)
+    });
+    it("should use an empty string for any non string value", () => {
+      expect(search("Hello World!", null as any)).toBe(0)
+      expect(search(null as any, "Hello")).toBe(-1)
+      expect(search(undefined as any, "Hello")).toBe(-1)
+      expect(search(0 as any, "Hello")).toBe(-1)
+      expect(search(1 as any, "Hello")).toBe(-1)
+      expect(search(false as any, "Hello")).toBe(-1)
+      expect(search(true as any, "Hello")).toBe(-1)
+      expect(search([] as any, "Hello")).toBe(-1)
+      expect(search([""] as any, "Hello")).toBe(-1)
+      expect(search(new Date() as any, "Hello")).toBe(-1)
+      expect(search({} as any, "Hello")).toBe(-1)
     });
   });
 
