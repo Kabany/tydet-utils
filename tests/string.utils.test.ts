@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -688,6 +688,42 @@ describe("String Utils", () => {
       expect(slice([""] as any)).toBe("")
       expect(slice(new Date() as any)).toBe("")
       expect(slice({} as any)).toBe("")
+    });
+  });
+
+  describe("split()", () => {
+    it("should return part of a string", () => {
+      let text = "Hello World!"
+      let s1 = split(text, "")
+      expect(s1.length).toBe(text.length)
+      expect(s1[0]).toBe("H")
+      let s2 = split(text)
+      expect(s2.length).toBe(1)
+      expect(s2[0]).toBe("Hello World!")
+      let s3 = split(text, " ")
+      expect(s3.length).toBe(2)
+      expect(s3[0]).toBe("Hello")
+      let s4 = split(text, "", 1)
+      expect(s4.length).toBe(1)
+      expect(s4[0]).toBe("H")
+      let s5 = split(text, "Hello")
+      expect(s5.length).toBe(2)
+      expect(s5[0]).toBe("")
+      expect(s5[1]).toBe(" World!")
+      let s6 = split(text, "")
+      expect(s6.length).toBe(12)
+    });
+    it("should use an empty string for any non string value", () => {
+      expect(split(null as any)).toEqual([""])
+      expect(split(undefined as any)).toEqual([""])
+      expect(split(0 as any)).toEqual([""])
+      expect(split(1 as any)).toEqual([""])
+      expect(split(false as any)).toEqual([""])
+      expect(split(true as any)).toEqual([""])
+      expect(split([] as any)).toEqual([""])
+      expect(split([""] as any)).toEqual([""])
+      expect(split(new Date() as any)).toEqual([""])
+      expect(split({} as any)).toEqual([""])
     });
   });
 

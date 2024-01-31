@@ -28,6 +28,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [replaceAll()](#replaceallstr-string-search-string--regexp-newValue-string--x-string--string---string)
     * [search()](#searchstr-string-search-string--regexp---number)
     * [slice()](#slicestr-string-start-number-end-number---string)
+    * [split()](#splitstr-string-separator-string--regexp-limit-number---string)
 
 ## String Utils
 
@@ -508,4 +509,21 @@ StringUtils.slice("Hello World!")                           // 'Hello World!'
 StringUtils.slice("Hello World!", 0, 25)                    // 'Hello World!'
 StringUtils.slice("Hello World!", -1, 25)                   // '!'
 StringUtils.slice(null, 0, 2)                               // ''
+```
+
+###### `split(str: string, separator?: string | RegExp, limit?: number)` -> `string[]`
+* Splits a string into an array of substrings.
+* It considers an empty string if the input is not a string.
+* If the separator is not a string or a RegExp, it will be undefined.
+* If the limit is not a number, it will be undefined.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.split("Hello World!")                           // ['Hello World!']
+StringUtils.split("Hello World!", " ")                      // ['Hello', 'World!']
+StringUtils.split("Hello World!", "Hello")                  // ['', ' World!']
+StringUtils.split("Hello World!", "")                       // ['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!']
+StringUtils.split("Hello World!", "", 1)                    // ['H']
+StringUtils.split(null)                                     // ['']
 ```

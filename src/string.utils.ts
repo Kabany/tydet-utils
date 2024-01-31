@@ -398,3 +398,20 @@ export function slice(str: string, start?: number, end?: number) {
   let e = typeof end == "number" ? end : s.length
   return s.slice(l, e)
 }
+
+/** 
+ * Splits a string into an array of substrings.
+ * It considers an empty string if the input is not a string.
+ * If the separator is not a string or a RegExp, it will be undefined.
+ * If the limit is not a number, it will be undefined.
+ * @param {string} str - String to modify.
+ * @param {string | RegExp} separator - A string or regular expression to use for splitting. If omitted, an array with the original string is returned.
+ * @param {number} limit - An integer that limits the number of splits.
+ * @returns {string[]} Returns an array containing the splitted values.
+ */
+export function split(str: string, separator?: string | RegExp, limit?: number) {
+  let s = isNotEmpty(str) ?  str : ""
+  let sep = isNotEmpty(separator as any) || separator instanceof RegExp ? separator : undefined
+  let l = typeof limit == "number" ? limit : undefined
+  return s.split(sep, l)
+}
