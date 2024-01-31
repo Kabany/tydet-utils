@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -724,6 +724,28 @@ describe("String Utils", () => {
       expect(split([""] as any)).toEqual([""])
       expect(split(new Date() as any)).toEqual([""])
       expect(split({} as any)).toEqual([""])
+    });
+  });
+
+  describe("startsWith()", () => {
+    it("should return true if search string is included at the start position of the input", () => {
+      expect(startsWith("Hello World!", "H")).toBeTruthy()
+      expect(startsWith("Hello World!", "Hello")).toBeTruthy()
+      expect(startsWith("Hello World!", "World")).toBeFalsy()
+      expect(startsWith("Hello World!", "World", 6)).toBeTruthy()
+      expect(startsWith("Hello World!", "Hello", 1)).toBeFalsy()
+    });
+    it("should return false for any non string value", () => {
+      expect(startsWith(null as any, "Hello")).toBeFalsy()
+      expect(startsWith(undefined as any, "Hello")).toBeFalsy()
+      expect(startsWith(0 as any, "Hello")).toBeFalsy()
+      expect(startsWith(1 as any, "Hello")).toBeFalsy()
+      expect(startsWith(false as any, "Hello")).toBeFalsy()
+      expect(startsWith(true as any, "Hello")).toBeFalsy()
+      expect(startsWith([] as any, "Hello")).toBeFalsy()
+      expect(startsWith([""] as any, "Hello")).toBeFalsy()
+      expect(startsWith(new Date() as any, "Hello")).toBeFalsy()
+      expect(startsWith({} as any, "Hello")).toBeFalsy()
     });
   });
 

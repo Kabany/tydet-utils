@@ -29,6 +29,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [search()](#searchstr-string-search-string--regexp---number)
     * [slice()](#slicestr-string-start-number-end-number---string)
     * [split()](#splitstr-string-separator-string--regexp-limit-number---string)
+    * [startsWith()](#startswithtstr-string-search-string-limit-number---boolean)
 
 ## String Utils
 
@@ -526,4 +527,20 @@ StringUtils.split("Hello World!", "Hello")                  // ['', ' World!']
 StringUtils.split("Hello World!", "")                       // ['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!']
 StringUtils.split("Hello World!", "", 1)                    // ['H']
 StringUtils.split(null)                                     // ['']
+```
+
+###### `startsWith(str: string, search: string, limit?: number)` -> `boolean`
+* Returns `true` if a string starts with a specified string.
+* It considers an empty string if the input or search values are not a string.
+* If the start is not a number, it will be `0`.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.startsWith("Hello World!", "Hello")             // true
+StringUtils.startsWith("Hello World!", "H")                 // true
+StringUtils.startsWith("Hello World!", "Hello", 1)          // false
+StringUtils.startsWith("Hello World!", "World")             // false
+StringUtils.startsWith("Hello World!", "World", 6)          // true
+StringUtils.startsWith(null, "Hello")                       // false
 ```

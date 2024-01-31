@@ -415,3 +415,22 @@ export function split(str: string, separator?: string | RegExp, limit?: number) 
   let l = typeof limit == "number" ? limit : undefined
   return s.split(sep, l)
 }
+
+/** 
+ * Returns `true` if a string starts with a specified string.
+ * It considers an empty string if the input or search values are not a string.
+ * If the start is not a number, it will be `0`.
+ * @param {string} str - String to compare.
+ * @param {string} search - String to compare for.
+ * @param {number} limit - Start position.
+ * @returns {boolean} Returns the result of the evaluation
+ */
+export function startsWith(str: string, search: string, limit?: number) {
+  if (isNotEmpty(str)) {
+    let s = isNotEmpty(search) ? search : ""
+    let l = typeof limit == "number" ? limit : 0
+    return str.startsWith(s, l)
+  } else {
+    return false
+  }
+}
