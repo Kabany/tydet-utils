@@ -25,6 +25,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [padStart()](#padstartstr-string-length-number-pad-string---string)
     * [repeat()](#repeatstr-string-count-number---string)
     * [replace()](#replacestr-string-search-string--regexp-newValue-string--x-string--string---string)
+    * [replaceAll()](#replaceallstr-string-search-string--regexp-newValue-string--x-string--string---string)
 
 ## String Utils
 
@@ -452,4 +453,22 @@ StringUtils.replace("Mr Blue has a blue house and a blue car.", /blue|house|car/
     return x.toUpperCase()
     })                                                                                          // 'Mr BLUE has a BLUE HOUSE and a BLUE CAR.'
 StringUtils.replace("Hello World!", " ", null)                                                  // 'HelloWorld!'
+```
+
+###### `replaceAll(str: string, search: string | RegExp, newValue: string | ((x: string) => string))` -> `string`
+* Searches a string for a value or a regular expression, then returns a new string with the value(s) replaced.
+* It considers an empty string if the input is not a string
+* It considers an empty string if the search value is not a string or a RegExp value
+* It considers an empty string if the newValue is not a string or a function that returns a string.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.replaceAll("Hello Everyone!", "Everyone", "World")                                     // 'Hello World!'
+StringUtils.replaceAll("Mr Blue has a blue house and a blue car.", "blue", "red")                  // 'Mr Blue has a red house and a red car.'
+StringUtils.replaceAll("Mr Blue has a blue house and a blue car.", /blue/g, "red")                 // 'Mr Blue has a red house and a red car.'
+StringUtils.replaceAll("Mr Blue has a blue house and a blue car.", /blue|house|car/gi, (x) => {
+    return x.toUpperCase()
+    })                                                                                             // 'Mr BLUE has a BLUE HOUSE and a BLUE CAR.'
+StringUtils.replaceAll("Hello World!", " ", null)                                                  // 'HelloWorld!'
 ```

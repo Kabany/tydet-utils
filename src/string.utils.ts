@@ -345,3 +345,25 @@ export function replace(str: string, search: string | RegExp, newValue: string |
     return s.replace(f, "")
   }
 }
+
+/** 
+ * Searches a string for a value or a regular expression, then returns a new string with the value(s) replaced.
+ * It considers an empty string if the input is not a string
+ * It considers an empty string if the search value is not a string or a RegExp value
+ * It considers an empty string if the newValue is not a string or a function that returns a string.
+ * @param {string} str - String to modify.
+ * @param {string | RegExp} search - The value, or regular expression, to search for.
+ * @param {string | ((x: string)=>string)} newValue - The new value (to replace with).
+ * @returns {string} Returns a new string where the specified value(s) has been replaced.
+ */
+export function replaceAll(str: string, search: string | RegExp, newValue: string | ((x: string) => string)) {
+  let s = isNotEmpty(str) ?  str : ""
+  let f = isNotEmpty(search as any) || search instanceof RegExp ? search : ""
+  if (isNotEmpty(newValue as any) && typeof newValue == "string") {
+    return s.replaceAll(f, newValue)
+  } else if (typeof newValue == "function") {
+    return s.replaceAll(f, newValue)
+  } else {
+    return s.replaceAll(f, "")
+  }
+}
