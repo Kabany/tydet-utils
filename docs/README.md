@@ -24,12 +24,12 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [padEnd()](#padendstr-string-length-number-pad-string---string)
     * [padStart()](#padstartstr-string-length-number-pad-string---string)
     * [repeat()](#repeatstr-string-count-number---string)
-    * [replace()](#replacestr-string-search-string--regexp-newValue-string--x-string--string---string)
-    * [replaceAll()](#replaceallstr-string-search-string--regexp-newValue-string--x-string--string---string)
+    * [replace()](#replacestr-string-search-string--regexp-newvalue-string--x-string--string---string)
+    * [replaceAll()](#replaceallstr-string-search-string--regexp-newvalue-string--x-string--string---string)
     * [search()](#searchstr-string-search-string--regexp---number)
     * [slice()](#slicestr-string-start-number-end-number---string)
     * [split()](#splitstr-string-separator-string--regexp-limit-number---string)
-    * [startsWith()](#startswithtstr-string-search-string-limit-number---boolean)
+    * [startsWith()](#startswithstr-string-search-string-limit-number---boolean)
 
 ## String Utils
 
