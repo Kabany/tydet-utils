@@ -467,3 +467,19 @@ export function toLocaleLowerCase(str: string, locales?: string) {
     return null
   }
 }
+
+/** 
+ * Converts a string to uppercase letters, using current locale.
+ * It will return `null` if the input string is not a string type.
+ * @param {string} str - String to convert to lower case.
+ * @param {string} locales - A string with a BCP 47 language tag, or an array of such strings
+ * @returns {string} Returns a new string converted to uppercase according to current locale.
+ */
+export function toLocaleUpperCase(str: string, locales?: string) {
+  if (isNotEmpty(str)) {
+    let l = isNotEmpty(locales) ? locales : undefined
+    return str.toLocaleUpperCase(l)
+  } else {
+    return null
+  }
+}

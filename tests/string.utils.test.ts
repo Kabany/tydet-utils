@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -789,6 +789,24 @@ describe("String Utils", () => {
       expect(toLocaleLowerCase([""] as any)).toBe(null)
       expect(toLocaleLowerCase(new Date() as any)).toBe(null)
       expect(toLocaleLowerCase({} as any)).toBe(null)
+    });
+  });
+
+  describe("toLocaleUpperCase()", () => {
+    it("should return the string converted to upper case, according to any locale-specific case mappings.", () => {
+      expect(toLocaleUpperCase("Hello World!")).toBe("HELLO WORLD!")
+    });
+    it("should return null string for any non string value", () => {
+      expect(toLocaleUpperCase(null as any)).toBe(null)
+      expect(toLocaleUpperCase(undefined as any)).toBe(null)
+      expect(toLocaleUpperCase(0 as any)).toBe(null)
+      expect(toLocaleUpperCase(1 as any)).toBe(null)
+      expect(toLocaleUpperCase(false as any)).toBe(null)
+      expect(toLocaleUpperCase(true as any)).toBe(null)
+      expect(toLocaleUpperCase([] as any)).toBe(null)
+      expect(toLocaleUpperCase([""] as any)).toBe(null)
+      expect(toLocaleUpperCase(new Date() as any)).toBe(null)
+      expect(toLocaleUpperCase({} as any)).toBe(null)
     });
   });
 

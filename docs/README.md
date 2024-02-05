@@ -31,7 +31,8 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [split()](#splitstr-string-separator-string--regexp-limit-number---string)
     * [startsWith()](#startswithstr-string-search-string-limit-number---boolean)
     * [substring()](#substringstr-string-start-number-length-number---string)
-    * [toLocaleLoweCase()](#tolocalelowercasestr-string-locales-string---string)
+    * [toLocaleLowerCase()](#tolocalelowercasestr-string-locales-string---string)
+    * [toLocaleUpperCase()](#tolocaleuppercasestr-string-locales-string---string)
 
 ## String Utils
 
@@ -577,4 +578,18 @@ StringUtils.toLocaleLowerCase(undefined)                    // null
 StringUtils.toLocaleLowerCase(null)                         // null
 StringUtils.toLocaleLowerCase(5)                            // null
 StringUtils.toLocaleLowerCase(new Date())                   // null
+```
+
+###### `toLocaleUpperCase(str: string, locales?: string)` -> `string`
+* Converts a string to uppercase letters, using current locale.
+* It will return `null` if the input string is not a string type.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.toLocaleUpperCase("Hello World!")               // 'HELLO WORLD!'
+StringUtils.toLocaleUpperCase(undefined)                    // null
+StringUtils.toLocaleUpperCase(null)                         // null
+StringUtils.toLocaleUpperCase(5)                            // null
+StringUtils.toLocaleUpperCase(new Date())                   // null
 ```
