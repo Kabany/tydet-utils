@@ -35,6 +35,9 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [toLocaleUpperCase()](#tolocaleuppercasestr-string-locales-string---string)
     * [toLowerCase()](#tolowercasestr-string---string)
     * [toUpperCase()](#touppercasestr-string---string)
+    * [trim()](#trimstr-string---string)
+    * [trimEnd()](#trimendstr-string---string)
+    * [trimStart()](#trimstartstr-string---string)
 
 ## String Utils
 
@@ -622,4 +625,46 @@ StringUtils.toUpperCase(undefined)                          // null
 StringUtils.toUpperCase(null)                               // null
 StringUtils.toUpperCase(5)                                  // null
 StringUtils.toUpperCase(new Date())                         // null
+```
+
+###### `trim(str: string)` -> `string`
+* Removes whitespace from both sides of a string.
+* It will return `null` if the input string is not a string type.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.trim("    Hello!    ")                          // 'Hello!'
+StringUtils.trim(undefined)                                 // null
+StringUtils.trim(null)                                      // null
+StringUtils.trim(5)                                         // null
+StringUtils.trim(new Date())                                // null
+```
+
+###### `trimEnd(str: string)` -> `string`
+* Removes whitespace from the end of a string.
+* It will return `null` if the input string is not a string type.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.trimEnd("    Hello!    ")                       // '    Hello!'
+StringUtils.trimEnd(undefined)                              // null
+StringUtils.trimEnd(null)                                   // null
+StringUtils.trimEnd(5)                                      // null
+StringUtils.trimEnd(new Date())                             // null
+```
+
+###### `trimStart(str: string)` -> `string`
+* Removes whitespace from the start of a string.
+* It will return `null` if the input string is not a string type.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.trimStart("    Hello!    ")                     // 'Hello!    '
+StringUtils.trimStart(undefined)                            // null
+StringUtils.trimStart(null)                                 // null
+StringUtils.trimStart(5)                                    // null
+StringUtils.trimStart(new Date())                           // null
 ```

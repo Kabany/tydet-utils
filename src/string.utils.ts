@@ -511,3 +511,45 @@ export function toUpperCase(str: string) {
     return null
   }
 }
+
+/** 
+ * Removes whitespace from both sides of a string.
+ * It will return `null` if the input string is not a string type.
+ * @param {string} str - String to convert.
+ * @returns {string} Returns a string with removed whitespace from both ends.
+ */
+export function trim(str: string) {
+  if (isNotEmpty(str)) {
+    return str.trim()
+  } else {
+    return null
+  }
+}
+
+/** 
+ * Removes whitespace from the start of a string.
+ * It will return `null` if the input string is not a string type.
+ * @param {string} str - String to convert.
+ * @returns {string} Returns a string with removed whitespace from the start of the string.
+ */
+export function trimStart(str: string) {
+  if (isNotEmpty(str)) {
+    return str.trimStart()
+  } else {
+    return null
+  }
+}
+
+/** 
+ * Removes whitespace from the end of a string.
+ * It will return `null` if the input string is not a string type.
+ * @param {string} str - String to convert.
+ * @returns {string} Returns a string with removed whitespace from the end of the string.
+ */
+export function trimEnd(str: string) {
+  if (isNotEmpty(str)) {
+    return str.trimEnd()
+  } else {
+    return null
+  }
+}

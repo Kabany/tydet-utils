@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase, trim, trimEnd, trimStart } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -843,6 +843,60 @@ describe("String Utils", () => {
       expect(toUpperCase([""] as any)).toBe(null)
       expect(toUpperCase(new Date() as any)).toBe(null)
       expect(toUpperCase({} as any)).toBe(null)
+    });
+  });
+
+  describe("trim()", () => {
+    it("should return a string with removed whitespace from both ends.", () => {
+      expect(trim("    Hello!    ")).toBe("Hello!")
+    });
+    it("should return null string for any non string value", () => {
+      expect(trim(null as any)).toBe(null)
+      expect(trim(undefined as any)).toBe(null)
+      expect(trim(0 as any)).toBe(null)
+      expect(trim(1 as any)).toBe(null)
+      expect(trim(false as any)).toBe(null)
+      expect(trim(true as any)).toBe(null)
+      expect(trim([] as any)).toBe(null)
+      expect(trim([""] as any)).toBe(null)
+      expect(trim(new Date() as any)).toBe(null)
+      expect(trim({} as any)).toBe(null)
+    });
+  });
+
+  describe("trimEnd()", () => {
+    it("should return a string with removed whitespace from the end.", () => {
+      expect(trimEnd("    Hello!    ")).toBe("    Hello!")
+    });
+    it("should return null string for any non string value", () => {
+      expect(trimEnd(null as any)).toBe(null)
+      expect(trimEnd(undefined as any)).toBe(null)
+      expect(trimEnd(0 as any)).toBe(null)
+      expect(trimEnd(1 as any)).toBe(null)
+      expect(trimEnd(false as any)).toBe(null)
+      expect(trimEnd(true as any)).toBe(null)
+      expect(trimEnd([] as any)).toBe(null)
+      expect(trimEnd([""] as any)).toBe(null)
+      expect(trimEnd(new Date() as any)).toBe(null)
+      expect(trimEnd({} as any)).toBe(null)
+    });
+  });
+
+  describe("trimStart()", () => {
+    it("should return a string with removed whitespace from the start.", () => {
+      expect(trimStart("    Hello!    ")).toBe("Hello!    ")
+    });
+    it("should return null string for any non string value", () => {
+      expect(trimStart(null as any)).toBe(null)
+      expect(trimStart(undefined as any)).toBe(null)
+      expect(trimStart(0 as any)).toBe(null)
+      expect(trimStart(1 as any)).toBe(null)
+      expect(trimStart(false as any)).toBe(null)
+      expect(trimStart(true as any)).toBe(null)
+      expect(trimStart([] as any)).toBe(null)
+      expect(trimStart([""] as any)).toBe(null)
+      expect(trimStart(new Date() as any)).toBe(null)
+      expect(trimStart({} as any)).toBe(null)
     });
   });
 
