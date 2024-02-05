@@ -451,3 +451,19 @@ export function substring(str: string, start?: number, length?: number) {
   let end = typeof length == "number" ? length : s.length
   return s.substring(sta, end)
 }
+
+/** 
+ * Converts a string to lowercase letters, using current locale.
+ * It will return `null` if the input string is not a string type.
+ * @param {string} str - String to convert to lower case.
+ * @param {string} locales - A string with a BCP 47 language tag, or an array of such strings
+ * @returns {string} Returns a new string converted to lowercase according to current locale.
+ */
+export function toLocaleLowerCase(str: string, locales?: string) {
+  if (isNotEmpty(str)) {
+    let l = isNotEmpty(locales) ? locales : undefined
+    return str.toLocaleLowerCase(l)
+  } else {
+    return null
+  }
+}

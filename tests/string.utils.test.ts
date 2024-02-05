@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -771,6 +771,24 @@ describe("String Utils", () => {
       expect(substring([""] as any)).toBe("")
       expect(substring(new Date() as any)).toBe("")
       expect(substring({} as any)).toBe("")
+    });
+  });
+
+  describe("toLocaleLowerCase()", () => {
+    it("should return the string converted to lower case, according to any locale-specific case mappings.", () => {
+      expect(toLocaleLowerCase("Hello World!")).toBe("hello world!")
+    });
+    it("should return null string for any non string value", () => {
+      expect(toLocaleLowerCase(null as any)).toBe(null)
+      expect(toLocaleLowerCase(undefined as any)).toBe(null)
+      expect(toLocaleLowerCase(0 as any)).toBe(null)
+      expect(toLocaleLowerCase(1 as any)).toBe(null)
+      expect(toLocaleLowerCase(false as any)).toBe(null)
+      expect(toLocaleLowerCase(true as any)).toBe(null)
+      expect(toLocaleLowerCase([] as any)).toBe(null)
+      expect(toLocaleLowerCase([""] as any)).toBe(null)
+      expect(toLocaleLowerCase(new Date() as any)).toBe(null)
+      expect(toLocaleLowerCase({} as any)).toBe(null)
     });
   });
 

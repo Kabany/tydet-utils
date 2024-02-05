@@ -31,6 +31,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [split()](#splitstr-string-separator-string--regexp-limit-number---string)
     * [startsWith()](#startswithstr-string-search-string-limit-number---boolean)
     * [substring()](#substringstr-string-start-number-length-number---string)
+    * [toLocaleLoweCase()](#tolocalelowercasestr-string-locales-string---string)
 
 ## String Utils
 
@@ -555,11 +556,25 @@ StringUtils.startsWith(null, "Hello")                       // false
 ```js
 import { StringUtils } from 'tydet-utils';
 
-StringUtils.substring("Hello World!", 0, 5)                     // 'Hello'
-StringUtils.substring("Hello World!", 3)                        // 'lo World!'
-StringUtils.substring("Hello World!", 5, 1)                     // 'ello'
-StringUtils.substring("Hello World!")                           // 'Hello World!'
-StringUtils.substring("Hello World!", 0, 25)                    // 'Hello World!'
-StringUtils.substring("Hello World!", -1, 25)                   // 'Hello World!'
-StringUtils.substring(null, 0, 2)                               // ''
+StringUtils.substring("Hello World!", 0, 5)                 // 'Hello'
+StringUtils.substring("Hello World!", 3)                    // 'lo World!'
+StringUtils.substring("Hello World!", 5, 1)                 // 'ello'
+StringUtils.substring("Hello World!")                       // 'Hello World!'
+StringUtils.substring("Hello World!", 0, 25)                // 'Hello World!'
+StringUtils.substring("Hello World!", -1, 25)               // 'Hello World!'
+StringUtils.substring(null, 0, 2)                           // ''
+```
+
+###### `toLocaleLowerCase(str: string, locales?: string)` -> `string`
+* Converts a string to lowercase letters, using current locale.
+* It will return `null` if the input string is not a string type.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.toLocaleLowerCase("Hello World!")               // 'hello world!'
+StringUtils.toLocaleLowerCase(undefined)                    // null
+StringUtils.toLocaleLowerCase(null)                         // null
+StringUtils.toLocaleLowerCase(5)                            // null
+StringUtils.toLocaleLowerCase(new Date())                   // null
 ```
