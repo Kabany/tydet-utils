@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -807,6 +807,42 @@ describe("String Utils", () => {
       expect(toLocaleUpperCase([""] as any)).toBe(null)
       expect(toLocaleUpperCase(new Date() as any)).toBe(null)
       expect(toLocaleUpperCase({} as any)).toBe(null)
+    });
+  });
+
+  describe("toLowerCase()", () => {
+    it("should return the string converted to lower case, according to any locale-specific case mappings.", () => {
+      expect(toLowerCase("Hello World!")).toBe("hello world!")
+    });
+    it("should return null string for any non string value", () => {
+      expect(toLowerCase(null as any)).toBe(null)
+      expect(toLowerCase(undefined as any)).toBe(null)
+      expect(toLowerCase(0 as any)).toBe(null)
+      expect(toLowerCase(1 as any)).toBe(null)
+      expect(toLowerCase(false as any)).toBe(null)
+      expect(toLowerCase(true as any)).toBe(null)
+      expect(toLowerCase([] as any)).toBe(null)
+      expect(toLowerCase([""] as any)).toBe(null)
+      expect(toLowerCase(new Date() as any)).toBe(null)
+      expect(toLowerCase({} as any)).toBe(null)
+    });
+  });
+
+  describe("toUpperCase()", () => {
+    it("should return the string converted to upper case, according to any locale-specific case mappings.", () => {
+      expect(toUpperCase("Hello World!")).toBe("HELLO WORLD!")
+    });
+    it("should return null string for any non string value", () => {
+      expect(toUpperCase(null as any)).toBe(null)
+      expect(toUpperCase(undefined as any)).toBe(null)
+      expect(toUpperCase(0 as any)).toBe(null)
+      expect(toUpperCase(1 as any)).toBe(null)
+      expect(toUpperCase(false as any)).toBe(null)
+      expect(toUpperCase(true as any)).toBe(null)
+      expect(toUpperCase([] as any)).toBe(null)
+      expect(toUpperCase([""] as any)).toBe(null)
+      expect(toUpperCase(new Date() as any)).toBe(null)
+      expect(toUpperCase({} as any)).toBe(null)
     });
   });
 

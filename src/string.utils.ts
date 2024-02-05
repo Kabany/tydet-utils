@@ -455,7 +455,7 @@ export function substring(str: string, start?: number, length?: number) {
 /** 
  * Converts a string to lowercase letters, using current locale.
  * It will return `null` if the input string is not a string type.
- * @param {string} str - String to convert to lower case.
+ * @param {string} str - String to convert to lowercase.
  * @param {string} locales - A string with a BCP 47 language tag, or an array of such strings
  * @returns {string} Returns a new string converted to lowercase according to current locale.
  */
@@ -471,7 +471,7 @@ export function toLocaleLowerCase(str: string, locales?: string) {
 /** 
  * Converts a string to uppercase letters, using current locale.
  * It will return `null` if the input string is not a string type.
- * @param {string} str - String to convert to lower case.
+ * @param {string} str - String to convert to uppercase.
  * @param {string} locales - A string with a BCP 47 language tag, or an array of such strings
  * @returns {string} Returns a new string converted to uppercase according to current locale.
  */
@@ -479,6 +479,34 @@ export function toLocaleUpperCase(str: string, locales?: string) {
   if (isNotEmpty(str)) {
     let l = isNotEmpty(locales) ? locales : undefined
     return str.toLocaleUpperCase(l)
+  } else {
+    return null
+  }
+}
+
+/** 
+ * Converts a string to lowercase letters.
+ * It will return `null` if the input string is not a string type.
+ * @param {string} str - String to convert to lowercase.
+ * @returns {string} Returns a new string converted to lowercase.
+ */
+export function toLowerCase(str: string) {
+  if (isNotEmpty(str)) {
+    return str.toLowerCase()
+  } else {
+    return null
+  }
+}
+
+/** 
+ * Converts a string to uppercase letters.
+ * It will return `null` if the input string is not a string type.
+ * @param {string} str - String to convert to uppercase.
+ * @returns {string} Returns a new string converted to uppercase.
+ */
+export function toUpperCase(str: string) {
+  if (isNotEmpty(str)) {
+    return str.toUpperCase()
   } else {
     return null
   }

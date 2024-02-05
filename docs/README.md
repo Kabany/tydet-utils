@@ -33,6 +33,8 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [substring()](#substringstr-string-start-number-length-number---string)
     * [toLocaleLowerCase()](#tolocalelowercasestr-string-locales-string---string)
     * [toLocaleUpperCase()](#tolocaleuppercasestr-string-locales-string---string)
+    * [toLowerCase()](#tolowercasestr-string---string)
+    * [toUpperCase()](#touppercasestr-string---string)
 
 ## String Utils
 
@@ -592,4 +594,32 @@ StringUtils.toLocaleUpperCase(undefined)                    // null
 StringUtils.toLocaleUpperCase(null)                         // null
 StringUtils.toLocaleUpperCase(5)                            // null
 StringUtils.toLocaleUpperCase(new Date())                   // null
+```
+
+###### `toLowerCase(str: string)` -> `string`
+* Converts a string to lowercase letters.
+* It will return `null` if the input string is not a string type.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.toLowerCase("Hello World!")                     // 'hello world!'
+StringUtils.toLowerCase(undefined)                          // null
+StringUtils.toLowerCase(null)                               // null
+StringUtils.toLowerCase(5)                                  // null
+StringUtils.toLowerCase(new Date())                         // null
+```
+
+###### `toUpperCase(str: string)` -> `string`
+* Converts a string to uppercase letters.
+* It will return `null` if the input string is not a string type.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.toUpperCase("Hello World!")                     // 'HELLO WORLD!'
+StringUtils.toUpperCase(undefined)                          // null
+StringUtils.toUpperCase(null)                               // null
+StringUtils.toUpperCase(5)                                  // null
+StringUtils.toUpperCase(new Date())                         // null
 ```
