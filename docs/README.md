@@ -9,6 +9,9 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [isNotBlank()](#isnotblankstr-string---boolean)
     * [reverse()](#reversestr-string---string--null)
     * [isEmailValid()](#isemailvalidstr-string---boolean)
+    * [isDomainValid()](#isdomainvalidstr-string---boolean)
+    * [isWebUrlValid()](#isweburlvalidstr-string---boolean)
+    * [isUsernameValid()](#isusernamevalidstr-string---boolean)
     * [at()](#atstr-string-position-number---number)
     * [charAt()](#charatstr-string-position-number---string)
     * [charCodeAt()](#charcodeatstr-string-position-number---number)
@@ -170,6 +173,62 @@ StringUtils.isEmailValid(undefined)                         // false
 StringUtils.isEmailValid(null)                              // false
 StringUtils.isEmailValid(5)                                 // false
 StringUtils.isEmailValid(new Date())                        // false
+```
+
+###### `isDomainValid(str: string)` -> `string`
+* Returns `true` if the input is a valid domain name sting.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.isDomainValid("test.com")                       // true
+StringUtils.isDomainValid("test.com.mx")                    // true
+StringUtils.isDomainValid("mail@test.com")                  // false
+StringUtils.isDomainValid("test.c")                         // false
+StringUtils.isDomainValid("test")                           // false
+StringUtils.isDomainValid(undefined)                        // false
+StringUtils.isDomainValid(null)                             // false
+StringUtils.isDomainValid(5)                                // false
+StringUtils.isDomainValid(new Date())                       // false
+```
+
+###### `isWebUrlValid(str: string)` -> `string`
+* Returns `true` if the input is a valid URL string.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.isWebUrlValid("http://test.com")                // true
+StringUtils.isWebUrlValid("http://localhost?param=123")     // true
+StringUtils.isWebUrlValid("http://123.123.123.123:3000")    // true
+StringUtils.isWebUrlValid("mail@test.com")                  // false
+StringUtils.isWebUrlValid("mkyong.com/users")               // false
+StringUtils.isWebUrlValid(undefined)                        // false
+StringUtils.isWebUrlValid(null)                             // false
+StringUtils.isWebUrlValid(5)                                // false
+StringUtils.isWebUrlValid(new Date())                       // false
+```
+
+###### `isUsernameValid(str: string)` -> `string`
+* Returns `true` if the input is a valid username. A username must meet these conditions:
+    - Must contain at least 3 characters.
+    - All letters must be in lowercase.
+    - Must start with a lowercase letter.
+    - Can have numbers but it can't start with it.
+    - Can have periods `.` but it can't start or end with it.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.isUsernameValid("abc")                          // true
+StringUtils.isUsernameValid("a.1.2")                        // true
+StringUtils.isUsernameValid("qwertyuiop")                   // true
+StringUtils.isUsernameValid("1.a")                          // false
+StringUtils.isUsernameValid("a b")                          // false
+StringUtils.isUsernameValid(undefined)                      // false
+StringUtils.isUsernameValid(null)                           // false
+StringUtils.isUsernameValid(5)                              // false
+StringUtils.isUsernameValid(new Date())                     // false
 ```
 
 ##### Common JS operators:

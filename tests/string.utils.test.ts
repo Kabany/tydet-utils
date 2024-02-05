@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmailValid, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase, trim, trimEnd, trimStart } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isDomainValid, isEmailValid, isEmpty, isNotBlank, isNotEmpty, isUsernameValid, isWebUrlValid, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase, trim, trimEnd, trimStart } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -176,6 +176,129 @@ describe("String Utils", () => {
     });
   });
 
+  describe("isDomainValid()", () => {
+    it("should return true for valid string domains", () => {
+      expect(isDomainValid("test.com")).toBeTruthy()
+      expect(isDomainValid("test.co")).toBeTruthy()
+      expect(isDomainValid("test.com.mx")).toBeTruthy()
+      expect(isDomainValid("super-test.com")).toBeTruthy()
+      expect(isDomainValid("something.super-test.com")).toBeTruthy()
+      expect(isDomainValid("a.net")).toBeTruthy()
+      expect(isDomainValid("0-0o.com")).toBeTruthy()
+      expect(isDomainValid("0-wh-ao14-0.com-com.net")).toBeTruthy()
+    })
+    it("should return false for invalid string domains", () => {
+      expect(isDomainValid("mail@test.com")).toBeFalsy()
+      expect(isDomainValid("mail@test.com.m")).toBeFalsy()
+      expect(isDomainValid("-a.dot")).toBeFalsy()
+      expect(isDomainValid("com.g")).toBeFalsy()
+      expect(isDomainValid("mkyong.com/users")).toBeFalsy()
+      expect(isDomainValid("sub.mkyong-.com")).toBeFalsy()
+      expect(isDomainValid("sub.-mkyong.com")).toBeFalsy()
+      expect(isDomainValid("")).toBeFalsy()
+      expect(isDomainValid(" ")).toBeFalsy()
+    })
+    it("should return false for any non string value", () => {
+      expect(isDomainValid(0 as any)).toBeFalsy()
+      expect(isDomainValid(1 as any)).toBeFalsy()
+      expect(isDomainValid(null as any)).toBeFalsy()
+      expect(isDomainValid(undefined as any)).toBeFalsy()
+      expect(isDomainValid(false as any)).toBeFalsy()
+      expect(isDomainValid(true as any)).toBeFalsy()
+      expect(isDomainValid([] as any)).toBeFalsy()
+      expect(isDomainValid([""] as any)).toBeFalsy()
+      expect(isDomainValid(new Date() as any)).toBeFalsy()
+      expect(isDomainValid({} as any)).toBeFalsy()
+    });
+  });
+
+  describe("isUrlValid()", () => {
+    it("should return true for valid string URL", () => {
+      expect(isWebUrlValid("http://test.com")).toBeTruthy()
+      expect(isWebUrlValid("https://localhost:3000")).toBeTruthy()
+      expect(isWebUrlValid("http://localhost?param=123")).toBeTruthy()
+      expect(isWebUrlValid("http://123.123.123.123:3000")).toBeTruthy()
+    })
+    it("should return false for invalid string URL", () => {
+      expect(isWebUrlValid("mail@test.com")).toBeFalsy()
+      expect(isWebUrlValid("mail@test.com.m")).toBeFalsy()
+      expect(isWebUrlValid("ftp://mail@test.com.m")).toBeFalsy()
+      expect(isWebUrlValid("ftps://-a.dot")).toBeFalsy()
+      expect(isWebUrlValid("fttp://com.g")).toBeFalsy()
+      expect(isWebUrlValid("mkyong.com/users")).toBeFalsy()
+      //expect(isWebUrlValid("http://sub.mkyong-.com")).toBeFalsy()
+      //expect(isWebUrlValid("https://sub.-mkyong.com")).toBeFalsy()
+      expect(isWebUrlValid("")).toBeFalsy()
+      expect(isWebUrlValid(" ")).toBeFalsy()
+    })
+    it("should return false for any non string value", () => {
+      expect(isWebUrlValid(0 as any)).toBeFalsy()
+      expect(isWebUrlValid(1 as any)).toBeFalsy()
+      expect(isWebUrlValid(null as any)).toBeFalsy()
+      expect(isWebUrlValid(undefined as any)).toBeFalsy()
+      expect(isWebUrlValid(false as any)).toBeFalsy()
+      expect(isWebUrlValid(true as any)).toBeFalsy()
+      expect(isWebUrlValid([] as any)).toBeFalsy()
+      expect(isWebUrlValid([""] as any)).toBeFalsy()
+      expect(isWebUrlValid(new Date() as any)).toBeFalsy()
+      expect(isWebUrlValid({} as any)).toBeFalsy()
+    })
+  });
+
+  describe("isUsernameValid()", () => {
+    it("should return true for valid string username", () => {
+      expect(isUsernameValid("abc")).toBeTruthy()
+      expect(isUsernameValid("a1b")).toBeTruthy()
+      expect(isUsernameValid("a.b")).toBeTruthy()
+      expect(isUsernameValid("ab1")).toBeTruthy()
+      expect(isUsernameValid("a.1")).toBeTruthy()
+      expect(isUsernameValid("a.b.c")).toBeTruthy()
+      expect(isUsernameValid("a.1.2")).toBeTruthy()
+      expect(isUsernameValid("a1.2")).toBeTruthy()
+      expect(isUsernameValid("a.12")).toBeTruthy()
+      expect(isUsernameValid("qwertyuiop")).toBeTruthy()
+      expect(isUsernameValid("qwertyuiopqwertyuiop")).toBeTruthy()
+      expect(isUsernameValid("qwertyuiopqwertyuiopqwertyuiop")).toBeTruthy()
+      expect(isUsernameValid("qwertyuiopqwertyuiopqwertyuiopqwertyuiop")).toBeTruthy()
+      expect(isUsernameValid("qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiop")).toBeTruthy()
+    })
+    it("should return false for invalid string username", () => {
+      expect(isUsernameValid("a b")).toBeFalsy()
+      expect(isUsernameValid("ab ")).toBeFalsy()
+      expect(isUsernameValid(" ab")).toBeFalsy()
+      expect(isUsernameValid("1ab")).toBeFalsy()
+      expect(isUsernameValid("1.a")).toBeFalsy()
+      expect(isUsernameValid(".ab")).toBeFalsy()
+      expect(isUsernameValid(".1a")).toBeFalsy()
+      expect(isUsernameValid(".a1")).toBeFalsy()
+      expect(isUsernameValid("ab.")).toBeFalsy()
+      expect(isUsernameValid("a1.")).toBeFalsy()
+      expect(isUsernameValid("a..b")).toBeFalsy()
+      expect(isUsernameValid("a..1")).toBeFalsy()
+      expect(isUsernameValid("ab")).toBeFalsy()
+      expect(isUsernameValid("a1")).toBeFalsy()
+      expect(isUsernameValid("a.")).toBeFalsy()
+      expect(isUsernameValid("a")).toBeFalsy()
+      expect(isUsernameValid("1")).toBeFalsy()
+      expect(isUsernameValid(".")).toBeFalsy()
+      expect(isUsernameValid("qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopp")).toBeFalsy()
+      expect(isUsernameValid("")).toBeFalsy()
+      expect(isUsernameValid(" ")).toBeFalsy()
+      expect(isUsernameValid("   ")).toBeFalsy()
+    })
+    it("should return false for any non string value", () => {
+      expect(isUsernameValid(0 as any)).toBeFalsy()
+      expect(isUsernameValid(1 as any)).toBeFalsy()
+      expect(isUsernameValid(null as any)).toBeFalsy()
+      expect(isUsernameValid(undefined as any)).toBeFalsy()
+      expect(isUsernameValid(false as any)).toBeFalsy()
+      expect(isUsernameValid(true as any)).toBeFalsy()
+      expect(isUsernameValid([] as any)).toBeFalsy()
+      expect(isUsernameValid([""] as any)).toBeFalsy()
+      expect(isUsernameValid(new Date() as any)).toBeFalsy()
+      expect(isUsernameValid({} as any)).toBeFalsy()
+    })
+  });
 
 
 
