@@ -434,3 +434,20 @@ export function startsWith(str: string, search: string, limit?: number) {
     return false
   }
 }
+
+/** 
+ * Extracts characters, between two indices (positions), from a string, and returns the substring.
+ * If start is greater than end, arguments are swapped.
+ * If the start is not a number, it will be `0`.
+ * If the end is not a number, it will be the string length.
+ * @param {string} str - String to extract.
+ * @param {number} start - The start position.
+ * @param {number} length - The end position (excluded).
+ * @returns {string} A string containing the extracted characters.
+ */
+export function substring(str: string, start?: number, length?: number) {
+  let s = isNotEmpty(str) ? str : ""
+  let sta = typeof start == "number" ? start : 0
+  let end = typeof length == "number" ? length : s.length
+  return s.substring(sta, end)
+}

@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -746,6 +746,31 @@ describe("String Utils", () => {
       expect(startsWith([""] as any, "Hello")).toBeFalsy()
       expect(startsWith(new Date() as any, "Hello")).toBeFalsy()
       expect(startsWith({} as any, "Hello")).toBeFalsy()
+    });
+  });
+
+  describe("substring()", () => {
+    it("should return part of a string", () => {
+      expect(substring("Hello World!", 0, 5)).toBe("Hello")
+      expect(substring("Hello World!", 5, 0)).toBe("Hello")
+      expect(substring("Hello World!", 3)).toBe("lo World!")
+      expect(substring("Hello World!", 0, 25)).toBe("Hello World!")
+      expect(substring("Hello World!")).toBe("Hello World!")
+      expect(substring("Hello World!", 0, 25)).toBe("Hello World!")
+      expect(substring("Hello World!", -1, 25)).toBe("Hello World!")
+    });
+    it("should return an empty string for any non string value", () => {
+      expect(substring("Hello World!", null as any, null as any)).toBe("Hello World!")
+      expect(substring(null as any)).toBe("")
+      expect(substring(undefined as any)).toBe("")
+      expect(substring(0 as any)).toBe("")
+      expect(substring(1 as any)).toBe("")
+      expect(substring(false as any)).toBe("")
+      expect(substring(true as any)).toBe("")
+      expect(substring([] as any)).toBe("")
+      expect(substring([""] as any)).toBe("")
+      expect(substring(new Date() as any)).toBe("")
+      expect(substring({} as any)).toBe("")
     });
   });
 

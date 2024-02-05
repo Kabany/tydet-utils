@@ -30,6 +30,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [slice()](#slicestr-string-start-number-end-number---string)
     * [split()](#splitstr-string-separator-string--regexp-limit-number---string)
     * [startsWith()](#startswithstr-string-search-string-limit-number---boolean)
+    * [substring()](#substringstr-string-start-number-length-number---string)
 
 ## String Utils
 
@@ -543,4 +544,22 @@ StringUtils.startsWith("Hello World!", "Hello", 1)          // false
 StringUtils.startsWith("Hello World!", "World")             // false
 StringUtils.startsWith("Hello World!", "World", 6)          // true
 StringUtils.startsWith(null, "Hello")                       // false
+```
+
+###### `substring(str: string, start?: number, length?: number)` -> `string`
+* Extracts characters, between two indices (positions), from a string, and returns the substring.
+* If start is greater than end, arguments are swapped.
+* If the start is not a number, it will be `0`.
+* If the end is not a number, it will be the string length.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.substring("Hello World!", 0, 5)                     // 'Hello'
+StringUtils.substring("Hello World!", 3)                        // 'lo World!'
+StringUtils.substring("Hello World!", 5, 1)                     // 'ello'
+StringUtils.substring("Hello World!")                           // 'Hello World!'
+StringUtils.substring("Hello World!", 0, 25)                    // 'Hello World!'
+StringUtils.substring("Hello World!", -1, 25)                   // 'Hello World!'
+StringUtils.substring(null, 0, 2)                               // ''
 ```
