@@ -65,6 +65,19 @@ export function reverse(str: string) {
   }
 }
 
+/** 
+ * Returns `true` if the input is a valid string email.
+ * @param str - String to evaluate
+ */
+export function isEmailValid(str: string) {
+  if (isNotEmpty(str)) {
+    let t = trim(str)
+    return /^\w+([\.-]?\w+)*@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$/.test(t)
+  } else {
+    return false
+  }
+}
+
 
 
 

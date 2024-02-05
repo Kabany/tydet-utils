@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase, trim, trimEnd, trimStart } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isEmailValid, isEmpty, isNotBlank, isNotEmpty, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase, trim, trimEnd, trimStart } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -146,6 +146,33 @@ describe("String Utils", () => {
       expect(reverse([""] as any)).toBeNull();
       expect(reverse(new Date() as any)).toBeNull();
       expect(reverse({} as any)).toBeNull();
+    });
+  });
+
+  describe("isEmailValid()", () => {
+    it("should return the input string is a valid email", () => {
+      expect(isEmailValid("mail@test.com")).toBeTruthy();
+      expect(isEmailValid("mail@test.co")).toBeTruthy();
+      expect(isEmailValid("name.mail@test.co")).toBeTruthy();
+      expect(isEmailValid("name.mail@test.com.mx")).toBeTruthy();
+      expect(isEmailValid("name-mail@test.com")).toBeTruthy();
+    });
+    it("should false the input string is not a valid email", () => {
+      expect(isEmailValid("mail@test.c")).toBeFalsy()
+      expect(isEmailValid("mail@test.com.m")).toBeFalsy()
+      expect(isEmailValid("")).toBeFalsy()
+    });
+    it("should return null for any non string value", () => {
+      expect(isEmailValid(0 as any)).toBeFalsy();
+      expect(isEmailValid(1 as any)).toBeFalsy();
+      expect(isEmailValid(null as any)).toBeFalsy();
+      expect(isEmailValid(undefined as any)).toBeFalsy();
+      expect(isEmailValid(false as any)).toBeFalsy();
+      expect(isEmailValid(true as any)).toBeFalsy();
+      expect(isEmailValid([] as any)).toBeFalsy();
+      expect(isEmailValid([""] as any)).toBeFalsy();
+      expect(isEmailValid(new Date() as any)).toBeFalsy();
+      expect(isEmailValid({} as any)).toBeFalsy();
     });
   });
 

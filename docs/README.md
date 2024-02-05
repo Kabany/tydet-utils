@@ -8,6 +8,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [isBlank()](#isblankstr-string---boolean)
     * [isNotBlank()](#isnotblankstr-string---boolean)
     * [reverse()](#reversestr-string---string--null)
+    * [isEmailValid()](#isemailvalidstr-string---boolean)
     * [at()](#atstr-string-position-number---number)
     * [charAt()](#charatstr-string-position-number---string)
     * [charCodeAt()](#charcodeatstr-string-position-number---number)
@@ -153,6 +154,22 @@ StringUtils.reverse(null)                    // null
 StringUtils.reverse(undefined)               // null
 StringUtils.reverse(0)                       // null
 StringUtils.reverse(1)                       // null
+```
+
+###### `isEmailValid(str: string)` -> `string`
+* Returns `true` if the input is a valid string email.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.isEmailValid("mail@test.com")                   // true
+StringUtils.isEmailValid("name.mail@test.com.mx")           // true
+StringUtils.isEmailValid("mail@test.c")                     // false
+StringUtils.isEmailValid("mail@test")                       // false
+StringUtils.isEmailValid(undefined)                         // false
+StringUtils.isEmailValid(null)                              // false
+StringUtils.isEmailValid(5)                                 // false
+StringUtils.isEmailValid(new Date())                        // false
 ```
 
 ##### Common JS operators:
