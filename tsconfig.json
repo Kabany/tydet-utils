@@ -5,8 +5,9 @@
      "noEmitOnError": true,
      "removeComments": false,
      "sourceMap": true,
+     "declaration": true,
      "target": "es5",
-     "outDir": "wwwroot/js",
+     "outDir": "dist/",
      "lib": ["ES2021"]
   },
   "include": [
@@ -15,6 +16,7 @@
   "exclude": [
    "node_modules",
    "tests",
-   "docs"
+   "docs",
+   "dist"
   ]
 }
