@@ -231,6 +231,51 @@ StringUtils.isUsernameValid(5)                              // false
 StringUtils.isUsernameValid(new Date())                     // false
 ```
 
+###### `isPhoneValid(str: string)` -> `string`
+* Returns `true` if the input is a valid Phone Number.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.isPhoneValid("123-456-7890")                    // true
+StringUtils.isPhoneValid("(123) 456-7890")                  // true
+StringUtils.isPhoneValid("123 456 7890")                    // true
+StringUtils.isPhoneValid("123.456.7890")                    // true
+StringUtils.isPhoneValid("+11 (703) 678 5982")              // true
+StringUtils.isPhoneValid("5512341234")                      // true
+StringUtils.isPhoneValid("55 1234 1234")                    // true
+StringUtils.isPhoneValid("55.1234.1234")                    // true
+StringUtils.isPhoneValid("55-1234-1234")                    // true
+StringUtils.isPhoneValid("(55) 1234-1234")                  // true
+StringUtils.isPhoneValid("55,123,1234")                     // false
+StringUtils.isPhoneValid("55,123,1234")                     // false
+StringUtils.isPhoneValid("123,123,1234")                    // false
+StringUtils.isPhoneValid("12345678")                        // false
+StringUtils.isPhoneValid("180012345670000")                 // false
+StringUtils.isPhoneValid("123A231234")                      // false
+StringUtils.isPhoneValid(undefined)                         // false
+StringUtils.isPhoneValid(null)                              // false
+StringUtils.isPhoneValid(5)                                 // false
+StringUtils.isPhoneValid(new Date())                        // false
+```
+
+###### `isUuidValid(str: string)` -> `string`
+* Returns `true` if the input is a valid UUID string.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.isUuidValid("00000000-0000-0000-0000-000000000000")     // true
+StringUtils.isUuidValid("dc5538c6-cdf3-11ed-afa1-0242ac120002")     // true
+StringUtils.isUuidValid("00000000.0000.0000.0000.000000000000")     // false
+StringUtils.isUuidValid("00000000 0000 0000 0000 000000000000")     // false
+StringUtils.isUuidValid("5fc0308-d265-11e7-b8c6-83e29cd24f4c")      // false (missing a character)
+StringUtils.isUuidValid(undefined)                                  // false
+StringUtils.isUuidValid(null)                                       // false
+StringUtils.isUuidValid(5)                                          // false
+StringUtils.isUuidValid(new Date())                                 // false
+```
+
 ##### Common JS operators:
 
 ###### `at(str: string, position: number)` -> `number`

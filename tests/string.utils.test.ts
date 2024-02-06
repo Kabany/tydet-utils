@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isDomainValid, isEmailValid, isEmpty, isNotBlank, isNotEmpty, isUsernameValid, isWebUrlValid, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase, trim, trimEnd, trimStart } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isDomainValid, isEmailValid, isEmpty, isNotBlank, isNotEmpty, isPhoneValid, isUsernameValid, isUuidValid, isWebUrlValid, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase, trim, trimEnd, trimStart } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -297,6 +297,79 @@ describe("String Utils", () => {
       expect(isUsernameValid([""] as any)).toBeFalsy()
       expect(isUsernameValid(new Date() as any)).toBeFalsy()
       expect(isUsernameValid({} as any)).toBeFalsy()
+    })
+  });
+
+  describe("isPhoneValid()", () => {
+    it("should return true for valid string phone", () => {
+      expect(isPhoneValid("123-456-7890")).toBeTruthy()
+      expect(isPhoneValid("718-444-1122")).toBeTruthy()
+      expect(isPhoneValid("(123) 456-7890")).toBeTruthy()
+      expect(isPhoneValid("123 456 7890")).toBeTruthy()
+      expect(isPhoneValid("123.456.7890")).toBeTruthy()
+      expect(isPhoneValid("718.444.1122")).toBeTruthy()
+      expect(isPhoneValid("+11 (703) 678 5982")).toBeTruthy()
+      expect(isPhoneValid("+1 (703) 678 5982")).toBeTruthy()
+      expect(isPhoneValid("+11 703 678 5982")).toBeTruthy()
+      expect(isPhoneValid("5512341234")).toBeTruthy()
+      expect(isPhoneValid("55 1234 1234")).toBeTruthy()
+      expect(isPhoneValid("55.1234.1234")).toBeTruthy()
+      expect(isPhoneValid("55-1234-1234")).toBeTruthy()
+      expect(isPhoneValid("(55) 1234-1234")).toBeTruthy()
+    })
+    it("should return false for invalid string phone", () => {
+      expect(isPhoneValid("180012345670000")).toBeFalsy()
+      expect(isPhoneValid("123A231234")).toBeFalsy()
+      expect(isPhoneValid("-5551231234")).toBeFalsy()
+      expect(isPhoneValid("55,123,1234")).toBeFalsy()
+      expect(isPhoneValid("12345678")).toBeFalsy()
+      expect(isPhoneValid("123,123,1234")).toBeFalsy()
+      expect(isPhoneValid("")).toBeFalsy()
+      expect(isPhoneValid(" ")).toBeFalsy()
+      expect(isPhoneValid("   ")).toBeFalsy()
+    })
+    it("should return false for any non string value", () => {
+      expect(isPhoneValid(0 as any)).toBeFalsy()
+      expect(isPhoneValid(1 as any)).toBeFalsy()
+      expect(isPhoneValid(null as any)).toBeFalsy()
+      expect(isPhoneValid(undefined as any)).toBeFalsy()
+      expect(isPhoneValid(false as any)).toBeFalsy()
+      expect(isPhoneValid(true as any)).toBeFalsy()
+      expect(isPhoneValid([] as any)).toBeFalsy()
+      expect(isPhoneValid([""] as any)).toBeFalsy()
+      expect(isPhoneValid(new Date() as any)).toBeFalsy()
+      expect(isPhoneValid({} as any)).toBeFalsy()
+    })
+  });
+
+  describe("isUuidValid()", () => {
+    it("should return true for valid string uuid", () => {
+      expect(isUuidValid("00000000-0000-0000-0000-000000000000")).toBeTruthy()
+      expect(isUuidValid("dc5538c6-cdf3-11ed-afa1-0242ac120002")).toBeTruthy()
+      expect(isUuidValid("7a33dc1a-d605-4f3a-b36e-b3557d243789")).toBeTruthy()
+      expect(isUuidValid("1f980099-e30b-4b67-addf-aaa6a49f1dce")).toBeTruthy()
+      expect(isUuidValid("5fc03087-d265-11e7-b8c6-83e29cd24f4c")).toBeTruthy()
+    })
+    it("should return false for invalid string uuid", () => {
+      expect(isUuidValid("00000000.0000.0000.0000.000000000000")).toBeFalsy()
+      expect(isUuidValid("00000000 0000 0000 0000 000000000000")).toBeFalsy()
+      expect(isUuidValid("5fc0308-d265-11e7-b8c6-83e29cd24f4c")).toBeFalsy()
+      expect(isUuidValid("5fc03087-g265-11e7-b8c6-83e29cd24f4c")).toBeFalsy()
+      expect(isUuidValid("")).toBeFalsy()
+      expect(isUuidValid(" ")).toBeFalsy()
+      expect(isUuidValid("   ")).toBeFalsy()
+    })
+    it("should return false for any non string value", () => {
+      expect(isUuidValid(0 as any)).toBeFalsy()
+      expect(isUuidValid(1 as any)).toBeFalsy()
+      expect(isUuidValid(null as any)).toBeFalsy()
+      expect(isUuidValid(undefined as any)).toBeFalsy()
+      expect(isUuidValid(false as any)).toBeFalsy()
+      expect(isUuidValid(true as any)).toBeFalsy()
+      expect(isUuidValid([] as any)).toBeFalsy()
+      expect(isUuidValid([""] as any)).toBeFalsy()
+      expect(isUuidValid(new Date() as any)).toBeFalsy()
+      expect(isUuidValid({} as any)).toBeFalsy()
     })
   });
 

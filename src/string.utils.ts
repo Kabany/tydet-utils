@@ -71,7 +71,7 @@ export function reverse(str: string) {
  */
 export function isEmailValid(str: string) {
   if (isNotEmpty(str)) {
-    let t = trim(str)
+    let t = str.trim()
     return /^\w+([\.-]?\w+)*@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$/.test(t)
   } else {
     return false
@@ -120,6 +120,32 @@ export function isUsernameValid(str: string) {
   } else {
     return false
   }
+}
+
+/** 
+ * Returns `true` if the input is a valid Phone Number.
+ * @param str - String to evaluate
+ */
+export function isPhoneValid(str: string) {
+  if (isNotEmpty(str)) {
+    let t = str.trim()
+    return /^(^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$)|(^\d{10}$)|(^\(?\d{2}\)?[\s.-]\d{4}[\s.-]\d{4}$)$/.test(t)
+  } else {
+    return false
+  }
+}
+
+/** 
+ * Returns `true` if the input is a valid UUID string.
+ * @param str - String to evaluate
+ */
+export function isUuidValid(str: string) {
+  if (isNotEmpty(str)) {
+    let t = str.trim()
+    return /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$/.test(t)
+  } else {
+    return false
+  } 
 }
 
 
