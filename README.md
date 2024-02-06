@@ -43,4 +43,4 @@ We'd love for you to contribute to TyAPI-Utils and help make it even better than
 [license]: ./LICENSE
 [changelog]: ./CHANGELOG.md
 [contribute]: ./CONTRIBUTING.md
-[docs]: ./DOCS/README.md
+[docs]: ./docs/README.md
