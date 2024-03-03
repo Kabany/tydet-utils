@@ -42,6 +42,10 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [trim()](#trimstr-string---string)
     * [trimEnd()](#trimendstr-string---string)
     * [trimStart()](#trimstartstr-string---string)
+* [Number Utils](#number-utils)
+    * [isValid()](#isvalidvalue-number-string---boolean)
+    * [isPositiveInteger()](#ispositiveintegervalue-number-string---boolean)
+    * [isInteger()](#isintegervalue-number-string---boolean)
 
 ## String Utils
 
@@ -788,4 +792,89 @@ StringUtils.trimStart(undefined)                            // null
 StringUtils.trimStart(null)                                 // null
 StringUtils.trimStart(5)                                    // null
 StringUtils.trimStart(new Date())                           // null
+```
+
+
+
+## Number Utils
+
+### Methods
+
+#### Extended Number operators
+
+###### `isValid(value: number | string)` -> `boolean`
+* Evaluates if the value is valid number, integer or decimal.
+* It returns `true` if the value is a valid number.
+
+```js
+import { NumberUtils } from 'tydet-utils';
+
+NumberUtils.isValid(123456)                 // true
+NumberUtils.isValid(0x1AF)                  // true
+NumberUtils.isValid("123456")               // true
+NumberUtils.isValid("-123.123")             // true
+NumberUtils.isValid("0x1AF")                // true
+NumberUtils.isValid("L123J45")              // false
+NumberUtils.isValid("-0x1AF")               // false
+NumberUtils.isValid(null)                   // false
+NumberUtils.isValid(undefined)              // false
+NumberUtils.isValid({})                     // false
+NumberUtils.isValid(new Date())             // false
+NumberUtils.isValid(true)                   // false
+NumberUtils.isValid(false)                  // false
+NumberUtils.isValid([])                     // false
+```
+
+###### `isPositiveInteger(value: number | string)` -> `boolean`
+* Evaluates if the value is a positive integer. 
+* It returns `true` if the value is a positive integer in a `number` or `string` type.
+
+```js
+import { NumberUtils } from 'tydet-utils';
+
+NumberUtils.isPositiveInteger(123456)               // true
+NumberUtils.isPositiveInteger(0B1001)               // true
+NumberUtils.isPositiveInteger(0x1AF)                // true
+NumberUtils.isPositiveInteger(123.123)              // false
+NumberUtils.isPositiveInteger(-123456)              // false
+NumberUtils.isPositiveInteger("123456")             // true
+NumberUtils.isPositiveInteger("0B1001")             // true
+NumberUtils.isPositiveInteger("0x1AF")              // true
+NumberUtils.isPositiveInteger("123.123")            // false
+NumberUtils.isPositiveInteger("-123456")            // false
+NumberUtils.isPositiveInteger(null)                 // false
+NumberUtils.isPositiveInteger(undefined)            // false
+NumberUtils.isPositiveInteger({})                   // false
+NumberUtils.isPositiveInteger(new Date())           // false
+NumberUtils.isPositiveInteger(true)                 // false
+NumberUtils.isPositiveInteger(false)                // false
+NumberUtils.isPositiveInteger([])                   // false
+```
+
+#### Common JS operators:
+
+###### `isInteger(value: number | string)` -> `boolean`
+* Evaluates if the value is a integer. 
+* It returns `true` if the value is a integer in a `number` or `string` type.
+
+```js
+import { NumberUtils } from 'tydet-utils';
+
+NumberUtils.isInteger(123456)               // true
+NumberUtils.isInteger(0B1001)               // true
+NumberUtils.isInteger(0x1AF)                // true
+NumberUtils.isInteger(123.123)              // false
+NumberUtils.isInteger(-123456)              // true
+NumberUtils.isInteger("123456")             // true
+NumberUtils.isInteger("0B1001")             // true
+NumberUtils.isInteger("0x1AF")              // true
+NumberUtils.isInteger("123.123")            // false
+NumberUtils.isInteger("-123456")            // true
+NumberUtils.isInteger(null)                 // false
+NumberUtils.isInteger(undefined)            // false
+NumberUtils.isInteger({})                   // false
+NumberUtils.isInteger(new Date())           // false
+NumberUtils.isInteger(true)                 // false
+NumberUtils.isInteger(false)                // false
+NumberUtils.isInteger([])                   // false
 ```
