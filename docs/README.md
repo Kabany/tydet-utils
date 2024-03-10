@@ -46,6 +46,13 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [isValid()](#isvalidvalue-number-string---boolean)
     * [isPositiveInteger()](#ispositiveintegervalue-number-string---boolean)
     * [isInteger()](#isintegervalue-number-string---boolean)
+* [Date Utils](#date-utils)
+    * [isValid()](#isvalidvalue-number-string-date---boolean)
+    * [addYears()](#addyearsdate-date-years-number---date)
+    * [addMonths()](#addmonthsdate-date-months-number---date)
+    * [addDays()](#adddaysdate-date-days-number---date)
+    * [addHours()](#addhoursdate-date-hours-number---date)
+    * [addMinutes()](#addminutesdate-date-minutes-number---date)
 
 ## String Utils
 
@@ -878,3 +885,95 @@ NumberUtils.isInteger(true)                 // false
 NumberUtils.isInteger(false)                // false
 NumberUtils.isInteger([])                   // false
 ```
+
+
+
+## Date Utils
+
+### Methods
+
+#### Extended Number operators
+
+###### `isValid(value: number | string | Date)` -> `boolean`
+* Returns `true` if the parameter is a valid date. It can accept values of type `string`, `number` or `Date`.
+
+```js
+import { DateUtils } from 'tydet-utils';
+
+DateUtils.isValid(new Date())                       // true
+DateUtils.isValid("2023-08-12")                     // true
+DateUtils.isValid("12-08-2012")                     // true
+DateUtils.isValid(100000)                           // true
+DateUtils.isValid("ABCDE")                          // false
+DateUtils.isValid({day: 10, month: 6, year: 2000})  // false
+```
+
+###### `addYears(date: Date, years: number)` -> `Date`
+* Add years to a date. 
+* If the date is `null` or is not an instance of `Date`, it returns `null`.
+* If the year number is `null`, then it will be `0`.
+
+```js
+import { DateUtils } from 'tydet-utils';
+
+let today = new Date()
+let modified = DateUtils.addYears(today, 10)
+modified.getFullYear()          // 2024
+```
+
+###### `addMonths(date: Date, months: number)` -> `Date`
+* Add months to a date. 
+* If the date is `null` or is not an instance of `Date`, it returns `null`.
+* If the month number is `null`, then it will be `0`.
+
+```js
+import { DateUtils } from 'tydet-utils';
+
+let date = new Date(2024, 0, 1)
+let modified = DateUtils.addMonths(date, 6)
+let nextYear = DateUtils.addMonths(date, 12)
+modified.getMonth()             // 5
+nextYear.getMonth()             // 0
+nextYear.getFullYear()          // 2025
+```
+
+###### `addDays(date: Date, days: number)` -> `Date`
+* Add days to a date. 
+* If the date is `null` or is not an instance of `Date`, it returns `null`.
+* If the day number is `null`, then it will be `0`.
+
+```js
+import { DateUtils } from 'tydet-utils';
+
+let date = new Date(2024, 0, 1)
+let modified = DateUtils.addDays(date, 5)
+modified.getDate()          // 6
+```
+
+###### `addHours(date: Date, hours: number)` -> `Date`
+* Add hours to a date. 
+* If the date is `null` or is not an instance of `Date`, it returns `null`.
+* If the hour number is `null`, then it will be `0`
+
+```js
+import { DateUtils } from 'tydet-utils';
+
+let date = new Date(2024, 0, 1)
+let modified = DateUtils.addHours(date, 5)
+modified.getHours()          // 5
+```
+
+###### `addMinutes(date: Date, minutes: number)` -> `Date`
+* Add minutes to a date. 
+* If the date is `null` or is not an instance of `Date`, it returns `null`.
+* If the minute number is `null`, then it will be `0`
+
+```js
+import { DateUtils } from 'tydet-utils';
+
+let date = new Date(2024, 0, 1)
+let modified = DateUtils.addMinutes(date, 5)
+modified.getMinutes()       // 5
+```
+
+#### Common JS operators:
