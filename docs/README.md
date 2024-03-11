@@ -54,6 +54,9 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [addHours()](#addhoursdate-date-hours-number---date)
     * [addMinutes()](#addminutesdate-date-minutes-number---date)
     * [isExpired()](#isexpireddate-date---boolean)
+    * [daysOfDifference()](#daysofdifferencedate-date-compared-date---number)
+    * [hoursOfDifference()](#hoursofdifferencedate-date-compared-date---number)
+    * [minutesOfDifference()](#minutesofdifferencedate-date-compared-date---number)
 
 ## String Utils
 
@@ -989,4 +992,44 @@ let modified = DateUtils.addDays(date, 5)
 DateUtils.isExpired(modified)       // true
 ```
 
-#### Common JS operators:
+###### `daysOfDifference(date: Date, compared: Date)` -> `number`
+* Returns the difference in days between a date and its comparable.
+* If the date is `null` or is not an instance of `Date`, it will return `null`.
+* If `date > compared`, it will return a value greater than `0`.
+* If `date < compared`, it will return a value less than `0`.
+
+```js
+import { DateUtils } from 'tydet-utils';
+
+let date = new Date()
+let modified = DateUtils.addDays(date, 1)
+DateUtils.daysOfDifference(modified, date)      // 1
+```
+
+###### `hoursOfDifference(date: Date, compared: Date)` -> `number`
+* Returns the difference in hours between a date and its comparable.
+* If the date is `null` or is not an instance of `Date`, it will return `null`.
+* If `date > compared`, it will return a value greater than `0`.
+* If `date < compared`, it will return a value less than `0`.
+
+```js
+import { DateUtils } from 'tydet-utils';
+
+let date = new Date()
+let modified = DateUtils.addDays(date, 1)
+DateUtils.hoursOfDifference(modified, date)      // 24
+```
+
+###### `minutesOfDifference(date: Date, compared: Date)` -> `number`
+* Returns the difference in minutes between a date and its comparable.
+* If the date is `null` or is not an instance of `Date`, it will return `null`.
+* If `date > compared`, it will return a value greater than `0`.
+* If `date < compared`, it will return a value less than `0`.
+
+```js
+import { DateUtils } from 'tydet-utils';
+
+let date = new Date()
+let modified = DateUtils.addDays(date, 1)
+DateUtils.minutesOfDifference(modified, date)      // 1440
+```
