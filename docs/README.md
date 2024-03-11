@@ -53,6 +53,7 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [addDays()](#adddaysdate-date-days-number---date)
     * [addHours()](#addhoursdate-date-hours-number---date)
     * [addMinutes()](#addminutesdate-date-minutes-number---date)
+    * [isExpired()](#isexpireddate-date---boolean)
 
 ## String Utils
 
@@ -974,6 +975,18 @@ import { DateUtils } from 'tydet-utils';
 let date = new Date(2024, 0, 1)
 let modified = DateUtils.addMinutes(date, 5)
 modified.getMinutes()       // 5
+```
+
+###### `isExpired(date: Date)` -> `boolean`
+* Returns `true` if the date is greater or equal to an instant (`new Date()`).
+* If the date is `null` or is not an instance of `Date`, it will return `false`.
+
+```js
+import { DateUtils } from 'tydet-utils';
+
+let date = new Date()
+let modified = DateUtils.addDays(date, 5)
+DateUtils.isExpired(modified)       // true
 ```
 
 #### Common JS operators:

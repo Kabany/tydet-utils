@@ -108,3 +108,73 @@ export function addMinutes(date: Date, minutes: number) {
     return null
   }
 }
+
+/**
+ * Returns `true` if the date is greater or equal to an instant (`new Date()`).
+ * - If the date is `null` or is not an instance of `Date`, it will return `false`.
+ */
+export function isExpired(date: Date) {
+  if (isValid(date)) {
+    var today = new Date()
+    return date.getTime() < today.getTime()
+  } else {
+    return false
+  }
+}
+
+/**
+ * Returns the difference in days between a date and its comparable.
+ * - If the date is `null` or is not an instance of `Date`, it will return `null`.
+ * - If `date > compared`, it will return a value greater than `0`.
+ * - If `date < compared`, it will return a value less than `0`.
+ * @param date - Date to compare
+ * @param compared - Date compared as reference
+ */
+export function daysOfDifference(date: Date, compared: Date) {
+  if (isValid(date) && isValid(compared)) {
+    var ONE_DAY = 1000 * 60 * 60 * 24 // milliseconds
+    var diff = date.getTime() - compared.getTime()
+    return diff > 0 ? Math.ceil(diff/ONE_DAY) : Math.floor(diff/ONE_DAY)
+  } else {
+    return null
+  }
+}
+
+
+
+/**
+ * Returns the difference in hours between a date and its comparable.
+ * If the date is `null` or is not an instance of `Date`, it will return `null`.
+ * If `date > compared`, it will return a value greater than `0`.
+ * If `date < compared`, it will return a value less than `0`.
+ * @param date - Date to compare
+ * @param compared - Date compared as reference
+ */
+export function hoursOfDifference(date: Date, compared: Date) {
+  if (isValid(date) && isValid(compared)) {
+    var ONE_HOUR = 1000 * 60 * 60 // milliseconds
+    var diff = date.getTime() - compared.getTime()
+    return diff > 0 ? Math.ceil(diff/ONE_HOUR) : Math.floor(diff/ONE_HOUR)
+  } else {
+    return null
+  }
+}
+
+
+/**
+ * Returns the difference in minutes between a date and its comparable.
+ * If the date is `null` or is not an instance of `Date`, it will return `null`.
+ * If `date > compared`, it will return a value greater than `0`.
+ * If `date < compared`, it will return a value less than `0`.
+ * @param date - Date to compare
+ * @param compared - Date compared as reference
+ */
+export function minutesOfDifference(date: Date, compared: Date) {
+  if (isValid(date) && isValid(compared)) {
+    var ONE_MINUTE = 1000 * 60 // milliseconds
+    var diff = date.getTime() - compared.getTime()
+    return diff > 0 ? Math.ceil(diff/ONE_MINUTE) : Math.floor(diff/ONE_MINUTE)
+  } else {
+    return null
+  }
+}

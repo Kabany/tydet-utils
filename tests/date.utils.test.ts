@@ -1,4 +1,4 @@
-import { addDays, addHours, addMinutes, addMonths, addYears, isValid } from "../src/date.utils"
+import { addDays, addHours, addMinutes, addMonths, addYears, daysOfDifference, hoursOfDifference, isExpired, isValid, minutesOfDifference } from "../src/date.utils"
 
 describe("Date Utils", () => {
 
@@ -89,6 +89,102 @@ describe("Date Utils", () => {
     it("should return null if date is invalid", () => {
       expect(addMinutes(new Date("ABCDE"), 10)).toBeNull()
       expect(addMinutes(false as any, 10)).toBeNull()
+    })
+  })
+
+  describe("isExpired()", () => {
+    it("should return false for a date in the future compared to now", () => {
+      let nextWeek = addDays(new Date(), 7)!
+      expect(isExpired(nextWeek)).toBeFalsy()
+    })
+    it("should return true for a date in the past compared to now", () => {
+      let lastWeek = addDays(new Date(), -7)!
+      expect(isExpired(lastWeek)).toBeTruthy()
+    })
+    it("should return false if date is invalid", () => {
+      expect(isExpired(new Date("ABCDE"))).toBeFalsy()
+      expect(isExpired(false as any)).toBeFalsy()
+    })
+  })
+
+  describe("daysOfDifference()", () => {
+    it("should return 7 for a week of diference compared to now", () => {
+      let nextWeek = addDays(new Date(), 7)!
+      expect(daysOfDifference(nextWeek, new Date())).toBe(7)
+    })
+    it("should return 1 for a day or even a minute of diference compared to now", () => {
+      let tomorrow = addDays(new Date(), 1)!
+      expect(daysOfDifference(tomorrow, new Date())).toBe(1)
+      let hour = addHours(new Date(), 1)!
+      expect(daysOfDifference(hour, new Date())).toBe(1)
+      let minute = addMinutes(new Date(), 1)!
+      expect(daysOfDifference(minute, new Date())).toBe(1)
+    })
+    it("should return -7 for a week of diference in the past compared to now", () => {
+      let lastWeek = addDays(new Date(), -7)!
+      expect(daysOfDifference(lastWeek, new Date())).toBe(-7)
+    })
+    it("should return -1 for a day or even a minute of diference in the past compared to now", () => {
+      let yesterday = addDays(new Date(), -1)!
+      expect(daysOfDifference(yesterday, new Date()))
+      let hour = addHours(new Date(), -1)!
+      expect(daysOfDifference(hour, new Date()))
+      let minute = addMinutes(new Date(), -1)!
+      expect(daysOfDifference(minute, new Date())).toBe(-1)
+    })
+    it("should return null if any date is invalid", () => {
+      expect(daysOfDifference(new Date("ABCDE"), new Date())).toBeNull()
+      expect(daysOfDifference(new Date(), false as any)).toBeNull()
+    })
+  })
+
+  describe("hoursOfDifference()", () => {
+    it("should return 24 for a day of diference compared to now", () => {
+      let tomorrow = addDays(new Date(), 1)!
+      expect(hoursOfDifference(tomorrow, new Date())).toBe(24)
+    })
+    it("should return 1 for a minute or even a second of diference compared to now", () => {
+      let hour = addHours(new Date(), 1)!
+      expect(hoursOfDifference(hour, new Date())).toBe(1)
+      let minute = addMinutes(new Date(), 1)!
+      expect(hoursOfDifference(minute, new Date())).toBe(1)
+    })
+    it("should return -24 for a day in the past compared to now", () => {
+      let yesterday = addDays(new Date(), -1)!
+      expect(hoursOfDifference(yesterday, new Date())).toBe(-24)
+    })
+    it("should return -1 for an hour or a minute in the past compared to now", () => {
+      let lastHour = addHours(new Date(), -1)!
+      expect(hoursOfDifference(lastHour, new Date())).toBe(-1)
+      let lastMinute = addMinutes(new Date(), -1)!
+      expect(hoursOfDifference(lastMinute, new Date())).toBe(-1)
+    })
+    it("should return null if date is invalid", () => {
+      expect(hoursOfDifference(new Date("ABCDE"), new Date())).toBeNull()
+      expect(hoursOfDifference(new Date(), false as any)).toBeNull()
+    })
+  })
+
+  describe("minutesOfDifference()", () => {
+    it("should return 1440 for a day of diference compared to now", () => {
+      let tomorrow = addDays(new Date(), 1)!
+      expect(minutesOfDifference(tomorrow, new Date())).toBe(1440)
+    })
+    it("should return 1 for an minute or even a second of diference compared to now", () => {
+      let minute = addMinutes(new Date(), 1)!
+      expect(minutesOfDifference(minute, new Date())).toBe(1)
+    })
+    it("should return 60 for an hour of diference compared to now", () => {
+      let minute = addHours(new Date(), 1)!
+      expect(minutesOfDifference(minute, new Date())).toBe(60)
+    })
+    it("should return -1440 for an hour in the past compared to now", () => {
+      let yesterday = addDays(new Date(), -1)!
+      expect(minutesOfDifference(yesterday, new Date())).toBe(-1440)
+    })
+    it("should return null if date is invalid", () => {
+      expect(minutesOfDifference(new Date("ABCDE"), new Date())).toBeNull()
+      expect(minutesOfDifference(new Date(), false as any)).toBeNull()
     })
   })
 
