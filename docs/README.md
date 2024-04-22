@@ -1057,6 +1057,6 @@ CompareUtils.isEqual(1000, 500 + 500)                                           
 let now = new Date()
 CompareUtils.isEqual(now, new Date(now))                                            // true
 CompareUtils.isEqual({user: 10, name: "Example"}, {name: "Example", user: 10})      // true
-CompareUtils.isEqual([1, "2", {value: 3}, {"1", 2, {value: 3}}])                    // false
+CompareUtils.isEqual([1, "2", {value: 3}], ["1", 2, {value: 3}])                    // false
 CompareUtils.isEqual([1, false], [1, false])                                        // true
 ```
