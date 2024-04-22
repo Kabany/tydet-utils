@@ -57,6 +57,8 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [daysOfDifference()](#daysofdifferencedate-date-compared-date---number)
     * [hoursOfDifference()](#hoursofdifferencedate-date-compared-date---number)
     * [minutesOfDifference()](#minutesofdifferencedate-date-compared-date---number)
+* [Compare Utils](#compare-utils)
+    * [isEqual()](#isequalobj1-any-obj2-any---boolean)
 
 ## String Utils
 
@@ -1021,6 +1023,7 @@ DateUtils.hoursOfDifference(modified, date)      // 24
 ```
 
 ###### `minutesOfDifference(date: Date, compared: Date)` -> `number`
+
 * Returns the difference in minutes between a date and its comparable.
 * If the date is `null` or is not an instance of `Date`, it will return `null`.
 * If `date > compared`, it will return a value greater than `0`.
@@ -1032,4 +1035,28 @@ import { DateUtils } from 'tydet-utils';
 let date = new Date()
 let modified = DateUtils.addDays(date, 1)
 DateUtils.minutesOfDifference(modified, date)      // 1440
+```
+
+
+
+## Compare Utils
+
+### Methods
+
+#### Basic operators
+
+###### `isEqual(obj1: any, obj2, any)` -> `boolean`
+* Returns `true` if both variables are equal.
+* If the variables are objects or arrays, it will be compared with its properties.
+
+```js
+import { CompareUtils } from 'tydet-utils';
+
+CompareUtils.isEqual("Hello", "hello")                                              // false
+CompareUtils.isEqual(1000, 500 + 500)                                               // true
+let now = new Date()
+CompareUtils.isEqual(now, new Date(now))                                            // true
+CompareUtils.isEqual({user: 10, name: "Example"}, {name: "Example", user: 10})      // true
+CompareUtils.isEqual([1, "2", {value: 3}, {"1", 2, {value: 3}}])                    // false
+CompareUtils.isEqual([1, false], [1, false])                                        // true
 ```
