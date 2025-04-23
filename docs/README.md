@@ -176,7 +176,7 @@ StringUtils.reverse(0)                       // null
 StringUtils.reverse(1)                       // null
 ```
 
-###### `isEmailValid(str: string)` -> `string`
+###### `isEmailValid(str: string)` -> `boolean`
 * Returns `true` if the input is a valid string email.
 
 ```js
@@ -192,7 +192,7 @@ StringUtils.isEmailValid(5)                                 // false
 StringUtils.isEmailValid(new Date())                        // false
 ```
 
-###### `isDomainValid(str: string)` -> `string`
+###### `isDomainValid(str: string)` -> `boolean`
 * Returns `true` if the input is a valid domain name sting.
 
 ```js
@@ -209,7 +209,7 @@ StringUtils.isDomainValid(5)                                // false
 StringUtils.isDomainValid(new Date())                       // false
 ```
 
-###### `isWebUrlValid(str: string)` -> `string`
+###### `isWebUrlValid(str: string)` -> `boolean`
 * Returns `true` if the input is a valid URL string.
 
 ```js
@@ -226,7 +226,7 @@ StringUtils.isWebUrlValid(5)                                // false
 StringUtils.isWebUrlValid(new Date())                       // false
 ```
 
-###### `isUsernameValid(str: string)` -> `string`
+###### `isUsernameValid(str: string)` -> `boolean`
 * Returns `true` if the input is a valid username. A username must meet these conditions:
     - Must contain at least 3 characters.
     - All letters must be in lowercase.
@@ -248,7 +248,7 @@ StringUtils.isUsernameValid(5)                              // false
 StringUtils.isUsernameValid(new Date())                     // false
 ```
 
-###### `isPhoneValid(str: string)` -> `string`
+###### `isPhoneValid(str: string)` -> `boolean`
 * Returns `true` if the input is a valid Phone Number.
 
 ```js
@@ -276,7 +276,7 @@ StringUtils.isPhoneValid(5)                                 // false
 StringUtils.isPhoneValid(new Date())                        // false
 ```
 
-###### `isUuidValid(str: string)` -> `string`
+###### `isUuidValid(str: string)` -> `boolean`
 * Returns `true` if the input is a valid UUID string.
 
 ```js
