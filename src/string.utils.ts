@@ -92,13 +92,40 @@ export function isDomainValid(str: string) {
 }
 
 /** 
+ * Returns `true` if the input is a valid simple URL string without path, query parameters and fragments.
+ * @param str - String to evaluate
+ */
+export function isWebUrlSimpleValid(str: string) {
+  if (isNotEmpty(str)) {
+    let t = str.trim()
+    return /^(http(s)?):\/\/(((?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9])|((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}|localhost)(:\d{1,6})?$/.test(t)
+  } else {
+    return false
+  } 
+}
+
+/** 
+ * Returns `true` if the input is a valid simple URL string with path (optional).
+ * @param str - String to evaluate
+ */
+export function isWebUrlOnlyPathValid(str: string) {
+  if (isNotEmpty(str)) {
+    let t = str.trim()
+    return /^(http(s)?):\/\/(((?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9])|((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}|localhost)(:\d{1,6})?(\/[a-zA-Z0-9-.,~_$()@%+]{1,}){0,}\/?$/.test(t)
+  } else {
+    return false
+  } 
+}
+
+/** 
  * Returns `true` if the input is a valid URL string.
  * @param str - String to evaluate
  */
 export function isWebUrlValid(str: string) {
   if (isNotEmpty(str)) {
     let t = str.trim()
-    return /^(http(s)?):\/\/(((?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9])|((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}|localhost)(:\d{1,6})?([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/.test(t)
+    return /^(http(s)?):\/\/(((?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9])|((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}|localhost)(:\d{1,6})?(\/[a-zA-Z0-9-.,~_$()@%+]{1,}){0,}\/?(\?((\&?[a-zA-Z0-9-.,~_$()@%+]{1,})(=[a-zA-Z0-9-.,~_$()@%+]{1,})?){1,})?(#[a-zA-Z0-9-_.,$()@%]{0,})?$/.test(t)
+    //return /^(http(s)?):\/\/(((?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9])|((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}|localhost)(:\d{1,6})?([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/.test(t)
   } else {
     return false
   } 

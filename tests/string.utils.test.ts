@@ -1,4 +1,4 @@
-import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isDomainValid, isEmailValid, isEmpty, isNotBlank, isNotEmpty, isPhoneValid, isUsernameValid, isUuidValid, isWebUrlValid, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase, trim, trimEnd, trimStart } from "../src/string.utils";
+import { at, charAt, charCodeAt, codePointAt, concat, endsWith, fromCharCode, includes, indexOf, isBlank, isDomainValid, isEmailValid, isEmpty, isNotBlank, isNotEmpty, isPhoneValid, isUsernameValid, isUuidValid, isWebUrlOnlyPathValid, isWebUrlSimpleValid, isWebUrlValid, lastIndexOf, length, localeCompare, match, padEnd, padStart, repeat, replace, replaceAll, reverse, search, slice, split, startsWith, substring, toLocaleLowerCase, toLocaleUpperCase, toLowerCase, toUpperCase, trim, trimEnd, trimStart } from "../src/string.utils";
 
 describe("String Utils", () => {
 
@@ -195,6 +195,8 @@ describe("String Utils", () => {
       expect(isDomainValid("mkyong.com/users")).toBeFalsy()
       expect(isDomainValid("sub.mkyong-.com")).toBeFalsy()
       expect(isDomainValid("sub.-mkyong.com")).toBeFalsy()
+      expect(isDomainValid("http://test.com")).toBeFalsy()
+      expect(isDomainValid("http://test.com/users")).toBeFalsy()
       expect(isDomainValid("")).toBeFalsy()
       expect(isDomainValid(" ")).toBeFalsy()
     })
@@ -212,11 +214,92 @@ describe("String Utils", () => {
     });
   });
 
-  describe("isUrlValid()", () => {
+  describe("isWebUrlSimpleValid()", () => {
+    it("should return true for valid simple string URL", () => {
+      expect(isWebUrlSimpleValid("http://test.com")).toBeTruthy()
+      expect(isWebUrlSimpleValid("https://localhost:3000")).toBeTruthy()
+      expect(isWebUrlSimpleValid("http://123.123.123.123:3000")).toBeTruthy()
+    })
+    it("should return false for URL with path, query parameters or fragments", () => {
+      expect(isWebUrlSimpleValid("https://localhost:3000/")).toBeFalsy()
+      expect(isWebUrlSimpleValid("https://localhost:3000/subpath")).toBeFalsy()
+      expect(isWebUrlSimpleValid("http://localhost?param=123")).toBeFalsy()
+    })
+    it("should return false for invalid string URL", () => {
+      expect(isWebUrlSimpleValid("mail@test.com")).toBeFalsy()
+      expect(isWebUrlSimpleValid("mail@test.com.m")).toBeFalsy()
+      expect(isWebUrlSimpleValid("ftp://mail@test.com.m")).toBeFalsy()
+      expect(isWebUrlSimpleValid("ftps://-a.dot")).toBeFalsy()
+      expect(isWebUrlSimpleValid("fttp://com.g")).toBeFalsy()
+      expect(isWebUrlSimpleValid("mkyong.com/users")).toBeFalsy()
+      expect(isWebUrlSimpleValid("mkyong.com/users")).toBeFalsy()
+      expect(isWebUrlSimpleValid("http://sub.mkyong-.com")).toBeFalsy()
+      expect(isWebUrlSimpleValid("https://sub.-mkyong.com")).toBeFalsy()
+      expect(isWebUrlSimpleValid("")).toBeFalsy()
+      expect(isWebUrlSimpleValid(" ")).toBeFalsy()
+    })
+    it("should return false for any non string value", () => {
+      expect(isWebUrlSimpleValid(0 as any)).toBeFalsy()
+      expect(isWebUrlSimpleValid(1 as any)).toBeFalsy()
+      expect(isWebUrlSimpleValid(null as any)).toBeFalsy()
+      expect(isWebUrlSimpleValid(undefined as any)).toBeFalsy()
+      expect(isWebUrlSimpleValid(false as any)).toBeFalsy()
+      expect(isWebUrlSimpleValid(true as any)).toBeFalsy()
+      expect(isWebUrlSimpleValid([] as any)).toBeFalsy()
+      expect(isWebUrlSimpleValid([""] as any)).toBeFalsy()
+      expect(isWebUrlSimpleValid(new Date() as any)).toBeFalsy()
+      expect(isWebUrlSimpleValid({} as any)).toBeFalsy()
+    })
+  });
+
+  describe("isWebUrlOnlyPathValid()", () => {
+    it("should return true for valid string URL with path (optional)", () => {
+      expect(isWebUrlOnlyPathValid("http://test.com")).toBeTruthy()
+      expect(isWebUrlOnlyPathValid("https://localhost:3000")).toBeTruthy()
+      expect(isWebUrlOnlyPathValid("http://123.123.123.123:3000")).toBeTruthy()
+      expect(isWebUrlOnlyPathValid("https://localhost:3000/")).toBeTruthy()
+      expect(isWebUrlOnlyPathValid("https://localhost:3000/subpath")).toBeTruthy()
+    })
+    it("should return false for URL with query parameters or fragments", () => {
+      expect(isWebUrlOnlyPathValid("http://localhost?param=123")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid("https://localhost:3000//")).toBeFalsy()
+    })
+    it("should return false for invalid string URL", () => {
+      expect(isWebUrlOnlyPathValid("mail@test.com")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid("mail@test.com.m")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid("ftp://mail@test.com.m")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid("ftps://-a.dot")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid("fttp://com.g")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid("mkyong.com/users")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid("mkyong.com/users")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid("http://sub.mkyong-.com")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid("https://sub.-mkyong.com")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid("")).toBeFalsy()
+      expect(isWebUrlOnlyPathValid(" ")).toBeFalsy()
+    })
+    it("should return false for any non string value", () => {
+      expect(isWebUrlOnlyPathValid(0 as any)).toBeFalsy()
+      expect(isWebUrlOnlyPathValid(1 as any)).toBeFalsy()
+      expect(isWebUrlOnlyPathValid(null as any)).toBeFalsy()
+      expect(isWebUrlOnlyPathValid(undefined as any)).toBeFalsy()
+      expect(isWebUrlOnlyPathValid(false as any)).toBeFalsy()
+      expect(isWebUrlOnlyPathValid(true as any)).toBeFalsy()
+      expect(isWebUrlOnlyPathValid([] as any)).toBeFalsy()
+      expect(isWebUrlOnlyPathValid([""] as any)).toBeFalsy()
+      expect(isWebUrlOnlyPathValid(new Date() as any)).toBeFalsy()
+      expect(isWebUrlOnlyPathValid({} as any)).toBeFalsy()
+    })
+  });
+
+  describe("isWebUrlValid()", () => {
     it("should return true for valid string URL", () => {
       expect(isWebUrlValid("http://test.com")).toBeTruthy()
       expect(isWebUrlValid("https://localhost:3000")).toBeTruthy()
+      expect(isWebUrlValid("https://localhost:3000/")).toBeTruthy()
+      expect(isWebUrlValid("https://localhost:3000/subpath")).toBeTruthy()
       expect(isWebUrlValid("http://localhost?param=123")).toBeTruthy()
+      expect(isWebUrlValid("http://localhost?param=123#fragment")).toBeTruthy()
+      expect(isWebUrlValid("http://localhost/#fragment")).toBeTruthy()
       expect(isWebUrlValid("http://123.123.123.123:3000")).toBeTruthy()
     })
     it("should return false for invalid string URL", () => {
@@ -225,9 +308,10 @@ describe("String Utils", () => {
       expect(isWebUrlValid("ftp://mail@test.com.m")).toBeFalsy()
       expect(isWebUrlValid("ftps://-a.dot")).toBeFalsy()
       expect(isWebUrlValid("fttp://com.g")).toBeFalsy()
+      expect(isWebUrlValid("mkyong.com")).toBeFalsy()
       expect(isWebUrlValid("mkyong.com/users")).toBeFalsy()
-      //expect(isWebUrlValid("http://sub.mkyong-.com")).toBeFalsy()
-      //expect(isWebUrlValid("https://sub.-mkyong.com")).toBeFalsy()
+      expect(isWebUrlValid("http://sub.mkyong-.com")).toBeFalsy()
+      expect(isWebUrlValid("https://sub.-mkyong.com")).toBeFalsy()
       expect(isWebUrlValid("")).toBeFalsy()
       expect(isWebUrlValid(" ")).toBeFalsy()
     })

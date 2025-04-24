@@ -10,6 +10,8 @@ TyDeT Utils is composed of submodules made up of reusable methods to validate va
     * [reverse()](#reversestr-string---string--null)
     * [isEmailValid()](#isemailvalidstr-string---boolean)
     * [isDomainValid()](#isdomainvalidstr-string---boolean)
+    * [isWebUrlSimpleValid()](#isweburlsimplevalidstr-string---boolean)
+    * [isWebUrlOnlyPathValid()](#isweburlonlypathvalidstr-string---boolean)
     * [isWebUrlValid()](#isweburlvalidstr-string---boolean)
     * [isUsernameValid()](#isusernamevalidstr-string---boolean)
     * [at()](#atstr-string-position-number---number)
@@ -209,6 +211,42 @@ StringUtils.isDomainValid(5)                                // false
 StringUtils.isDomainValid(new Date())                       // false
 ```
 
+###### `isWebUrlSimpleValid(str: string)` -> `boolean`
+* Returns `true` if the input is a valid URL string without path, query params or fragments.
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.isWebUrlSimpleValid("http://test.com")                // true
+StringUtils.isWebUrlSimpleValid("http://localhost?param=123")     // false
+StringUtils.isWebUrlSimpleValid("http://localhost/path")          // false
+StringUtils.isWebUrlSimpleValid("http://123.123.123.123:3000")    // true
+StringUtils.isWebUrlSimpleValid("mail@test.com")                  // false
+StringUtils.isWebUrlSimpleValid("mkyong.com/users")               // false
+StringUtils.isWebUrlSimpleValid(undefined)                        // false
+StringUtils.isWebUrlSimpleValid(null)                             // false
+StringUtils.isWebUrlSimpleValid(5)                                // false
+StringUtils.isWebUrlSimpleValid(new Date())                       // false
+```
+
+###### `isWebUrlOnlyPathValid(str: string)` -> `boolean`
+* Returns `true` if the input is a valid URL string with path (optional).
+
+```js
+import { StringUtils } from 'tydet-utils';
+
+StringUtils.isWebUrlOnlyPathValid("http://test.com")                // true
+StringUtils.isWebUrlOnlyPathValid("http://localhost/path")          // true
+StringUtils.isWebUrlOnlyPathValid("http://localhost?param=123")     // false
+StringUtils.isWebUrlOnlyPathValid("http://123.123.123.123:3000")    // true
+StringUtils.isWebUrlOnlyPathValid("mail@test.com")                  // false
+StringUtils.isWebUrlOnlyPathValid("mkyong.com/users")               // false
+StringUtils.isWebUrlOnlyPathValid(undefined)                        // false
+StringUtils.isWebUrlOnlyPathValid(null)                             // false
+StringUtils.isWebUrlOnlyPathValid(5)                                // false
+StringUtils.isWebUrlOnlyPathValid(new Date())                       // false
+```
+
 ###### `isWebUrlValid(str: string)` -> `boolean`
 * Returns `true` if the input is a valid URL string.
 
@@ -217,6 +255,7 @@ import { StringUtils } from 'tydet-utils';
 
 StringUtils.isWebUrlValid("http://test.com")                // true
 StringUtils.isWebUrlValid("http://localhost?param=123")     // true
+StringUtils.isWebUrlValid("http://localhost/#fragment")     // true
 StringUtils.isWebUrlValid("http://123.123.123.123:3000")    // true
 StringUtils.isWebUrlValid("mail@test.com")                  // false
 StringUtils.isWebUrlValid("mkyong.com/users")               // false
